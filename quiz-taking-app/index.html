@@ -32,7 +32,7 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Example DHIS2 app</a>
+				<a class="navbar-brand" href="/">Quiz Interface</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -84,22 +84,16 @@
 	<script src="js/Google.js"></script>
 
 	<script>
-var myWindow;
+var mainWindow, quizWindow;
 
 function openWin() {
-    myWindow = window.open("", "", "width=250, height=250");
-    myWindow.resizeTo(800, window.outerHeight);
-    myWindow.moveTo(500, 100); 
-    myWindow.focus();
-}
-
-function resizeWinTo() {
-    
-}
-
-function resizeWinBy() {
-    myWindow.resizeBy(-100, -50);
-    myWindow.focus();
+	quizWindow = window.open("http://www.uio.no", "quizPanel", "width=250, height=250");
+    mainWindow = window.open("/", "mainNavigationWindow", "width=250", "height=250");
+    quizWindow.resizeTo(400, screen.height);
+    mainWindow.resizeTo(screen.width - 400, screen.height);
+    quizWindow.moveTo(screen.width - 400, 100); 
+    mainWindow.moveTo(0, 100); 
+    quizWindow.focus();
 }
 
 window.onload = openWin();
