@@ -31,26 +31,22 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#/view1">/api/me</a></li>
-					<li><a href="#/view2">System settings</a></li>
-					<li><a href="#/view3">A map</a></li>
+					<li><a href="/">Return to DHIS2 front page</a></li>
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
 	</div>
 
-	<div class="container" ng-view></div>
+<!-- 	<div class="container" ng-view></div> -->
 
-	<div class="container">This app is based on the Angular Seed
-		project and uses AngularJS.</div>
-	<div class="container">Authored by Lars Roland @ IFI / University
-		of Oslo as an example of a DHIS2 web app, for use in the INF5750 Open
-		Source development course.</div>
+	<div class="container"></div>
 
-	<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
--->
+
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
 
 
 	<script src="lib/angular/angular.js"></script>
@@ -59,10 +55,12 @@
 	<script src="js/leaflet.js"></script>
 	<script src="js/angular-leaflet-directive.js"></script>
 
-	<!--<script type="text/javascript" src="http://cdn.jsdelivr.net/lodash/2.1.0/lodash.compat.min.js"></script>-->
-	<!--<script type="text/javascript" src="http://cdn.jsdelivr.net/restangular/latest/restangular.js"></script>-->
-	<!--<script type="text/javascript" src="js/restangular.js"></script>-->
-	<!--<script type="text/javascript" src="js/restangular.min.js"></script>-->
+	<script type="text/javascript"
+		src="http://cdn.jsdelivr.net/lodash/2.1.0/lodash.compat.min.js"></script>
+	<script type="text/javascript"
+		src="http://cdn.jsdelivr.net/restangular/latest/restangular.js"></script>
+	<script type="text/javascript" src="js/restangular.js"></script>
+	<script type="text/javascript" src="js/restangular.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/services.js"></script>
 	<script src="js/controllers.js"></script>
@@ -77,22 +75,10 @@
 		src="https://maps.googleapis.com/maps/api/js?libraries=geometry&amp;sensor=false"></script>
 	<script src="js/Google.js"></script>
 
+<script src="js/applogic.js"></script>
 	<script>
-		var mainWindow, quizWindow;
-
-		function openWin() {
-			quizWindow = window.open("quiz.html", "quizPanel",
-					"width=250, height=250");
-			mainWindow = window.open("/", "mainNavigationWindow", "width=250",
-					"height=250");
-			quizWindow.resizeTo(400, screen.height);
-			mainWindow.resizeTo(screen.width - 400, screen.height);
-			quizWindow.moveTo(screen.width - 400, 100);
-			mainWindow.moveTo(0, 100);
-			quizWindow.focus();
-		}
-
 		window.onload = openWin();
+		setTimeout();
 	</script>
 
 
