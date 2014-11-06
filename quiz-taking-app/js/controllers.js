@@ -62,7 +62,7 @@ angular.module('myApp.controllers', []).
         }
 
     }])
-    .controller('MyCtrl3', ['$scope', 'UserSettingsService', function ($scope, UserSettingsService) {
+    .controller('MyCtrl3', ['$scope', function ($scope) {
         console.log('Ctrl3');
 
         $scope.location = {lat: 0.602118, lng: 30.160217};
