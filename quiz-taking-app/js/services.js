@@ -7,9 +7,9 @@
 
 /* Services */
 
-var myAppServices = angular.module('myApp.services', ['ngResource']);
+var quizAppServices = angular.module('quizApp.services', ['ngResource']);
 
-myAppServices.factory("MeService", function ($resource) {
+quizAppServices.factory("MeService", function ($resource) {
     return $resource(
         dhisAPI+'/api/me',
         {
@@ -23,7 +23,7 @@ myAppServices.factory("MeService", function ($resource) {
     );
 });
 
-myAppServices.factory("ProfileService", function ($resource) {
+quizAppServices.factory("ProfileService", function ($resource) {
     return $resource(
             dhisAPI+'/api/me/profile',
         {
