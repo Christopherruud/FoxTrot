@@ -1,5 +1,8 @@
-<p style = Òfont-size: 40px", style = "font-family: Arial">	CourseName</p>
+<p style = ï¿½font-size: 40px", style = "font-family: Arial">	CourseName</p>
 <p style = "font-family: Arial">This is the test page for courses. You can choose modules (level of difficulty) to each course from here.
 Info on this specific course will be available here. </p>
-<button ng-model="Modules" ng-disabled="checked">Modules</button>
-<button ng-model="Back" ng-disabled="checked">Back</button>
+
+<input type="button" onclick="history.back();" value="Back">
+<form action="#/viewModule">
+    <input type="button" value="Modules">
+</form>
