@@ -1,10 +1,10 @@
 var mainWindow, quizWindow;
 
 function openWin() {
-	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250",
-			true);
 	mainWindow = window.open("/", "mainNavigationWindow", "width=250",
 			"height=250", true);
+	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250",
+			true);
 	quizWindow.resizeTo(400, screen.height);
 	mainWindow.resizeTo(screen.width - 400, screen.height);
 	quizWindow.moveTo(screen.width - 400, 100);
