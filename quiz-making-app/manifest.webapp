@@ -1,0 +1,27 @@
+{
+    "version":"0.1 Alpha",
+    "name":"DHIS2 Quiz Taking App",
+    "description":"Quiz-taking client app for DHIS2 Quiz System",
+    "icons":{
+    "16":null,
+        "48":"/img/icon-48.png",
+        "128":"/img/icon.png"
+},
+    "developer":{
+    "url":"http://dhis2.org/",
+        "name":"FoxTrot",
+        "company":"University of Oslo",
+        "email":"chrinr@ifi.uio.no"
+},
+    "activities":{
+    "dhis":{
+        "href":"*"
+    }
+},
+    "launchUrl":null,
+    "launch_path":"index.html",
+    "installs_allowed_from":[
+    "*"
+],
+    "default_locale":"en"
+}
