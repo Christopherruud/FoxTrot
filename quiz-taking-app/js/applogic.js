@@ -2,9 +2,8 @@ var mainWindow, quizWindow;
 
 function openWin() {
 	mainWindow = window.open("/", "mainNavigationWindow", "width=250",
-			"height=250", true);
-	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250",
-			true);
+			"height=250", "location=yes");
+	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250", "location=yes");
 	quizWindow.resizeTo(400, screen.height);
 	mainWindow.resizeTo(screen.width - 400, screen.height);
 	quizWindow.moveTo(screen.width - 400, 100);
