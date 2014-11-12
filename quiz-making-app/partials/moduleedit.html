@@ -1,0 +1,42 @@
+<div class="container">
+		<h2>Module Editor</h2>
+
+		<table class="table">
+			<tr>
+				<th>Number</th>
+				<th>Name</th>
+				<th>Delete</th>
+			</tr>
+			<c:forEach items="${module}" var="m">
+				<tr>
+					<td>${c.courseCode}</td>
+					<td>${c.name}</td>
+					<td><a
+						href="${pageContext.request.contextPath}/module/${m.id}/delete">Delete</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+
+	<div class="container">
+		<h2>Create module:</h2>
+		<form name="input"
+			action="${pageContext.request.contextPath}/module/new" method="post">
+			<table class="table">
+				<tr>
+					<td>Module number:</td>
+					<td><input class="form-control" type="text" name="coursecode"
+						placeholder="Module number"></input></td>
+				</tr>
+				<tr>
+					<td>Module name:</td>
+					<td><input class="form-control" type="text" name="name"
+						placeholder="Module name" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="btn btn-primary" type="submit" value="Save" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
