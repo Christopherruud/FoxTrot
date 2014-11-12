@@ -23,3 +23,5 @@ setTimeout(
 				window.close();
 			}
 		}, 25);
+
+//check if variable is initialized, otherwize initialize it. 
