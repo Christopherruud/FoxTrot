@@ -1,5 +1,5 @@
 'use strict';
-
+//Her kan vi lage tilhørlighet mellom partials og knapper f.eks
 // Declare app level module which depends on filters, and services
 angular.module('quizApp', [
   'ngRoute',
