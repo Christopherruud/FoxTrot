@@ -7,7 +7,6 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="css/leaflet.css" />
 <link rel="shortcut icon" href="../../favicon.ico" />
-
 </head>
 <script>
 	/* this gets the web api url from the manifest file and makes it available as a Javascript variable */
@@ -17,6 +16,7 @@
 	var serverResponse = JSON.parse(xhReq.responseText);
 	var dhisAPI = serverResponse.activities.dhis.href;
 </script>
+<script src="courseeditor.js"></script>
 <body>
 
 	<!-- Static navbar -->
@@ -44,9 +44,8 @@
 
 	<div class="container" ng-view></div>
 
-	<div class="container">This app is based on the Angular Seed
-		project and uses AngularJS.</div>
-	<div class="container">Authored by.</div>
+	<div class="container">Here we can write static text</div>
+	
 
 	<!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
