@@ -6,6 +6,7 @@
 				<th>Number</th>
 				<th>Name</th>
 				<th>Delete</th>
+				<th>Edit<th>
 			</tr>
 			<c:forEach items="${module}" var="m">
 				<tr>
@@ -13,7 +14,10 @@
 					<td>${c.name}</td>
 					<td><a
 						href="${pageContext.request.contextPath}/module/${m.id}/delete">Delete</a></td>
+				<td><a
+						href="${pageContext.request.contextPath}/module/${m.id}/delete">Edit</a></td>
 				</tr>
+				
 			</c:forEach>
 		</table>
 	</div>
