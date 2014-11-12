@@ -14,8 +14,8 @@ config(['$routeProvider', function($routeProvider , RestangularProvider) {
 //  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
 //  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
 //  $routeProvider.when('/view3', {templateUrl: 'partials/partial3.html', controller: 'MyCtrl3'});
-  $routeProvider.when('/viewCourseedit', {templateUrl: 'partials/courseedit.html', controller: 'MyCtrl4'});
-  $routeProvider.when('/viewModuleedit', {templateUrl: 'partials/moduleedit.html', controller: 'MyCtrl5'});
-  $routeProvider.when('/viewQuizedit', {templateUrl: 'partials/quizedit.html', controller: 'MyCtrl6'});
-  $routeProvider.otherwise({redirectTo: '/viewCourseedit'});
+  $routeProvider.when('/viewCourseEdit', {templateUrl: 'partials/courseedit.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/viewModuleEdit', {templateUrl: 'partials/moduleedit.html', controller: 'MyCtrl2'});
+  $routeProvider.when('/viewQuizEdit', {templateUrl: 'partials/quizedit.html', controller: 'MyCtrl3'});
+  $routeProvider.otherwise({redirectTo: '/viewCourseEdit'});
 }]);
