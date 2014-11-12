@@ -1,7 +1,7 @@
 {
     "version":"0.1 Alpha",
-    "name":"DHIS2 Quiz Taking App",
-    "description":"Quiz-taking client app for DHIS2 Quiz System",
+    "name":"DHIS2 Quiz Making App",
+    "description":"Quiz-Making server-side app for DHIS2 Quiz System",
     "icons":{
     "16":null,
         "48":"/img/icon-48.png",
