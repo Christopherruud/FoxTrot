@@ -39,6 +39,11 @@ function Test(moduleId){
 	var answer;
 }
 
+var json;
+
+function getCourseData() {
+	$.getJSON("/api/systemSettings/quizKey", populateCourseData(data));
+}
 
 //variant function for populating the course-table with data from json if exists.
 function populateCourseData(json) {
