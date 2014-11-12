@@ -6,14 +6,18 @@
 				<th>Number</th>
 				<th>Name</th>
 				<th>Delete</th>
+				<th>Edit<th>
 			</tr>
 			<c:forEach items="${module}" var="m">
 				<tr>
-					<td>${c.courseCode}</td>
-					<td>${c.name}</td>
+					<td>${m.courseCode}</td>
+					<td>${m.name}</td>
 					<td><a
 						href="${pageContext.request.contextPath}/module/${m.id}/delete">Delete</a></td>
+				<td><a
+						href="${pageContext.request.contextPath}/module/${m.id}/delete">Edit</a></td>
 				</tr>
+				
 			</c:forEach>
 		</table>
 	</div>
@@ -24,10 +28,10 @@
 			action="${pageContext.request.contextPath}/module/new" method="post">
 			<table class="table">
 				<tr>
-					<td>Module number:</td>
+				<!-- 	<td>Module number:</td>
 					<td><input class="form-control" type="text" name="coursecode"
 						placeholder="Module number"></input></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td>Module name:</td>
 					<td><input class="form-control" type="text" name="name"
@@ -40,7 +44,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input class="btn btn-primary" type="submit" value="Save" /></td>
+					<td><input class="btn btn-primary" type="submit" value="Create new Quiz" /></td>
 				</tr>
 			</table>
 		</form>
