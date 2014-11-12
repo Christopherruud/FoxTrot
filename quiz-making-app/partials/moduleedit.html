@@ -10,8 +10,8 @@
 			</tr>
 			<c:forEach items="${module}" var="m">
 				<tr>
-					<td>${c.courseCode}</td>
-					<td>${c.name}</td>
+					<td>${m.courseCode}</td>
+					<td>${m.name}</td>
 					<td><a
 						href="${pageContext.request.contextPath}/module/${m.id}/delete">Delete</a></td>
 				<td><a
