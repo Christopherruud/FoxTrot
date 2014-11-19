@@ -43,31 +43,19 @@ function Test(moduleId) {
 }
 
 function getCourseData() {
-	// $.getJSON("/api/systemSettings/quizKey", populateCourseData(data));
-	var json = [ { "domain" : "testdomain",
-		"modules" : [ {
-			"moduleName" : "1",
-			"id" : 1
-		}, {
-			"moduleName" : "2",
-			"id" : 2
-		}, {
-			"moduleName" : "3",
-			"id" : 3
-		}, {
-			"moduleName" : "4",
-			"id" : 4
-		} ]
-	} ];
-	jsonAlexander(json);
-	populateCourseData(quizData);
+	$.getJSON("/api/systemSettings/quizKey", function(data) {
+		populateCourseData(data)
+	});
+	//var json = '[{"domain":"testdomain","modules":[{"moduleName":"1","id":1},{"moduleName":"2","id":2},{"moduleName":"3","id":3},{"moduleName" : "4","id":4}]}]';
+	//jsonAlexander(json);
+	
 }
 
 // variant function for populating the course-table with data from json if
 // exists.
 function populateCourseData(json) {
 	$('#courseTable').empty(); // empties the coursedata -table before
-								// initializing
+	// initializing
 
 	for (var s = 0; s < json.length; s++) {
 		var course = json[s];
@@ -93,9 +81,11 @@ function populateCourseData(json) {
 }
 var quizData
 
-//function for posting and parsing the json object
+// function for posting and parsing the json object
 function jsonAlexander(json) {
-	quizData = parseJSON(json);
+	console.log("JSA");
+	quizData = $.parseJSON(json);
+	populateCourseData(quizData);
 }
 
 // lifted from the demo - used to turn json notation into js object...
