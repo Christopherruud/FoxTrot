@@ -25,3 +25,12 @@ setTimeout(
 		}, 25);
 
 //check if variable is initialized, otherwize initialize it. 
+
+//hent info fra Making course
+function startModule(){
+	
+}
+
+function getCourse(){
+	
+}
