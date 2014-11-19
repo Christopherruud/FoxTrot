@@ -2,6 +2,7 @@ var options = {
   valueNames: [ 'id', 'name', 'number' ]
 };
 
+
 // Init list
 var courseList = new List('course', options);
 
