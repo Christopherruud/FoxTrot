@@ -10,9 +10,16 @@
  *            the name of the area (domain) the course represents. Acts as the
  *            name of the course.
  */
+<<<<<<< HEAD
 function Course(name) {
 	var name;
 	this.name = name;
+=======
+
+function Course(domain) {
+	var domain;
+	this.domain = domain;
+>>>>>>> c120faaa52463ff12bcb01414aea4cb4a4c6f20c
 	var level, id, nextCourse, descriptiveText;
 	var modules = [];
 }
@@ -44,7 +51,8 @@ function Test(moduleId) {
 
 function getCourseData() {
 	$.getJSON("/api/systemSettings/quizKey", function(data) {
-		populateCourseData(data)
+		console.log(typeof data);
+		console.log(data);
 	});
 	//var json = '[{"domain":"testdomain","modules":[{"moduleName":"1","id":1},{"moduleName":"2","id":2},{"moduleName":"3","id":3},{"moduleName" : "4","id":4}]}]';
 	//jsonAlexander(json);
@@ -84,7 +92,7 @@ var quizData
 // function for posting and parsing the json object
 function jsonAlexander(json) {
 	console.log("JSA");
-	quizData = $.parseJSON(json);
+	quizData =JSON.parse(json);
 	populateCourseData(quizData);
 }
 
