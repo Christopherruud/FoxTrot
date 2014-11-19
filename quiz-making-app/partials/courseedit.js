@@ -2,7 +2,6 @@ var options = {
   valueNames: ['domain', 'level', 'id', 'nextCourse', 'descriptiveText']
 };
 
-
 // Init list
 
 var courseList = new List('course', options);
@@ -27,6 +26,7 @@ addBtn.click(function() {
     id: Math.floor(Math.random()*110000),
     nextCourse: nextCourseField.val(),
     descriptiveText: descriptiveTextField.val()
+    var tmp = new Course(domain);
   });
   clearFields();
   refreshCallbacks();
@@ -76,3 +76,4 @@ function clearFields() {
 	nextCourseField.val('');
 	descriptiveText: descriptiveTextField.val('');
 }
+
