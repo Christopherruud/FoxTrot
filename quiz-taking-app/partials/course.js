@@ -7,20 +7,33 @@ var courseNumber = 1;
 //dette er hvor vi kan legge inn data i en array så vi kan manipulere den i for løkka under
 var courses = ["HowToDHIS", "Change The Layout"];
 var i;
-var btn;
+
 
 function populate(){
 	for (i = 0; i < courses.length; i++) {
 
-		btn = document.createElement("BUTTON");        // Create a <button> element
-		var t = document.createTextNode(courses[i] + " " + courseNumber);// Create a text node
-		btn.appendChild(t);                                // Append the text to <button>
+		var btn = document.createElement("BUTTON");        // Create a <button> element
+		btn.textContent=courses[i] + " " + courseNumber;            
 		document.body.appendChild(btn);                    // Append <button> to <body>
 
-		//document.getElementById(btn).addEventListener("click", hey);
+		btn.addEventListener("click", getModule);
 		courseNumber++;
 
 	}
+}
+//henter ut modul html når man trykker på en knapp. Må sende
+//med ting her fra tilhørende modul til gitt kurs
+function getModule(){
+	window.location = "module.html";
+	//VIKTIG om vi vil ha en "one page app"
+	/*$.ajax({
+		  url: "module.html",
+		  context: document.body
+		}).done(function(response) {
+		  $( this ).addClass( "done" );
+		  console.log(response);
+		});
+*/	
 }
 
 function hey (){
