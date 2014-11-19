@@ -10,16 +10,10 @@
  *            the name of the area (domain) the course represents. Acts as the
  *            name of the course.
  */
-<<<<<<< HEAD
-function Course(name) {
-	var name;
-	this.name = name;
-=======
 
 function Course(domain) {
 	var domain;
 	this.domain = domain;
->>>>>>> c120faaa52463ff12bcb01414aea4cb4a4c6f20c
 	var level, id, nextCourse, descriptiveText;
 	var modules = [];
 }
