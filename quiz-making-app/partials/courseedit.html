@@ -36,7 +36,7 @@
 <script src="http://listjs.com/no-cdn/list.js"></script>
 <meta charset=utf-8 />
 <title>Course list</title>
-<h2>CourseEditor</h2>
+<h2>Course Editor</h2>
 </head>
 <body>
 <div id="paragraph">
@@ -49,9 +49,9 @@
   <table>
     <thead>
       <tr>
-        <th class="sort" data-sort="nextCourse">Course Name</th>
-        <th class="sort" data-sort="descriptiveText">Descriptive Text</th>
-        <th colspan="5">
+        <th class="sort" data-sort="Course name">Course Name</th>
+        <th class="sort" data-sort="number">Number</th>
+        <th colspan="2">
           <input type="text" class="search" placeholder="Search courses" />
         </th>
       </tr>
@@ -59,15 +59,15 @@
     <tbody class="list">
       <tr>
         <td class="id" style="display:none;">1</td>
-        <td class="nextCourse">Course1</td>
-        <td class="descriptiveTextr">1</td>
+        <td class="name">Course1</td>
+        <td class="number">1</td>
         <td class="edit"><button class="edit-item-btn">Edit</button></td>
         <td class="remove"><button class="remove-item-btn">Remove</button></td>
       </tr>
       <tr>
         <td class="id" style="display:none;">2</td>
-        <td class="nextCourse">Course2</td>
-        <td class="descriptiveText">2</td>
+        <td class="name">Course2</td>
+        <td class="number">2</td>
         <td class="edit"><button class="edit-item-btn">Edit</button></td>
         <td class="remove"><button class="remove-item-btn">Remove</button></td>
       </tr>
@@ -79,7 +79,7 @@
       <input type="text" id="name-field" placeholder="Create new course" />
     </td>
     <td class="nubmer">
-      <input type="text" id="number-field" placeholder="Course description" />
+      <input type="text" id="number-field" placeholder="Course number" />
     </td>
     <td class="add">
       <button id="add-btn">Add</button>
