@@ -45,14 +45,10 @@ function Test(moduleId) {
 
 function getCourseData() {
 	$.getJSON("/api/systemSettings/quizKey", function(data) {
-		// console.log(typeof data);
-		// console.log(data);
-		jsonAlexander(data);
+		populateCourseData(data);
+		//jsonAlexander(data);
 	});
-	// var json =
-	// '[{"domain":"testdomain","modules":[{"moduleName":"1","id":1},{"moduleName":"2","id":2},{"moduleName":"3","id":3},{"moduleName"
-	// : "4","id":4}]}]';
-	// jsonAlexander(json);
+	
 
 }
 
@@ -90,7 +86,7 @@ var quizData
 function jsonAlexander(json) {
 	console.log(typeof json);
 	console.log(json);
-	populateCourseData(json);
+	
 }
 
 // lifted from the demo - used to turn json notation into js object...
