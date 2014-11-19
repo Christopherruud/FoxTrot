@@ -45,12 +45,15 @@ function Test(moduleId) {
 
 function getCourseData() {
 	$.getJSON("/api/systemSettings/quizKey", function(data) {
-		console.log(typeof data);
-		console.log(data);
+		// console.log(typeof data);
+		// console.log(data);
+		jsonAlexander(data);
 	});
-	//var json = '[{"domain":"testdomain","modules":[{"moduleName":"1","id":1},{"moduleName":"2","id":2},{"moduleName":"3","id":3},{"moduleName" : "4","id":4}]}]';
-	//jsonAlexander(json);
-	
+	// var json =
+	// '[{"domain":"testdomain","modules":[{"moduleName":"1","id":1},{"moduleName":"2","id":2},{"moduleName":"3","id":3},{"moduleName"
+	// : "4","id":4}]}]';
+	// jsonAlexander(json);
+
 }
 
 // variant function for populating the course-table with data from json if
@@ -59,8 +62,8 @@ function populateCourseData(json) {
 	$('#courseTable').empty(); // empties the coursedata -table before
 	// initializing
 
-	for (var s = 0; s < json.length; s++) {
-		var course = json[s];
+	for (var s = 0; s < json.courses.length; s++) {
+		var course = json.courses[s];
 		course = explodeJSON(course);
 		var tableString = "<tr>";
 		console.log('Course');
@@ -85,9 +88,9 @@ var quizData
 
 // function for posting and parsing the json object
 function jsonAlexander(json) {
-	console.log("JSA");
-	quizData =JSON.parse(json);
-	populateCourseData(quizData);
+	console.log(typeof json);
+	console.log(json);
+	populateCourseData(json);
 }
 
 // lifted from the demo - used to turn json notation into js object...
