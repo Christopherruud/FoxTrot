@@ -1,6 +1,6 @@
 <!-- PUT MAIN QUIZ LOGIC INTO THIS FILE! -->
 <!doctype html>
-<html lang="en" ng-app="quizApp">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Quiz Maker</title>
@@ -41,7 +41,12 @@
 		</div>
 	</div>
 
-	<div class="container" ng-view></div>
+	<table class="table" id="courseTable">
+		<tr>
+			<th>Course</th>
+			<th>Module</th>
+		</tr>
+	</table>
 
 	<div class="container">Here we can write static text</div>
 
@@ -50,24 +55,19 @@
 -->
 
 
-	<script src="lib/angular/angular.js"></script>
-	<script src="lib/angular/angular-route.js"></script>
-	<script src="lib/angular/angular-resource.js"></script>
+
 	<script src="js/leaflet.js"></script>
-	<script src="js/angular-leaflet-directive.js"></script>
+
 
 	<!--<script type="text/javascript" src="http://cdn.jsdelivr.net/lodash/2.1.0/lodash.compat.min.js"></script>-->
 	<!--<script type="text/javascript" src="http://cdn.jsdelivr.net/restangular/latest/restangular.js"></script>-->
 	<!--<script type="text/javascript" src="js/restangular.js"></script>-->
 	<!--<script type="text/javascript" src="js/restangular.min.js"></script>-->
-	<script src="js/app.js"></script>
-	<script src="js/services.js"></script>
-	<script src="js/controllers.js"></script>
-	<script src="js/filters.js"></script>
-	<script src="js/directives.js"></script>
 
-	<script src="js/jquery-1.10.1.min.js"></script>
-	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<!-- <script src="js/jquery-1.10.1.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script> -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/applogic.js"></script>
 
@@ -78,9 +78,9 @@
 	<!--  Initializing the site with database-->
 	<!--  talks with applogic.js -->
 	<script>
-	$(document).ready(function() {
-		getCourseData();
-	});
+		$(document).ready(function() {
+			getCourseData();
+		});
 	</script>
 
 </body>

@@ -59,7 +59,8 @@ function getCourseData() {
 			"id" : 4
 		} ]
 	} ];
-	populateCourseData(json);
+	jsonAlexander(json);
+	populateCourseData(quizData);
 }
 
 // variant function for populating the course-table with data from json if
@@ -89,6 +90,12 @@ function populateCourseData(json) {
 		$('#courseTable').append(tableString);
 	}
 
+}
+var quizData
+
+//function for posting and parsing the json object
+function jsonAlexander(json) {
+	quizData = parseJSON(json);
 }
 
 // lifted from the demo - used to turn json notation into js object...
