@@ -1,13 +1,17 @@
 var options = {
-  valueNames: [ 'id', 'name', 'number' ]
+  valueNames: ['domain', 'level', 'id', 'nextCourse', 'descriptiveText']
 };
 
+
 // Init list
+
 var courseList = new List('course', options);
 
-var idField = $('#id-field'),
-    nameField = $('#name-field'),
-    numberField = $('#number-field'),
+var domainField = $('#domain-field')
+	levelField = $('#level-field') 
+	idField = $('#id-field'),
+    nextCourseField = $('#nextCourse-field'),
+    descriptiveTextField = $('#descriptiveText-field'),
     addBtn = $('#add-btn'),
     editBtn = $('#edit-btn').hide(),
     removeBtns = $('.remove-item-btn'),
@@ -18,9 +22,11 @@ refreshCallbacks();
 
 addBtn.click(function() {
   courseList.add({
+	domain: domainField (),
+	level: levelField (),
     id: Math.floor(Math.random()*110000),
-    name: nameField.val(),
-    number: numberField.val()
+    nextCourse: nextCourseField.val(),
+    descriptiveText: descriptiveTextField.val()
   });
   clearFields();
   refreshCallbacks();
@@ -30,8 +36,11 @@ editBtn.click(function() {
   var item = courseList.get('id', idField.val())[0];
   item.values({
     id:idField.val(),
-    name: nameField.val(),
-    number: numberField.val()
+    domain: domainField (),
+	level: levelField (),
+	id:idField.val(),
+    nextCourse: nextCourseField.val(),
+    descriptiveText: descriptiveTextField.val()
   });
   clearFields();
   editBtn.hide();
@@ -51,9 +60,12 @@ function refreshCallbacks() {
   editBtns.click(function() {
     var itemId = $(this).closest('tr').find('.id').text();
     var itemValues = courseList.get('id', itemId)[0].values();
-    idField.val(itemValues.id);
-    nameField.val(itemValues.name);
-    numberField.val(itemValues.number);
+    id:idField.val(),
+    domain: domainField (),
+	level: levelField (),
+	id:idField.val(),
+    nextCourse: nextCourseField.val(),
+    descriptiveText: descriptiveTextField.val()
     
     editBtn.show();
     addBtn.hide();
@@ -61,6 +73,6 @@ function refreshCallbacks() {
 }
 
 function clearFields() {
-  nameField.val('');
-  numberField.val('');
+	nextCourseField.val('');
+	descriptiveText: descriptiveTextField.val('');
 }
