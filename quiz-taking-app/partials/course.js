@@ -5,10 +5,10 @@ var moduleHtml = 'partials/module.html';
 var select = document.getElementById('RaceDropDown');
 var courseNumber = 1;
 //dette er hvor vi kan legge inn data i en array så vi kan manipulere den i for løkka under
-var courses = ["HowToDHIS", "Change The Layout"];
+var courses = ["HowToDHIS", "Change The Layout", "Sexy Trip"];
 var i;
 
-
+//setter opp knapper etter ønske
 function populate(){
 	for (i = 0; i < courses.length; i++) {
 
