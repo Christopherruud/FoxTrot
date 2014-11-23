@@ -1,70 +1,71 @@
 <html>
 <head>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <body>
-    <div data-role="page">
-  <div data-role="main" class="ui-content">
-    <p>Exisiting courses</p>
-  
-    <table data-role="courseList" class="ui-responsive">
-      <thead>
-        <tr>
-          <th>Course name</th>
-          <th>Course level</th>
-          <th>Descriptive Text</th>
-          <th>Modules</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody class="list">
-        <tr>
-          <td class="id" style="display:none;">1</td>
-          <td class="domain">Data entry</td>
-          <td class="level">1</td>
-          <td class="descriptiveText">This course is about data entry. It is the first course in this quiz app</td>
-          <td class="modules">5</td>
-        <td class="remove"><a href="#" class="ui-btn ui-icon-delete ui-btn-icon-right">Delete</a>
-        </td>
-        <tr>
+<div data-role="page">
+    <div data-role="main" class="ui-content">
+        <p>Exisiting courses</p>
+
+        <table data-role="courseList" class="ui-responsive">
+            <thead>
+            <tr>
+                <th>Course name</th>
+                <th>Course level</th>
+                <th>Descriptive Text</th>
+                <th>Modules</th>
+                <th></th>
             </tr>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-    
+            </thead>
+            <tbody class="list">
+            <tr>
+                <td class="id" style="display:none;">1</td>
+                <td class="domain">Data entry</td>
+                <td class="level">1</td>
+                <td class="descriptiveText">This course is about data entry. It is the first course in this quiz app
+                </td>
+                <td class="modules">5</td>
+                <td class="remove"><a href="#" class="ui-btn ui-icon-delete ui-btn-icon-right">Delete</a>
+                </td>
+            <tr>
+            </tr>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
     <!--The "ui-field-contain" class style labels and form controls properly based upon the width of the page. If the width is less then 480px the label will be palced on above the form element -->
-    <form method="post" id="myFrom"action="">
-      <fieldset data-role="collapsible" data-theme="b" data-content-theme="a">
-        <legend>Add new course</legend>
-      <div class="ui-field-contain">
-        
-         <label for="domain">Course name:</label>
-          <input type="hidden" id="id"/>
-          <input type="text" name="domain" id="domain" data-clear-btn="true"/>
-         <label for="level">Course level:</label>
-           <input type="text" name="level" id="level" data-clear-btn="true"/>
-         <label for="descriptiveText">Descriptive Text:</label>
-           <input type="text" name="descriptiveText" id="descriptiveText" data-clear-btn="true"/>
-        <label for="module">Select how many modules the course wil contain:</label>
-        <select name="module" id="module" multiple="multiple" data-native-menu="false">
-          <option>Module</option>
-          <option value="1">Module 1</option>
-          <option value="2">Module 2</option>
-          <option value="3">Module 3</option>
-          <option value="4">Module 4</option>
-          <option value="5">Module 5</option>
-          <option value="6">Module 6</option>
-          <option value="7">Module 7</option>
-        </select>
-      </div>
-          <table> 
-      <button id ="add" type="button">Add to course list</button>
-  </table>
-          </fieldset>
+    <form method="post" id="myFrom" action="">
+        <fieldset data-role="collapsible" data-theme="b" data-content-theme="a">
+            <legend>Add new course</legend>
+            <div class="ui-field-contain">
+
+                <label for="domain">Course name:</label>
+                <input type="hidden" id="id"/>
+                <input type="text" name="domain" id="domain" data-clear-btn="true"/>
+                <label for="level">Course level:</label>
+                <input type="text" name="level" id="level" data-clear-btn="true"/>
+                <label for="descriptiveText">Descriptive Text:</label>
+                <input type="text" name="descriptiveText" id="descriptiveText" data-clear-btn="true"/>
+                <label for="module">Select how many modules the course wil contain:</label>
+                <select name="module" id="module" multiple="multiple" data-native-menu="false">
+                    <option>Module</option>
+                    <option value="1">Module 1</option>
+                    <option value="2">Module 2</option>
+                    <option value="3">Module 3</option>
+                    <option value="4">Module 4</option>
+                    <option value="5">Module 5</option>
+                    <option value="6">Module 6</option>
+                    <option value="7">Module 7</option>
+                </select>
+            </div>
+            <table>
+                <button id="add" type="button">Add to course list</button>
+            </table>
+        </fieldset>
     </form>
-  </div>
+</div>
 </body>
 
 
@@ -127,7 +128,9 @@
     </td>
   </table>
 </div> -->
+<script src="../js/applogic.js"></script>
 <script src="courseedit.js"></script>
+
 
 </body>
 </html>

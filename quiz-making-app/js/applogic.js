@@ -110,8 +110,6 @@ function populateCourseData(json) {
         tableString += '</tr>';
         courseTable.append(tableString);
     }
-    // console.log("console.log(courses) before stringify");
-    // console.log(courses);
     // jsonAlexander(courses);
 }
 // function for messing about with JSON
