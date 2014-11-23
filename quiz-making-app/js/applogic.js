@@ -12,20 +12,19 @@
  */
 
 function Course(domain) {
-	var domain;
 	this.domain = domain;
 	var level, id, nextCourse, descriptiveText;
 	var modules = [];
 }
 
 /**
- * 
- * @param courseId
+ *
+ * @param level
  *            the ID of the course this module belongs to
  */
 
 function Module(level) {
-	var moduleName, moduleId, level;
+	var moduleName, moduleId;
 	this.level = level;
 	var tests = [];
 
@@ -58,7 +57,8 @@ function getCourseData() {
 var courses = [];
 
 function populateCourseData(json) {
-	$('#courseTable').empty(); // empties the coursedata -table before
+	var courseTable = $('#courseTable');
+	courseTable.empty(); // empties the coursedata -table before
 	// initializing
 	console.log("console.log(json)");
 	console.log(json);
@@ -68,14 +68,14 @@ function populateCourseData(json) {
 		course = explodeJSON(course);
 		var tableString = "<tr>";
 		// Name
-		var tempcourse = new Course(course.domain);
-		tempcourse.level = course.level;
-		tempcourse.id = course.id;
-		tempcourse.nextCourse = course.nextCourse;
-		tempcourse.descriptiveText = course.descriptiveText;
-		tempcourse.modules = [];
+		var tempCourse = new Course(course.domain);
+		tempCourse.level = course.level;
+		tempCourse.id = course.id;
+		tempCourse.nextCourse = course.nextCourse;
+		tempCourse.descriptiveText = course.descriptiveText;
+		tempCourse.modules = [];
 
-		courses.push(tempcourse);
+		courses.push(tempCourse);
 
 		tableString += "<td>" + course.domain + "</td>";
 
@@ -85,37 +85,35 @@ function populateCourseData(json) {
 			var module = course.modules[c];
 			module = explodeJSON(module);
 
-			var tempmodule = new Module(course.level);
-			tempmodule.moduleName = module.moduleName;
-			tempmodule.moduleId = module.moduleId;
-			tempmodule.tests = [];
+			var tempModule = new Module(course.level);
+			tempModule.moduleName = module.moduleName;
+			tempModule.moduleId = module.moduleId;
+			tempModule.tests = [];
 
-			courses[s].modules.push(tempmodule);
+			courses[s].modules.push(tempModule);
 
 			for (var f = 0; f < module.tests.length; f++) {
 				var test = module.tests[f];
 				test = explodeJSON(test);
 
-				var temptest = new Test(module.moduleID);
+				var tempTest = new Test(module.moduleID);
 
-				temptest.question = test.question
-				temptest.answer = test.answer;
-				temptest.alternatives = test.alternatives.slice();
-				courses[s].modules[c].tests.push(temptest);
+				tempTest.question = test.question;
+				tempTest.answer = test.answer;
+				tempTest.alternatives = test.alternatives.slice();
+				courses[s].modules[c].tests.push(tempTest);
 			}
 
 			tableString += module.moduleName + ' ';
 		}
 		tableString += '</td>';
 		tableString += '</tr>';
-		$('#courseTable').append(tableString);
+		courseTable.append(tableString);
 	}
 	// console.log("console.log(courses) before stringify");
 	// console.log(courses);
 	// jsonAlexander(courses);
 }
-var quizData
-
 // function for messing about with JSON
 function jsonAlexander(json) {
 
