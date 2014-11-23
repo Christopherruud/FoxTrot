@@ -1,4 +1,23 @@
-var options = {
+var idValue = document.getElementById("id").value;
+var nameValue = document.getElementById("domain").value;
+var levelValue = document.getElementById("level").value;
+var textValue = document.getElementById('descriptiveText').value;
+var moduleValue = document.getElementById('module').value;
+
+
+$(document).ready(function() {
+    $('#add').click(function() {
+        var item = $('#domain')
+        var item1 = $('#level')
+        var item2 = $('#descriptiveText')
+        var item3 = $('#module')
+        $('tr').prepend("<td>"+item.val()+"</td>","<td>"+item1.val()+"</td>","<td>"+item2.val()+"</td>","<td>"+item3.val()+"</td>");
+    });
+
+});
+
+/*Gammel kode
+ * var options = {
   valueNames: [ 'id', 'name', 'number' ]
 };
 
@@ -66,3 +85,4 @@ function clearFields() {
 }
 
 
+*/
