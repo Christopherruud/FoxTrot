@@ -46,23 +46,25 @@ function Test(moduleId) {
 
 function getCourseData() {
 	$.getJSON("/api/systemSettings/quizKey", function(data) {
+
 		populateCourseData(data);
-		// jsonAlexander(data);
+
 	});
 
 }
 
 // variant function for populating the course-table with data from json if
 // exists.
+var courses = [];
+
 function populateCourseData(json) {
 	$('#courseTable').empty(); // empties the coursedata -table before
 	// initializing
 	console.log("console.log(json)");
 	console.log(json);
-	var courses = [];
 
-	for (var s = 0; s < json.courses.length; s++) {
-		var course = json.courses[s];
+	for (var s = 0; s < json.length; s++) {
+		var course = json[s];
 		course = explodeJSON(course);
 		var tableString = "<tr>";
 		// Name
@@ -108,18 +110,16 @@ function populateCourseData(json) {
 		tableString += '</tr>';
 		$('#courseTable').append(tableString);
 	}
-	console.log("console.log(courses)");
-	console.log(courses);
+	// console.log("console.log(courses) before stringify");
+	// console.log(courses);
+	// jsonAlexander(courses);
 }
 var quizData
 
-// function for posting and parsing the json object
+// function for messing about with JSON
 function jsonAlexander(json) {
-	console.log(typeof json);
-	console.log(json);
 
 }
-
 // lifted from the demo - used to turn json notation into js object...
 var objectStorage = new Object();
 
@@ -134,4 +134,34 @@ function explodeJSON(object) {
 	}
 	console.log(object);
 	return object;
+}
+
+function postCourseData(json) {
+	var jsonString = JSON.stringify(json);
+	$.ajax({
+		type : "POST",
+		contentType : "text/plain",
+		url : "/api/systemSettings/quizKey",
+		data : jsonString,
+		success : function(data) {
+			//lolno
+		},
+		dataType : "text"
+	});
+
+}
+
+function postTestData(json) {
+	var jsonString = JSON.stringify(json);
+	$.ajax({
+		type : "POST",
+		contentType : "text/plain",
+		url : "/api/systemSettings/quizTestKey",
+		data : jsonString,
+		success : function(data) {
+			//lolno
+		},
+		dataType : "text"
+	});
+
 }
