@@ -24,10 +24,10 @@ function Course(domain) {
  *            the ID of the course this module belongs to
  */
 
-function Module(courseId) {
-	var moduleName, moduleId, parentId;
-	this.parentId = courseId;
-	var test = [];
+function Module(level) {
+	var moduleName, moduleId, level;
+	this.level = level;
+	var tests = [];
 
 }
 
@@ -37,18 +37,18 @@ function Module(courseId) {
  *            the ID of the module this course belongs to
  */
 function Test(moduleId) {
-	var testId;
-	this.testId = moduleId;
+	var parent;
+	this.parent = moduleId;
 	var question;
 	var answer;
+	var alternatives = [];
 }
 
 function getCourseData() {
 	$.getJSON("/api/systemSettings/quizKey", function(data) {
 		populateCourseData(data);
-		//jsonAlexander(data);
+		// jsonAlexander(data);
 	});
-	
 
 }
 
@@ -57,28 +57,59 @@ function getCourseData() {
 function populateCourseData(json) {
 	$('#courseTable').empty(); // empties the coursedata -table before
 	// initializing
+	console.log("console.log(json)");
+	console.log(json);
+	var courses = [];
 
 	for (var s = 0; s < json.courses.length; s++) {
 		var course = json.courses[s];
 		course = explodeJSON(course);
 		var tableString = "<tr>";
-		console.log('Course');
-		console.log(course);
 		// Name
+		var tempcourse = new Course(course.domain);
+		tempcourse.level = course.level;
+		tempcourse.id = course.id;
+		tempcourse.nextCourse = course.nextCourse;
+		tempcourse.descriptiveText = course.descriptiveText;
+		tempcourse.modules = [];
+
+		courses.push(tempcourse);
+
 		tableString += "<td>" + course.domain + "</td>";
 
-		// Courses
+		// Modules
 		tableString += "<td>";
 		for (var c = 0; c < course.modules.length; c++) {
 			var module = course.modules[c];
-			modules = explodeJSON(module);
+			module = explodeJSON(module);
+
+			var tempmodule = new Module(course.level);
+			tempmodule.moduleName = module.moduleName;
+			tempmodule.moduleId = module.moduleId;
+			tempmodule.tests = [];
+
+			courses[s].modules.push(tempmodule);
+
+			for (var f = 0; f < module.tests.length; f++) {
+				var test = module.tests[f];
+				test = explodeJSON(test);
+
+				var temptest = new Test(module.moduleID);
+
+				temptest.question = test.question
+				temptest.answer = test.answer;
+				temptest.alternatives = test.alternatives.slice();
+				courses[s].modules[c].tests.push(temptest);
+			}
+
 			tableString += module.moduleName + ' ';
 		}
 		tableString += '</td>';
 		tableString += '</tr>';
 		$('#courseTable').append(tableString);
 	}
-
+	console.log("console.log(courses)");
+	console.log(courses);
 }
 var quizData
 
@@ -86,7 +117,7 @@ var quizData
 function jsonAlexander(json) {
 	console.log(typeof json);
 	console.log(json);
-	
+
 }
 
 // lifted from the demo - used to turn json notation into js object...
@@ -95,7 +126,7 @@ var objectStorage = new Object();
 function explodeJSON(object) {
 	if (object instanceof Object == true) {
 		objectStorage[object['@id']] = object;
-		console.log('Object is object');
+		// console.log('Object is object');
 	} else {
 		console.log('Object is not object');
 		object = objectStorage[object];
