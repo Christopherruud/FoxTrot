@@ -5,84 +5,22 @@ var textValue = document.getElementById('descriptiveText').value;
 var moduleValue = document.getElementById('module').value;
 
 
-$(document).ready(function() {
-    $('#add').click(function() {
-        var item = $('#domain')
-        var item1 = $('#level')
-        var item2 = $('#descriptiveText')
-        var item3 = $('#module')
-        $('tr').prepend("<td>"+item.val()+"</td>","<td>"+item1.val()+"</td>","<td>"+item2.val()+"</td>","<td>"+item3.val()+"</td>");
-    });
-
-});
-
-/*Gammel kode
- * var options = {
-  valueNames: [ 'id', 'name', 'number' ]
-};
-
-// Init list
-var courseList = new List('course', options);
-
-var idField = $('#id-field'),
-    nameField = $('#name-field'),
-    numberField = $('#number-field'),
-    addBtn = $('#add-btn'),
-    editBtn = $('#edit-btn').hide(),
-    removeBtns = $('.remove-item-btn'),
-    editBtns = $('.edit-item-btn');
-
-// Sets callbacks to the buttons in the list
-refreshCallbacks();
-
-addBtn.click(function() {
-  courseList.add({
-    id: Math.floor(Math.random()*110000),
-    name: nameField.val(),
-    number: numberField.val()
-  });
-  clearFields();
-  refreshCallbacks();
-});
-
-editBtn.click(function() {
-  var item = courseList.get('id', idField.val())[0];
-  item.values({
-    id:idField.val(),
-    name: nameField.val(),
-    number: numberField.val()
-  });
-  clearFields();
-  editBtn.hide();
-  addBtn.show();
-});
-
-function refreshCallbacks() {
-  // Needed to add new buttons to jQuery-extended object
-  removeBtns = $(removeBtns.selector);
-  editBtns = $(editBtns.selector);
-  
-  removeBtns.click(function() {
-    var itemId = $(this).closest('tr').find('.id').text();
-    courseList.remove('id', itemId);
-  });
-  
-  editBtns.click(function() {
-    var itemId = $(this).closest('tr').find('.id').text();
-    var itemValues = courseList.get('id', itemId)[0].values();
-    idField.val(itemValues.id);
-    nameField.val(itemValues.name);
-    numberField.val(itemValues.number);
+$(document).ready(function(){
+    var id=1;
     
-    editBtn.show();
-    addBtn.hide();
-  });
-}
+	$("#add").click(function(){
+	    $("#table1").append
+        ('<tr valign="top"><td width="100px" align="center">'+(id++)+'</td><td width="100px">'
+           +$("#domain").val()+'</td><td width="100px" align="center">'
+         +$("#level").val()+'</td><td width="100px" align="center">'
+         +$("#descriptiveText").val()+'</td><td width="100px" align="center">'
+         + $("#module").val()+'</td><td width="100px" align="center"> <a href="javascript:void(0);" class="remCF">Remove</a></td></tr>');
+	}); 
+        
+    $("#table1").on('click','.remCF',function(){
+        $(this).parent().parent().remove();
+    });
+});
 
-function clearFields() {
-  nameField.val('');
-  numberField.val('');
-}
 
 
-*/
