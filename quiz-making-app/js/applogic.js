@@ -20,7 +20,7 @@ function Course(domain) {
 /**
  *
  * @param level
- *            the ID of the course this module belongs to
+ *            the level of the course this module belongs to
  */
 
 function Module(level) {
