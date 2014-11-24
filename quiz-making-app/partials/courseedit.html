@@ -1,4 +1,5 @@
-<!doctype html>
+<!-- html skjema 1 - denne fungerer med js 1 i courseedit.js  -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -36,8 +37,8 @@
     </table>
   </div>
   
-    <!--The "ui-field-contain" class style labels and form controls properly based upon the width of the page. 
-    If the width is less then 480px the label will be placed on above the form element -->
+    <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page. 
+    If the width is less then 480px the label will be placed on above the form element-->
     <form method="post" id="myFrom"action="">
       <fieldset data-role="collapsible" data-theme="b" data-content-theme="a">
         <legend>Add new course</legend>
@@ -68,11 +69,49 @@
   </div>
 
 <script src="courseedit.js"></script>
-<script>
-    $(document).ready(function () {
-        getCourseData();
-    });
-</script>
+<script src="applogic.js"></script>
+
 
 </body>
 </html>
+
+
+<!-- html skjema 2 - skal i utgangspunktet snakke med js 2 i courseedit.js
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course editor</title>
+    <link rel='stylesheet' herf='/stylesheets/style.css'/>
+</head>
+    <body>
+        <h2>Course editor</h2>
+        <ul id="courses"></ul>
+        
+        <template id="course-template">
+            <li>
+                <p><strong>Course ID:</strong>{{id}}</p>
+                <p><strong>Course name:</strong>{{domain}}</p>
+                <p><strong>Course level:</strong>{{level}}</p>
+                <p><strong>Descriptive Text:</strong>{{descriptiveText}}</p>
+                <p><strong>Modules:</strong>{{module}}</p>
+                <button data-id='{{id}}' class='remove'>X</button>
+            </li>
+        </template>
+        <h4>Add a course</h4>
+        <p>Course ID: <input type="text" id="id"/></p>
+        <p>Course name: <input type="text" id="domain"/></p>
+        <p>Course level: <input type="text" id="level"/></p>
+        <p>Descriptive Text: <input type="text" id="descriptiveText"/></p>
+        <p>Modules: <input type="text" id="module"/></p>
+        <button id="add-course">Add</button>
+        
+        <script src="/jQuery/dist/jquery.js"></script>
+        <script src="/javascripts/main.js"></script>
+        <script src="/mustache/mustache.js"></script>
+       <script src="courseedit.js"></script>
+       <script src="applogic.js"></script>
+</body>
+</html>
+         -->
+              
