@@ -1,54 +1,58 @@
-<div class="container">
-		<h2>Module Editor</h2>
 
-		<table class="table">
-			<tr>
-				<th>Number</th>
-				<th>Name</th>
-				<th>Delete</th>
-				<th>Edit<th>
-			</tr>
-			<c:forEach items="${module}" var="m">
-				<tr>
-					<td>${m.courseCode}</td>
-					<td>${m.name}</td>
-					<td><a
-						href="${pageContext.request.contextPath}/module/${m.id}/delete">Delete</a></td>
-				<td><a
-						href="${pageContext.request.contextPath}/module/${m.id}/delete">Edit</a></td>
-				</tr>
-				
-			</c:forEach>
-		</table>
-	</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+</head>
+<body>
+    <div data-role="page">
+  <div data-role="main" class="ui-content">
+      <h3>Exisiting modules</h3>
+  
+    <table data-role="moduleList" class="ui-responsive" id="table2" name="table2">
+      <thead>
+         <tr>
+          <th width="100px">Module id</th>
+          <th width="100px">Module name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        <tr>
+          <td width="100px" align="center">0</td>
+          <td width="100px" align="center">What is DHIS</td>
+        <td><a href="javascript:void(0);" class="remCF">Remove</a></td>
+        <td><a href="quizedit.html">Create test</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+    <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page. 
+    If the width is less then 480px the label will be placed on above the form element-->
+    
+    <form method="post" id="myFrom" action="">
+      <fieldset data-role="collapsible" data-theme="b" data-content-theme="a">
+        <legend>Add new module</legend>
+      <div class="ui-field-contain">
+          <label for="level">Module name:</label>
+          <input type="hidden" id="id"/>
+          <input type="text" name="level" id="level" data-clear-btn="true"/>
+      </div>
+          <table> 
+      <button id ="add" type="button">Add to module to list</button>
+  </table>
+          </fieldset>
+    </form>
+  </div>
 
-	<div class="container">
-		<h2>Create module:</h2>
-		<form name="input"
-			action="${pageContext.request.contextPath}/module/new" method="post">
-			<table class="table">
-				<tr>
-				<!-- 	<td>Module number:</td>
-					<td><input class="form-control" type="text" name="coursecode"
-						placeholder="Module number"></input></td>
-				</tr> -->
-				<tr>
-					<td>Module name:</td>
-					<td><input class="form-control" type="text" name="name"
-						placeholder="Module name" /></td>
-				</tr>
-				<tr>
-					<td>Module information:</td>
-					<td><input class="form-control"  type="text" name="name" 
-						placeholder="Module info" /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<!-- Her trykker man p� knappen n�r man er ferdig � lage modul for � sendes videre til quiz -->
-					<!--  <td><input  class="btn btn-primary" type="submit" value="Create new Quiz" /></td>-->
-					<!-- <a href="#/quizedit"</a>  ng-click="" -->
-					<td><a href="#/viewQuizEdit"><button>Create new Quiz</button></a></td>
-				</tr>
-			</table>
-		</form>
-	</div>
+<script src="moduleedit.js"></script>
+    <script src="../js/applogic.js"></script>
+
+
+
+</body>
+</html>

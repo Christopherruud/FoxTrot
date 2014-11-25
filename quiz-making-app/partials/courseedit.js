@@ -8,7 +8,7 @@ $(document).ready(function(){
            +$("#domain").val()+'</td><td width="100px" align="center">'
          +$("#level").val()+'</td><td width="100px" align="center">'
          +$("#descriptiveText").val()+'</td><td width="100px" align="center">'
-         + $("#module").val()+'</td><td width="100px" align="center"> <a href="javascript:void(0);" class="remCF">Remove</a></td></tr>');
+         + $("#module").val()+'</td><td width="100px" align="center"> <a href="javascript:void(0);" class="remCF">Remove</a><td width="100px" align="center"><a href="moduleedit.html">Create modules</a></td></tr>');
 	}); 
         
     $("#table1").on('click','.remCF',function(){
