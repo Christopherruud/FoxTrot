@@ -67,12 +67,12 @@ function Test(moduleId) {
 }
 
 function getCourseData() {
-	$.getJSON("/api/systemSettings/quizKey", function (data) {
+	var result = $.getJSON("/api/systemSettings/quizKey", function (data) {
 
-		populateCourseData(data);
-
+		//populateCourseData(data);
+		return data;
 	});
-
+	return result;
 }
 
 // variant function for populating the course-table with data from json if

@@ -7,13 +7,13 @@ var courseNumber = 1;
 //dette er hvor vi kan legge inn data i en array så vi kan manipulere den i for løkka under
 var courses = ["HowToDHIS", "Change The Layout", "Sexy Trip"];
 var i;
+var data = getCourseData();
 
 //setter opp knapper etter ønske
 function populate(){
-	for (i = 0; i < courses.length; i++) {
-
+	for (i = 0; i < data.length; i++) {
 		var btn = document.createElement("BUTTON");        // Create a <button> element
-		btn.textContent=courses[i] + " " + courseNumber;            
+		btn.textContent=data[i].domain + " " + courseNumber;            
 		document.body.appendChild(btn);                    // Append <button> to <body>
 
 		btn.addEventListener("click", getModule);
@@ -34,12 +34,4 @@ function getModule(){
 		  console.log(response);
 		});
 */	
-}
-
-function hey (){
-	document.write("Hey baby");
-}
-
-function getModulesToCourse(){
-	document.write("hey baby baby");
 }
