@@ -3,17 +3,19 @@ var mainWindow, quizWindow;
 function openWin() {
 	mainWindow = window.open("/", "mainNavigationWindow", "width=250",
 			"height=250", "location=yes");
-	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250", "location=yes");
+	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250",
+			"location=yes");
 	quizWindow.resizeTo(400, screen.height);
 	mainWindow.resizeTo(screen.width - 400, screen.height);
 	quizWindow.moveTo(screen.width - 400, 100);
 	mainWindow.moveTo(0, 100);
 	quizWindow.focus();
 }
-// POPUP problemet
+// TODO check alternative ways to handle this
 setTimeout(
 		function() {
-			if (!quizWindow || quizWindow.outerHeight === 0) {
+			if (!quizWindow || quizWindow.closed
+					|| typeof quizWindow.closed == 'undefined') {
 				// First Checking Condition Works For IE & Firefox
 				// Second Checking Condition Works For Chrome
 				alert("Popup Blocker is enabled! Please add this site to your exception list.");
@@ -24,13 +26,11 @@ setTimeout(
 			}
 		}, 25);
 
+// check if variable is initialized, otherwize initialize it.
 
-
-//check if variable is initialized, otherwize initialize it. 
-
-//hent info fra Making course
+// hent info fra Making course
 /**
- *
+ * 
  * @param domain
  *            the name of the area (domain) the course represents. Acts as the
  *            name of the course.
@@ -43,7 +43,7 @@ function Course(domain) {
 }
 
 /**
- *
+ * 
  * @param level
  *            the level of the course this module belongs to
  */
@@ -56,7 +56,7 @@ function Module(level) {
 }
 
 /**
- *
+ * 
  * @param moduleId
  *            the ID of the module this course belongs to
  */
@@ -70,27 +70,27 @@ function Test(moduleId) {
 
 function getCourseData() {
 	var location = window.location.host;
-	//console.log(location);
+	// console.log(location);
 	console.log("ELLÅ TRIGGER");
-	if(location == 'localhost:8000'){
+	if (location == 'localhost:8000') {
 		console.log("TRIGGER");
-		$.getJSON("http://inf5750-7.uio.no/api/systemSettings/quizKey", function (data) {	
-			console.log(data);
+		$.getJSON("http://inf5750-7.uio.no/api/systemSettings/quizKey",
+				function(data) {
+					console.log(data);
+					populateCourseData(data);
+				});
+
+	} else {
+		var result = $.getJSON("/api/systemSettings/quizKey", function(data) {
 			populateCourseData(data);
-		});			
-		
-	}
-	else{
-		var result = $.getJSON("/api/systemSettings/quizKey", function (data) {	
-			populateCourseData(data);	
-			
-		});			
+
+		});
 	}
 }
 
 // variant function for populating the course-table with data from json if
 // exists.
-//This is the one you can use to iterate through the data
+// This is the one you can use to iterate through the data
 var courses = [];
 
 function populateCourseData(json) {
@@ -155,8 +155,8 @@ function jsonAlexander(json) {
 
 }
 
-//TODO - add logic for reading and writing to and from usersettings and the datastructure therein.
-
+// TODO - add logic for reading and writing to and from usersettings and the
+// datastructure therein.
 
 // lifted from the demo - used to turn json notation into js object...
 var objectStorage = new Object();
@@ -177,14 +177,14 @@ function explodeJSON(object) {
 function postCourseData(json) {
 	var jsonString = JSON.stringify(json);
 	$.ajax({
-		type: "POST",
-		contentType: "text/plain",
-		url: "/api/systemSettings/quizKey",
-		data: jsonString,
-		success: function (data) {
-			//lolno
+		type : "POST",
+		contentType : "text/plain",
+		url : "/api/systemSettings/quizKey",
+		data : jsonString,
+		success : function(data) {
+			// lolno
 		},
-		dataType: "text"
+		dataType : "text"
 	});
 
 }
