@@ -46,8 +46,10 @@ function Test(moduleId) {
 function getCourseData() {
 	$.getJSON("/api/systemSettings/quizKey", function(data) {
 
-		populateCourseData(data);
 
+	}).done(function (data) {
+
+		populateCourseData(data);
 	});
 
 }

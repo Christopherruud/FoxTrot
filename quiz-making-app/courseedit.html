@@ -2,76 +2,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script
-	src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+          href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 </head>
 <body>
-	<div data-role="page">
-		<div data-role="main" class="ui-content">
-			<h3>Exisiting courses</h3>
+<div data-role="page">
+    <div data-role="main" class="ui-content">
+        <h3>Exisiting courses</h3>
 
-			<table data-role="courseList" class="ui-responsive" id="table1"
-				name="table1">
-				<thead>
-					<tr>
-						<th width="100px">Course id</th>
-						<th width="100px">Course name</th>
-						<th width="100px">Course level</th>
-						<th width="100px">Descriptive Text</th>
-						<th width="100px">Modules</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody class="list">
-					<tr>
-						<!-- <td width="100px" align="center">0</td>
-						<td width="100px" align="center">Data entry</td>
-						<td width="100px" align="center">1</td>
-						<td width="100px" align="center">This course is about data
-							entry</td>
-						<td width="100px" align="center">5 Modules</td> -->
-						
-						
-						
-					</tr>
-				</tbody>
-			</table>
-		</div>
+        <table data-role="courseList" class="ui-responsive" id="table1"
+               name="table1">
+            <thead>
+            <tr>
+                <th width="100px">Course id</th>
+                <th width="100px">Course name</th>
+                <th width="100px">Course level</th>
+                <th width="100px">Descriptive Text</th>
+                <th width="100px">Modules</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="list">
+            <tr>
+                <!-- <td width="100px" align="center">0</td>
+                <td width="100px" align="center">Data entry</td>
+                <td width="100px" align="center">1</td>
+                <td width="100px" align="center">This course is about data
+                    entry</td>
+                <td width="100px" align="center">5 Modules</td> -->
 
-		<!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page. 
-    If the width is less then 480px the label will be placed on above the form element-->
-		<form method="post" id="myFrom" action="">
-			<fieldset data-role="collapsible" data-theme="b"
-				data-content-theme="a">
-				<legend>Add new course</legend>
-				<div class="ui-field-contain">
 
-					<label for="domain">Course name:</label> <input type="hidden"
-						id="id" /> <input type="text" name="domain" id="domain"
-						data-clear-btn="true" /> <label for="level">Course level:</label>
-					<input type="text" name="level" id="level" data-clear-btn="true" />
-					<label for="descriptiveText">Descriptive Text:</label> <input
-						type="text" name="descriptiveText" id="descriptiveText"
-						data-clear-btn="true" />
-				</div>
-				<table>
-					<button id="add" type="button">Add to course list</button>
-				</table>
-			</fieldset>
-		</form>
-	</div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-	<script src="js/applogic.js"></script>
-	<script src="js/courseedit.js"></script>
-	<script>
-		$(document).ready(function() {
-			getCourseData();
-		});
-	</script>
+    <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
+If the width is less then 480px the label will be placed on above the form element-->
+    <form method="post" id="myFrom" action="">
+        <fieldset data-role="collapsible" data-theme="b"
+                  data-content-theme="a">
+            <legend>Add new course</legend>
+            <div class="ui-field-contain">
+
+                <label for="domain">Course name:</label> <input type="hidden"
+                                                                id="id"/> <input type="text" name="domain" id="domain"
+                                                                                 data-clear-btn="true"/> <label
+                    for="level">Course level:</label>
+                <input type="text" name="level" id="level" data-clear-btn="true"/>
+                <label for="descriptiveText">Descriptive Text:</label> <input
+                    type="text" name="descriptiveText" id="descriptiveText"
+                    data-clear-btn="true"/>
+            </div>
+            <table>
+                <button id="add" type="button">Add to course list</button>
+            </table>
+        </fieldset>
+    </form>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script
+        src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<script src="js/applogic.js"></script>
+<script src="js/courseedit.js"></script>
+<script>
+    $(document).ready(function () {
+        getCourseData();
+    });
+</script>
 
 
 </body>
