@@ -1,9 +1,7 @@
 getCourseData();
 
 //var moduleHtml = 'partials/module.html';
-
-
-var select = document.getElementById('RaceDropDown');
+//var select = document.getElementById('RaceDropDown');
 var courseNumber = 1;
 //dette er hvor vi kan legge inn data i en array så vi kan manipulere den i for løkka under
 

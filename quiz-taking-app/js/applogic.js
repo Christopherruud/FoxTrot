@@ -140,7 +140,7 @@ function populateCourseData(json) {
 		tableString += '</tr>';
 		courseTable.append(tableString);
 	}
-	//populate(courses);
+	populate(courses);
 	// jsonAlexander(courses);
 }
 // function for messing about with JSON

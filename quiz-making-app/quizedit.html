@@ -2,36 +2,71 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 </head>
 <body>
 
-<div data-role="page">
-  <div data-role="header">
-  <h1>Test editor</h1>
-  </div>
+	<div data-role="page">
+		<div data-role="header">
+			<h1>Test editor</h1>
+		</div>
+<table data-role="courseList" class="ui-responsive" id="table3"
+				name="table3">
+				<thead>
+					<tr>
+						<th width="100px">Question</th>
+						<th width="100px">Answer 1</th>
+						<th width="100px">Answer 2</th>
+						<th width="100px">Answer 3</th>
+						<th width="100px">Answer 4</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="list">
+					<tr>
+					
+					</tr>
+				</tbody>
+			</table>
+	
+	
 
-  <div data-role="main" class="ui-content">
-    <form method="post" action="">
-      <div class="ui-field-contain">
-        <label for="question">Question:</label>
-        <input type="text" name="question" id="question">  
-        <label for="answer">Answer 1.:</label>
-        <input type="text" name="answer" id="answer">  
-        <label for="answer">Answer 2:</label>
-        <input type="text" name="answer" id="answer">  
-        <label for="question">Answer 3:</label>
-        <input type="text" name="answer" id="answer"> 
-        <label for="question">Answer 4:</label>
-        <input type="text" name="answer" id="answer"> 
-        
-      </div>
-      <input type="submit" data-inline="true" value="Submit">
-    </form>
-  </div>
+	<form method="post" id="myFrom" action="">
+		<fieldset data-role="collapsible" data-theme="b"
+			data-content-theme="a">
+			<legend>Add new question</legend>
+			<div class="ui-field-contain">
+
+				<label for="question">Question:</label> <input type="hidden" id="id" /><input
+					type="text" name="question" id="question" data-clear-btn="true" />
+				<label for="answer1">Answer 1:</label> <input type="text"
+					name="answer1" id="answer1" data-clear-btn="true" /> <label
+					for="answer2">Answer 2:</label> <input type="text" name="answer2"
+					id="answer2" data-clear-btn="true" /> <label for="answer3">Answer
+					3:</label> <input type="text" name="answer3" id="answer3"
+					data-clear-btn="true" /> <label for="answer4">Answer 4:</label> <input
+					type="text" name="answer4" id="answer4" data-clear-btn="true" />
+
+			</div>
+			<table>
+				<button id="add" type="button">Add to question list</button>
+			</table>
+		</fieldset>
+	</form>
+	<input type="submit" data-inline="true" value="Submit" >
 </div>
+
+	<script src="js/applogic.js"></script>
+	<script src="js/quizedit.js"></script>
+	<script>
+		$(document).ready(function() {
+			getCourseData();
+		});
+	</script>
 
 </body>
 </html>
