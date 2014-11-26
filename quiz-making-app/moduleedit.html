@@ -12,21 +12,22 @@
 <body>
 	<div data-role="page">
 		<div data-role="main" class="ui-content">
-			<h3>Exisiting modules</h3>
+			<h3>Existing modules</h3>
 
 			<table data-role="moduleList" class="ui-responsive" id="table2"
 				name="table2">
 				<thead>
 					<tr>
 						<th width="100px">Module id</th>
+						<th width="100px">Module level</th>
 						<th width="100px">Module name</th>
+						<th width="100px">Descriptive text</th>
+						<th width="100px">Motivational Text</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody class="list">
 					<tr>
-						<td width="100px" align="center">0</td>
-						<td width="100px" align="center">What is DHIS</td>
 						<td><a href="javascript:void(0);" class="remCF">Remove</a></td>
 						<td><a href="quizedit.html">Create test</a></td>
 					</tr>
@@ -54,6 +55,12 @@
 	</div>
 	<script src="js/applogic.js"></script>
 	<script src="js/moduleedit.js"></script>
+	<script>
+		$(document).ready(function() {
+			getCourseData();
+			parseURL();
+		});
+	</script>
 
 
 

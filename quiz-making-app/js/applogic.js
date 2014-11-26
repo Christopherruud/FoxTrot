@@ -24,7 +24,7 @@ function Course(domain) {
  */
 
 function Module(level) {
-	var moduleName, moduleId;
+	var moduleName, moduleId, moduleDescriptiveText, moduleMotivation; //motivation: why is this valuable
 	this.level = level;
 	var tests = [];
 
@@ -122,7 +122,11 @@ function populateCourseData(json) {
 		} else {
 			tableString += "<td>";
 		}
-		tableString += '</td>';
+		
+		var moduleEdit = "moduleedit.html";
+		moduleEdit += "?course=" + course.id;
+		console.log(moduleEdit);
+		tableString += '</td><td><a href="javascript:void(0);"class="remCF">Remove</a></td><td><a href="' + moduleEdit + '">Create modules</a></td>';
 		tableString += '</tr>';
 		$("#table1").append(tableString);
 	}

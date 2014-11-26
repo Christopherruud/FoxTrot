@@ -43,7 +43,6 @@ function addToCourseList(domain, level, id, descriptiveText) {
 	courses.push(tempcourse);
 	postTestData(courses);
 }
-
 /*
  * Js 2 - denne koden fungere for en eller annen grunn ikke, men snakker med
  * html skjema 2 courseedit.html
