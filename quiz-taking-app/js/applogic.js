@@ -5,11 +5,19 @@ function openWin() {
 			"height=250", "location=yes");
 	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250",
 			"location=yes");
-	quizWindow.resizeTo(400, screen.height);
-	mainWindow.resizeTo(screen.width - 400, screen.height);
-	quizWindow.moveTo(screen.width - 400, 100);
-	mainWindow.moveTo(0, 100);
-	quizWindow.focus();
+	if (!quizWindow || quizWindow.closed
+			|| typeof quizWindow.closed == 'undefined') {
+		// First Checking Condition Works For IE & Firefox
+		// Second Checking Condition Works For Chrome
+		alert("Popup Blocker is enabled! Please add this site to your exception list.");
+	} else {
+		quizWindow.resizeTo(400, screen.height);
+		mainWindow.resizeTo(screen.width - 400, screen.height);
+		quizWindow.moveTo(screen.width - 400, 100);
+		mainWindow.moveTo(0, 100);
+		quizWindow.focus();
+	}
+	
 }
 // TODO check alternative ways to handle this
 setTimeout(
