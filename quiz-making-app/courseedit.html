@@ -1,4 +1,3 @@
-<!-- html skjema 1 - denne fungerer med js 1 i courseedit.js  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,13 +59,15 @@ If the width is less then 480px the label will be placed on above the form eleme
             </table>
         </fieldset>
     </form>
-</div>
+
+
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script
         src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <script src="js/applogic.js"></script>
 <script src="js/courseedit.js"></script>
+</div>
 <script>
     $(document).ready(function () {
         getCourseData();
@@ -78,41 +79,4 @@ If the width is less then 480px the label will be placed on above the form eleme
 </html>
 
 
-<!-- html skjema 2 - skal i utgangspunktet snakke med js 2 i courseedit.js
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Course editor</title>
-    <link rel='stylesheet' herf='/stylesheets/style.css'/>
-</head>
-    <body>
-        <h2>Course editor</h2>
-        <ul id="courses"></ul>
-        
-        <template id="course-template">
-            <li>
-                <p><strong>Course ID:</strong>{{id}}</p>
-                <p><strong>Course name:</strong>{{domain}}</p>
-                <p><strong>Course level:</strong>{{level}}</p>
-                <p><strong>Descriptive Text:</strong>{{descriptiveText}}</p>
-                <p><strong>Modules:</strong>{{module}}</p>
-                <button data-id='{{id}}' class='remove'>X</button>
-            </li>
-        </template>
-        <h4>Add a course</h4>
-        <p>Course ID: <input type="text" id="id"/></p>
-        <p>Course name: <input type="text" id="domain"/></p>
-        <p>Course level: <input type="text" id="level"/></p>
-        <p>Descriptive Text: <input type="text" id="descriptiveText"/></p>
-        <p>Modules: <input type="text" id="module"/></p>
-        <button id="add-course">Add</button>
-        
-        <script src="/jQuery/dist/jquery.js"></script>
-        <script src="/javascripts/main.js"></script>
-        <script src="/mustache/mustache.js"></script>
-       <script src="courseedit.js"></script>
-       <script src="applogic.js"></script>
-</body>
-</html>
-         -->
