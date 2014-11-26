@@ -20,7 +20,7 @@ function populate(courses){
 		document.body.appendChild(btn);                    // Append <button> to <body>
 
 		btn.addEventListener("click", function (){
-			console.log("TRIGGER2");
+			console.log("CheckEvent");
 			console.log(courseElement.modules);
 			getModule(courseElement.modules);});
 		
@@ -32,8 +32,10 @@ function populate(courses){
 //henter ut modul html når man trykker på en knapp. Må sende
 //med ting her fra tilhørende modul til gitt kurs
 function getModule(element){
+	console.log(element);
 	var moduleArray = [];
 	moduleArray = element;
+	console.log(moduleArray);
 	setModules(moduleArray);
 	window.location = "module.html";
 	//VIKTIG om vi vil ha en "one page app"
