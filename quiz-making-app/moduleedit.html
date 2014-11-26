@@ -23,19 +23,16 @@
 						<th width="100px">Module name</th>
 						<th width="100px">Descriptive text</th>
 						<th width="100px">Motivational Text</th>
-						<th></th>
+						<th width="100px">Number of Tests</th>
 					</tr>
 				</thead>
 				<tbody class="list">
-					<tr>
-						<td><a href="javascript:void(0);" class="remCF">Remove</a></td>
-						<td><a href="quizedit.html">Create test</a></td>
-					</tr>
+
 				</tbody>
 			</table>
 		</div>
 
-		<!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page. 
+		<!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
     If the width is less then 480px the label will be placed on above the form element-->
 
 		<form method="post" id="myFrom" action="">
@@ -53,12 +50,12 @@
 			</fieldset>
 		</form>
 	</div>
-	<script src="js/applogic.js"></script>
 	<script src="js/moduleedit.js"></script>
+	<script src="js/applogic.js"></script>
+
 	<script>
 		$(document).ready(function() {
 			getCourseData();
-			parseURL();
 		});
 	</script>
 

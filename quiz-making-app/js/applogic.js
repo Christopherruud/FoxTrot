@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ *
  * @param domain
  *            the name of the area (domain) the course represents. Acts as the
  *            name of the course.
@@ -18,7 +18,7 @@ function Course(domain) {
 }
 
 /**
- * 
+ *
  * @param level
  *            the level of the course this module belongs to
  */
@@ -31,13 +31,13 @@ function Module(level) {
 }
 
 /**
- * 
+ *
  * @param moduleId
  *            the ID of the module this course belongs to
  */
 function Test(moduleId) {
-	var parent;
-	this.parent = moduleId;
+	var parentModule;
+	this.parentModule = moduleId;
 	var question;
 	var answer;
 	var alternatives = [];
@@ -59,10 +59,6 @@ var currentId = 0;
 
 function populateCourseData(json) {
 	var courseTable = $('#courseTable');
-	courseTable.empty(); // empties the coursedata -table before
-	// initializing
-	console.log("console.log(json)");
-	console.log(json);
 
 	for (var s = 0; s < json.length; s++) {
 		var course = json[s];
@@ -101,6 +97,8 @@ function populateCourseData(json) {
 				var tempModule = new Module(course.level);
 				tempModule.moduleName = module.moduleName;
 				tempModule.moduleId = module.moduleId;
+				tempModule.moduleDescriptiveText = module.moduleDescriptiveText;
+				tempModule.moduleMotivation = module.moduleMotivation;
 				tempModule.tests = [];
 
 				courses[s].modules.push(tempModule);
@@ -122,15 +120,19 @@ function populateCourseData(json) {
 		} else {
 			tableString += "<td>";
 		}
-		
+
 		var moduleEdit = "moduleedit.html";
 		moduleEdit += "?course=" + course.id;
-		console.log(moduleEdit);
 		tableString += '</td><td><a href="javascript:void(0);"class="remCF">Remove</a></td><td><a href="' + moduleEdit + '">Create modules</a></td>';
 		tableString += '</tr>';
 		$("#table1").append(tableString);
 	}
-
+	if (typeof parseURL == 'function') {
+		var moduleCourseId = parseURL();
+	}
+	if (typeof populateModuleData == 'function') {
+		populateModuleData(courses, moduleCourseId);
+	}
 }
 
 // lifted from the demo - used to turn json notation into js object...
@@ -141,11 +143,11 @@ function explodeJSON(object) {
 		objectStorage[object['@id']] = object;
 
 	} else {
-		console.log('Object is not object');
+		//console.log('Object is not object');
 		object = objectStorage[object];
-		console.log(object);
+		//console.log(object);
 	}
-	console.log(object);
+	//console.log(object);
 	return object;
 }
 
