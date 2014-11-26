@@ -17,23 +17,8 @@ function openWin() {
 		mainWindow.moveTo(0, 100);
 		quizWindow.focus();
 	}
-	
-}
-// TODO check alternative ways to handle this
-setTimeout(
-		function() {
-			if (!quizWindow || quizWindow.closed
-					|| typeof quizWindow.closed == 'undefined') {
-				// First Checking Condition Works For IE & Firefox
-				// Second Checking Condition Works For Chrome
-				alert("Popup Blocker is enabled! Please add this site to your exception list.");
-			} else {
-				// Popup Blocker Is Disabled
-				window.open('', '_self');
-				window.close();
-			}
-		}, 25);
 
+}
 // check if variable is initialized, otherwize initialize it.
 
 // hent info fra Making course
