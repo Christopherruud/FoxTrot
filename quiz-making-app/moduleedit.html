@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="main" class="ui-content">
+			<h3>Exisiting modules</h3>
+
+			<table data-role="moduleList" class="ui-responsive" id="table2"
+				name="table2">
+				<thead>
+					<tr>
+						<th width="100px">Module id</th>
+						<th width="100px">Module name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="list">
+					<tr>
+						<td width="100px" align="center">0</td>
+						<td width="100px" align="center">What is DHIS</td>
+						<td><a href="javascript:void(0);" class="remCF">Remove</a></td>
+						<td><a href="quizedit.html">Create test</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page. 
+    If the width is less then 480px the label will be placed on above the form element-->
+
+		<form method="post" id="myFrom" action="">
+			<fieldset data-role="collapsible" data-theme="b"
+				data-content-theme="a">
+				<legend>Add new module</legend>
+				<div class="ui-field-contain">
+					<label for="level">Module name:</label> <input type="hidden"
+						id="id" /> <input type="text" name="level" id="level"
+						data-clear-btn="true" />
+				</div>
+				<table>
+					<button id="add" type="button">Add to module to list</button>
+				</table>
+			</fieldset>
+		</form>
+	</div>
+	<script src="js/applogic.js"></script>
+	<script src="js/moduleedit.js"></script>
+
+
+
+</body>
+</html>
