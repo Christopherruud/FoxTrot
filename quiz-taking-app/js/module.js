@@ -1,5 +1,5 @@
 console.log("loading.module");
-getCourseData();
+
 var moduleNumber = 1;
 
 var modules = [];
