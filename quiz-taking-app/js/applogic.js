@@ -67,16 +67,14 @@ function Test(moduleId) {
 }
 
 function getCourseData() {
-	var result = $.getJSON("/api/systemSettings/quizKey", function (data) {
-
-		//populateCourseData(data);
-		return data;
-	});
-	return result;
+	var result = $.getJSON("/api/systemSettings/quizKey", function (data) {	
+		populateCourseData(data);	
+	});	
 }
 
 // variant function for populating the course-table with data from json if
 // exists.
+//This is the one you can use to iterate through the data
 var courses = [];
 
 function populateCourseData(json) {
