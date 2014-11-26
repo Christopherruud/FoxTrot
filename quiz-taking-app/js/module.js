@@ -13,7 +13,7 @@ function setModules(array){
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
 function populateModule(){
-	
+
 	for (var Module in modules) {
 		console.log(Module);
 
@@ -21,34 +21,16 @@ function populateModule(){
 		var btn = document.createElement("BUTTON");        // Create a <button> element
 		btn.textContent=moduleElement + " " + moduleNumber;            
 		document.body.appendChild(btn);                    // Append <button> to <body>
-		//btn.addEventListener("click", getModule);
+		btn.addEventListener("click", getTest);
 		moduleNumber++;
 
 	}
 
 }
-/*
-function populate(courses){
-	console.log(courses);
-	for (var Course in courses) {
-		var courseElement = courses[Course];
-		console.log(courseElement);
-		var btn = document.createElement("BUTTON");        // Create a <button> element
-		btn.textContent=courseElement.domain + " " + courseNumber;            
-		document.body.appendChild(btn);                    // Append <button> to <body>
 
-		btn.addEventListener("click", function (){
-
-			getModule();});
-		courseNumber++;
-
-	}
-
-}
- */
 function getTest(){
 	//her må vi populere siden med innhold fra testen
-	window.location = "view.html";
+	window.location = "module.html";
 	//VIKTIG om vi vil ha en "one page app"
 	/*$.ajax({
 			  url: "test.html",

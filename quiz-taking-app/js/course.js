@@ -37,7 +37,7 @@ function getModule(element){
 	moduleArray = element;
 	console.log(moduleArray);
 	setModules(moduleArray);
-	window.location = "module.html";
+	//window.location = "module.html";
 	//VIKTIG om vi vil ha en "one page app"
 	/*$.ajax({
 		  url: "module.html",
