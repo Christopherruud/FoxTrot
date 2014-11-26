@@ -1,13 +1,15 @@
 console.log("loading.module");
 
 var moduleNumber = 1;
-
+var id;
 var modules = [];
+var idCourse;
 
-function setModules(array){
+function setModules(array, courseId){
 	console.log(array);
 	modules = array;
 	console.log(modules);
+	idCourse = courseId;
 	populateModule();
 }
 
@@ -21,16 +23,26 @@ function populateModule(){
 		var btn = document.createElement("BUTTON");        // Create a <button> element
 		btn.textContent=moduleElement + " " + moduleNumber;            
 		document.body.appendChild(btn);                    // Append <button> to <body>
-		btn.addEventListener("click", getTest);
+		id = moduleElement.moduleId;
+		btn.addEventListener("click", function(){getTest()});
 		moduleNumber++;
-
+		addInfo(courses[idCourse].modules[Module]);
+		
 	}
 
+}
+var url;
+function addInfo(modul){
+	var urlString = "module.html";
+	urlString+=modul.moduleId;
+	console.log(urlString);
 }
 
 function getTest(){
 	//her må vi populere siden med innhold fra testen
 	window.location = "module.html";
+	
+	//$('#module').append(mId);
 	//VIKTIG om vi vil ha en "one page app"
 	/*$.ajax({
 			  url: "test.html",
