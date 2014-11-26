@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="inf5750">
+    <serverData>
+      <paths name="inf5750">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/lib/tomcat/webapps/ROOT/apps" local="$PROJECT_DIR$" web="/apps" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/quiz-making-app/manifest.webapp" />
+            <excludedPath local="true" path="$PROJECT_DIR$/quiz-taking-app/manifest.webapp" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
