@@ -13,7 +13,7 @@
 
 function Course(domain) {
 	this.domain = domain;
-	var level, id, nextCourse, descriptiveText;
+	var level, id, descriptiveText;
 	var modules = [];
 }
 
@@ -55,6 +55,7 @@ function getCourseData() {
 // variant function for populating the course-table with data from json if
 // exists.
 var courses = [];
+var currentId = 0;
 
 function populateCourseData(json) {
 	var courseTable = $('#courseTable');
@@ -71,44 +72,59 @@ function populateCourseData(json) {
 		var tempCourse = new Course(course.domain);
 		tempCourse.level = course.level;
 		tempCourse.id = course.id;
-		tempCourse.nextCourse = course.nextCourse;
+		currentId = course.id;
 		tempCourse.descriptiveText = course.descriptiveText;
 		tempCourse.modules = [];
 
 		courses.push(tempCourse);
 
-		tableString += "<td>" + course.domain + "</td>";
+		tableString += '<td width="100px" align="center">' + course.id
+				+ "</td>";
+		tableString += '<td width="100px" align="center">' + course.domain
+				+ "</td>";
+		tableString += '<td width="100px" align="center">' + course.level
+				+ "</td>";
+		tableString += '<td width="100px" align="center">'
+				+ course.descriptiveText + "</td>";
 
 		// Modules
-		tableString += "<td>";
-		for (var c = 0; c < course.modules.length; c++) {
-			var module = course.modules[c];
-			module = explodeJSON(module);
 
-			var tempModule = new Module(course.level);
-			tempModule.moduleName = module.moduleName;
-			tempModule.moduleId = module.moduleId;
-			tempModule.tests = [];
+		if (undefined != course.modules) {
+			tableString += '<td width="100px" align="center">'
+					+ course.modules.length + "</td>";
+			tableString += "<td>";
 
-			courses[s].modules.push(tempModule);
+			for (var c = 0; c < course.modules.length; c++) {
+				var module = course.modules[c];
+				module = explodeJSON(module);
 
-			for (var f = 0; f < module.tests.length; f++) {
-				var test = module.tests[f];
-				test = explodeJSON(test);
+				var tempModule = new Module(course.level);
+				tempModule.moduleName = module.moduleName;
+				tempModule.moduleId = module.moduleId;
+				tempModule.tests = [];
 
-				var tempTest = new Test(module.moduleID);
+				courses[s].modules.push(tempModule);
 
-				tempTest.question = test.question;
-				tempTest.answer = test.answer;
-				tempTest.alternatives = test.alternatives.slice();
-				courses[s].modules[c].tests.push(tempTest);
+				for (var f = 0; f < module.tests.length; f++) {
+					var test = module.tests[f];
+					test = explodeJSON(test);
+
+					var tempTest = new Test(module.moduleID);
+
+					tempTest.question = test.question;
+					tempTest.answer = test.answer;
+					tempTest.alternatives = test.alternatives.slice();
+					courses[s].modules[c].tests.push(tempTest);
+				}
+
+				// tableString += module.moduleName + ' ';
 			}
-
-			tableString += module.moduleName + ' ';
+		} else {
+			tableString += "<td>";
 		}
 		tableString += '</td>';
 		tableString += '</tr>';
-		courseTable.append(tableString);
+		$("#table1").append(tableString);
 	}
 
 }
