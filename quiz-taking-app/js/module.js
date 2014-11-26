@@ -18,15 +18,15 @@ function populateModule(){
 
 	for (var Module in modules) {
 		console.log(Module);
-
-		var moduleElement = modules[Module].moduleName;
+		addInfo(courses[idCourse].modules[Module]);
+		var moduleElement = courses[idCourse].modules[Module].moduleName;
 		var btn = document.createElement("BUTTON");        // Create a <button> element
 		btn.textContent=moduleElement + " " + moduleNumber;            
 		document.body.appendChild(btn);                    // Append <button> to <body>
 		id = moduleElement.moduleId;
 		btn.addEventListener("click", function(){getTest()});
 		moduleNumber++;
-		addInfo(courses[idCourse].modules[Module]);
+		
 		
 	}
 
@@ -34,13 +34,14 @@ function populateModule(){
 var url;
 function addInfo(modul){
 	var urlString = "module.html";
-	urlString+=modul.moduleId;
+	urlString+='?module='+modul.moduleId;
 	console.log(urlString);
+	url = urlString;
 }
 
 function getTest(){
 	//her må vi populere siden med innhold fra testen
-	window.location = "module.html";
+	window.location = url;
 	
 	//$('#module').append(mId);
 	//VIKTIG om vi vil ha en "one page app"

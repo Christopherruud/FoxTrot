@@ -1,4 +1,4 @@
-getCourseData();
+//getCourseData();
 
 //var moduleHtml = 'partials/module.html';
 //var select = document.getElementById('RaceDropDown');

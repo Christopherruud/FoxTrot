@@ -4,7 +4,7 @@ function openWin() {
 	mainWindow = window.open("/", "mainNavigationWindow", "width=250",
 			"height=250", "location=yes");
 	quizWindow = window.open("quiz.html", "quizPanel", "width=250, height=250",
-			"location=yes");
+	"location=yes");
 	if (!quizWindow || quizWindow.closed
 			|| typeof quizWindow.closed == 'undefined') {
 		// First Checking Condition Works For IE & Firefox
@@ -19,9 +19,9 @@ function openWin() {
 	}
 
 }
-// check if variable is initialized, otherwize initialize it.
+//check if variable is initialized, otherwize initialize it.
 
-// hent info fra Making course
+//hent info fra Making course
 /**
  * 
  * @param domain
@@ -69,9 +69,9 @@ function getCourseData() {
 		console.log("TRIGGER");
 		$.getJSON("http://inf5750-7.uio.no/api/systemSettings/quizKey",
 				function(data) {
-					console.log(data);
-					populateCourseData(data);
-				});
+			console.log(data);
+			populateCourseData(data);
+		});
 
 	} else {
 		var result = $.getJSON("/api/systemSettings/quizKey", function(data) {
@@ -81,9 +81,9 @@ function getCourseData() {
 	}
 }
 
-// variant function for populating the course-table with data from json if
-// exists.
-// This is the one you can use to iterate through the data
+//variant function for populating the course-table with data from json if
+//exists.
+//This is the one you can use to iterate through the data
 var courses = [];
 
 function populateCourseData(json) {
@@ -140,18 +140,21 @@ function populateCourseData(json) {
 		tableString += '</tr>';
 		courseTable.append(tableString);
 	}
-	populate(courses);
+	//finnes populate
+	if(typeof populate == 'function'){
+		populate(courses);	
+	}
 	// jsonAlexander(courses);
 }
-// function for messing about with JSON
+//function for messing about with JSON
 function jsonAlexander(json) {
 
 }
 
-// TODO - add logic for reading and writing to and from usersettings and the
-// datastructure therein.
+//TODO - add logic for reading and writing to and from usersettings and the
+//datastructure therein.
 
-// lifted from the demo - used to turn json notation into js object...
+//lifted from the demo - used to turn json notation into js object...
 var objectStorage = new Object();
 
 function explodeJSON(object) {
