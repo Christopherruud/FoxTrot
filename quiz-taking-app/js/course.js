@@ -22,7 +22,7 @@ function populate(courses){
 		btn.addEventListener("click", function (){
 			console.log("CheckEvent");
 			console.log(courseElement.modules);
-			getModule(courseElement.modules);});
+			getModule(courseElement.modules, courseElement.id);});
 		
 		courseNumber++;
 
