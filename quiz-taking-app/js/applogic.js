@@ -10,7 +10,7 @@ function openWin() {
 	mainWindow.moveTo(0, 100);
 	quizWindow.focus();
 }
-
+// POPUP problemet
 setTimeout(
 		function() {
 			if (!quizWindow || quizWindow.outerHeight === 0) {
@@ -23,6 +23,8 @@ setTimeout(
 				window.close();
 			}
 		}, 25);
+
+
 
 //check if variable is initialized, otherwize initialize it. 
 
@@ -67,9 +69,23 @@ function Test(moduleId) {
 }
 
 function getCourseData() {
-	var result = $.getJSON("/api/systemSettings/quizKey", function (data) {	
-		populateCourseData(data);	
-	});	
+	var location = window.location.host;
+	//console.log(location);
+	console.log("ELLÅ TRIGGER");
+	if(location == 'localhost:8000'){
+		console.log("TRIGGER");
+		$.getJSON("http://inf5750-7.uio.no/api/systemSettings/quizKey", function (data) {	
+			console.log(data);
+			populateCourseData(data);
+		});			
+		
+	}
+	else{
+		var result = $.getJSON("/api/systemSettings/quizKey", function (data) {	
+			populateCourseData(data);	
+			
+		});			
+	}
 }
 
 // variant function for populating the course-table with data from json if
@@ -131,6 +147,7 @@ function populateCourseData(json) {
 		tableString += '</tr>';
 		courseTable.append(tableString);
 	}
+	populate(courses);
 	// jsonAlexander(courses);
 }
 // function for messing about with JSON

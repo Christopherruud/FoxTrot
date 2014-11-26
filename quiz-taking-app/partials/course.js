@@ -9,13 +9,21 @@ var courseNumber = 1;
 
 
 //setter opp knapper etter ønske
-function populate(){
+function populate(courses){
+	console.log(courses);
 	for (var Course in courses) {
+		var courseElement = courses[Course];
+		console.log(courseElement);
 		var btn = document.createElement("BUTTON");        // Create a <button> element
-		btn.textContent=Course.domain + " " + courseNumber;            
+		btn.textContent=courseElement.domain + " " + courseNumber; 
+		//document.write(courseElement.descriptiveText);
 		document.body.appendChild(btn);                    // Append <button> to <body>
 
-		btn.addEventListener("click", getModule);
+		btn.addEventListener("click", function (){
+			console.log("TRIGGER2");
+			console.log(courseElement.modules);
+			getModule(courseElement.modules);});
+		
 		courseNumber++;
 
 	}
@@ -23,7 +31,10 @@ function populate(){
 }
 //henter ut modul html når man trykker på en knapp. Må sende
 //med ting her fra tilhørende modul til gitt kurs
-function getModule(){
+function getModule(element){
+	var moduleArray = [];
+	moduleArray = element;
+	setModules(moduleArray);
 	window.location = "module.html";
 	//VIKTIG om vi vil ha en "one page app"
 	/*$.ajax({
