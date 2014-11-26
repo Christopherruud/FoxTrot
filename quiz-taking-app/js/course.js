@@ -23,9 +23,7 @@ function populate(courses){
 			console.log("CheckEvent");
 			console.log(courseElement.modules);
 			getModule(courseElement.modules, courseElement.id);});
-
 		courseNumber++;
-
 	}
 
 }
