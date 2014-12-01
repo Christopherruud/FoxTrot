@@ -56,6 +56,7 @@ function getCourseData() {
 
 // variant function for populating the course-table with data from json if
 // exists.
+
 var courses = [];
 var currentId = 0;
 
