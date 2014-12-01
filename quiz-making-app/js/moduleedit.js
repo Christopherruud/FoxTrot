@@ -1,5 +1,7 @@
 getCourseData();
 var courseNumber = 0;
+var moduleCounter = 0;
+var moduleLevel = 0;
 $(document)
     .ready(
     function () {
@@ -10,12 +12,19 @@ $(document)
                 $("#table2")
                     .append(
                     '<tr valign="top"><td width="100px" align="center">'
-                    + (id++)
-                    + '</td><td width="100px"> '
-                    + $("#level")
-                        .val()
-                    + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"><a href="quizedit.html">Create test</a></td></tr>');
-                addModuleToCourse(1, 2, 3, 4, 5);
+                    + (++moduleCounter)
+                    + '</td><td width="100px" align="center">'
+                    + (moduleLevel)
+                    + '</td><td width="100px" align="center">'
+                    + $("#name").val()
+                    + '</td><td width="100px" align="center">'
+                    + $("#descriptiveText").val()
+                    + '</td><td width="100px" align="center">'
+                    + $("#motivationalText").val()
+                    + '</td><td width="100px" align="center">'
+                    + ("none")
+                    + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td width="100px" align="center"><a href="quizedit.html">Create test</a></td></tr>');
+                addModuleToCourse(moduleLevel, $("#name").val(), $("#descriptiveText").val(), $("#motivationalText").val(), moduleCounter);
             });
 
         $("#table2").on('click', '.remCF', function () {
@@ -25,29 +34,31 @@ $(document)
 function populateModuleData(courseNumber) {
     var course = courses[courseNumber];
     var table2 = $("#table2");
+    moduleLevel = course.level;
     if (course.modules != 'undefined') {
         for (var y = 0; y < course.modules.length; y++) {
-            var tableString = "<tr>";
+            var table2String = '<tr valign="top">';
             var module = course.modules[y];
-            tableString += '<td width="100px" align="center">'
+            table2String += '<td width="100px" align="center">'
             + module.moduleId + "</td>";
-            tableString += '<td width="100px" align="center">'
+            moduleCounter = module.moduleId;
+            table2String += '<td width="100px" align="center">'
             + module.level + "</td>";
-            tableString += '<td width="100px" align="center">'
+            table2String += '<td width="100px" align="center">'
             + module.moduleName + "</td>";
-            tableString += '<td width="100px" align="center">'
+            table2String += '<td width="100px" align="center">'
             + module.moduleDescriptiveText + "</td>";
-            tableString += '<td width="100px" align="center">'
+            table2String += '<td width="100px" align="center">'
             + module.moduleMotivation + "</td>";
             if (module.tests != 'undefined') {
-                tableString += '<td width="100px" align="center">'
+                table2String += '<td width="100px" align="center">'
                 + module.tests.length + "</td>";
             } else {
-                tableString += '</td>';
+                // table2String += '</td>';
             }
-            tableString += '<td><a href="javascript:void(0);"class="remCF">Remove</a></td><td><a href="' + "" + '">Create Test</a></td>';
-            tableString += '</tr>';
-            table2.append(tableString);
+            table2String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"><a href="' + "" + '">Create Test</a></td>';
+            table2String += '</tr>';
+            table2.append(table2String);
         }
     }
 
@@ -61,7 +72,9 @@ function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotiv
     tempModule.moduleMotivation = moduleMotivationalText;
     tempModule.moduleName = moduleName;
     console.log(courses);
-    //courses[courseNumber].modules.push(tempModule);
+    courses[courseNumber].modules.push(tempModule);
+    postTestData(courses);
+
 
 }
 

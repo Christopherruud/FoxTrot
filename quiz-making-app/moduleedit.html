@@ -18,7 +18,7 @@
                 <th width="100px">Module level</th>
                 <th width="100px">Module name</th>
                 <th width="100px">Descriptive text</th>
-                <th width="100px">Motivational Text</th>
+                <th width="100px">Motivational text</th>
                 <th width="100px">Number of Tests</th>
             </tr>
             </thead>
@@ -36,9 +36,13 @@ If the width is less then 480px the label will be placed on above the form eleme
                   data-content-theme="a">
             <legend>Add new module</legend>
             <div class="ui-field-contain">
-                <label for="level">Module name:</label> <input type="hidden"
-                                                               id="id"/> <input type="text" name="level" id="level"
-                                                                                data-clear-btn="true"/>
+                <label for="name">Module name:</label>
+                <input type="hidden" id="id"/>
+                <input type="text" name="name" id="name" data-clear-btn="true"/>
+                <label for="descriptiveText">Descriptive text:</label>
+                <input type="text" name="descriptiveText" id="descriptiveText" data-clear-btn="true"/>
+                <label for="descriptiveText">Motivational text:</label>
+                <input type="text" name="motivationalText" id="motivationalText" data-clear-btn="true"/>
             </div>
             <table>
                 <button id="add" type="button">Add to module to list</button>
