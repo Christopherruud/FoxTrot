@@ -1,8 +1,7 @@
-
-
 getCourseData();
 var courseNumber = 0;
 var moduleCounter = 0;
+var testCounter = 0;
 var moduleLevel = 0;
 $(document).ready(function () {    
 	var id = 1;
@@ -24,7 +23,7 @@ $(document).ready(function () {
 	    });
 	});
 
-function populateTestData(courseNumber) {
+function populateTestData(moduleNumber) {
     var course = courses[courseNumber];
     var table3 = $("#table3");
     moduleLevel = course.level;
@@ -142,7 +141,7 @@ var courses = [];
 var currentId = 0;
 
 function populateCourseData(json) {
-    var courseTable = $('#courseTable');
+   
 
     for (var s = 0; s < json.length; s++) {
         var course = json[s];
@@ -158,21 +157,12 @@ function populateCourseData(json) {
 
         courses.push(tempCourse);
 
-        tableString += '<td width="100px" align="center">' + course.id
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.domain
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.level
-        + "</td>";
-        tableString += '<td width="100px" align="center">'
-        + course.descriptiveText + "</td>";
+       
 
         // Modules
 
         if (undefined != course.modules) {
-            tableString += '<td width="100px" align="center">'
-            + course.modules.length + "</td>";
-            tableString += "<td>";
+           
 
             for (var c = 0; c < course.modules.length; c++) {
                 var module = course.modules[c];
@@ -202,7 +192,7 @@ function populateCourseData(json) {
                 // tableString += module.moduleName + ' ';
             }
         } else {
-            tableString += "<td>";
+            
         }
 
         var moduleEdit = "moduleedit.html";

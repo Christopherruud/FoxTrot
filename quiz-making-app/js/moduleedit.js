@@ -149,7 +149,6 @@ var courses = [];
 var currentId = 0;
 
 function populateCourseData(json) {
-    var courseTable = $('#courseTable');
 
     for (var s = 0; s < json.length; s++) {
         var course = json[s];
@@ -165,14 +164,6 @@ function populateCourseData(json) {
 
         courses.push(tempCourse);
 
-        tableString += '<td width="100px" align="center">' + course.id
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.domain
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.level
-        + "</td>";
-        tableString += '<td width="100px" align="center">'
-        + course.descriptiveText + "</td>";
 
         // Modules
 
@@ -206,12 +197,9 @@ function populateCourseData(json) {
                     courses[s].modules[c].tests.push(tempTest);
                 }
 
-                // tableString += module.moduleName + ' ';
+                
             }
-        } else {
-            tableString += "<td>";
         }
-
         var moduleEdit = "moduleedit.html";
         moduleEdit += "?course=" + course.id;
         tableString += '</td><td><a href="javascript:void(0);"class="remCF">Remove</a></td><td><a href="' + moduleEdit + '">Create modules</a></td>';
