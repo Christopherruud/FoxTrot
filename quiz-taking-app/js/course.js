@@ -22,8 +22,10 @@ function populate(courses, isInModule) {
 			btn.addEventListener("click", function() {
 				console.log("CheckEvent");
 				console.log(courseElement.modules);
+
 				getModule(courseElement.modules, courseElement.id, isInModule);
 				
+
 			});
 		}  else {
 			getModule(courseElement.modules, courseElement.id, true);
