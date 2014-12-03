@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script
-	src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <link rel="shortcut icon" href="../../favicon.ico"/>  
 </head>
 <body>
-
-	<div data-role="page">
-		<div data-role="header">
+          <div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Quiz Portal</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="courseedit.html">Course Editor</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+<div data-role="page">
+    <div data-role="main" class="ui-content">
+    <div style="margin-top: 50px;">
 			<h1>Test editor</h1>
 		</div>
 <table data-role="courseList" class="ui-responsive" id="table3"
@@ -59,7 +77,12 @@
 	</form>
 	<input type="submit" data-inline="true" value="Submit" >
 </div>
+</div>
 
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+    <!--  <script src="js/applogic.js"></script> -->
 	<script src="js/applogic.js"></script>
 	<script src="js/quizedit.js"></script>
 	<script>

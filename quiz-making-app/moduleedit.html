@@ -2,12 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet"
           href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <link rel="shortcut icon" href="../../favicon.ico"/>  
 </head>
 <body>
+          <div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Quiz Portal</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="courseedit.html">Course Editor</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
 <div data-role="page">
     <div data-role="main" class="ui-content">
+    <div style="margin-top: 50px;">
         <h3>Existing modules</h3>
 
         <table data-role="moduleList" class="ui-responsive" id="table2"
@@ -51,6 +73,7 @@ If the width is less then 480px the label will be placed on above the form eleme
     </form>
 
 
+</div>
 </div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
