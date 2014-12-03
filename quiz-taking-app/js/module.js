@@ -20,7 +20,11 @@ function populateModule(isInModule){
 	console.log(isInModule, " utenfor modul");
 	
 	for (var Module in modules){
-		console.log(Module);		
+
+		console.log(Module);
+
+		console.log(Module.moduleId);
+
 		
 		if(isInModule){
 			console.log(isInModule + " i modul");
@@ -36,10 +40,12 @@ function populateModule(isInModule){
 				nr++;
 			});
 			break;
+
 		} else {
 			addInfo(courses[idCourse].modules[Module].moduleId);
 			var moduleElement = courses[idCourse].modules[Module].moduleName;
 			var btn = document.createElement("BUTTON");        // Create a <button> element
+
 
 			btn.textContent=moduleElement + " " + moduleNumber;            
 
