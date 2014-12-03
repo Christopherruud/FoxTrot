@@ -2,12 +2,10 @@ getCourseData();
 var courseNumber = 0;
 var moduleCounter = 0;
 var moduleLevel = 0;
-$(document)
-    .ready(
+$(document).ready(
     function () {
 
-        $("#add")
-            .click(
+        $("#add").click(
             function () {
                 $("#table2")
                     .append(
@@ -23,7 +21,10 @@ $(document)
                     + $("#motivationalText").val()
                     + '</td><td width="100px" align="center">'
                     + ("none")
-                    + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td width="100px" align="center"><a href="quizedit.html">Create test</a></td></tr>');
+                    + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td>'
+                    + '<td width="100px" align="center"><a href="testedit.html?course='
+                    + courseNumber + '&module=' + moduleCounter
+                    + '">Create test</a></td></tr>');
                 addModuleToCourse(moduleLevel, $("#name").val(), $("#descriptiveText").val(), $("#motivationalText").val(), moduleCounter);
             });
 
@@ -31,7 +32,7 @@ $(document)
             $(this).parent().parent().remove();
         });
     });
-function populateModuleData(courseNumber) {
+function populateModuleData() {
     var course = courses[courseNumber];
     var table2 = $("#table2");
     moduleLevel = course.level;
@@ -56,7 +57,10 @@ function populateModuleData(courseNumber) {
             } else {
                 // table2String += '</td>';
             }
-            table2String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"><a href="' + "" + '">Create Test</a></td>';
+            table2String += '<td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td>'
+            + '<td width="100px" align="center"><a href="testedit.html?course='
+            + courseNumber + '&module=' + moduleCounter
+            + '">Create test</a></td>';
             table2String += '</tr>';
             table2.append(table2String);
         }
@@ -197,21 +201,12 @@ function populateCourseData(json) {
                     courses[s].modules[c].tests.push(tempTest);
                 }
 
-                
+
             }
         }
-        var moduleEdit = "moduleedit.html";
-        moduleEdit += "?course=" + course.id;
-        tableString += '</td><td><a href="javascript:void(0);"class="remCF">Remove</a></td><td><a href="' + moduleEdit + '">Create modules</a></td>';
-        tableString += '</tr>';
-        $("#table1").append(tableString);
     }
-    if (typeof parseURL == 'function') {
-        var moduleCourseId = parseURL();
-    }
-    if (typeof populateModuleData == 'function') {
-        populateModuleData(moduleCourseId);
-    }
+    parseURL();
+    populateModuleData();
 }
 
 var objectStorage = new Object();

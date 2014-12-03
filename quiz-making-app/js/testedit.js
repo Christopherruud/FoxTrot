@@ -29,35 +29,35 @@ function populateTestData(moduleNumber) {
     moduleLevel = course.level;
     if (course.modules != 'undefined') {
         for (var y = 0; y < course.modules.length; y++) {
-            var table2String = '<tr valign="top">';
+            var table3String = '<tr valign="top">';
             var module = course.modules[y];
-            table2String += '<td width="100px" align="center">'
+            table3String += '<td width="100px" align="center">'
             + module.moduleId + "</td>";
             moduleCounter = module.moduleId;
-            table2String += '<td width="100px" align="center">'
+            table3String += '<td width="100px" align="center">'
             + module.level + "</td>";
-            table2String += '<td width="100px" align="center">'
+            table3String += '<td width="100px" align="center">'
             + module.moduleName + "</td>";
-            table2String += '<td width="100px" align="center">'
+            table3String += '<td width="100px" align="center">'
             + module.moduleDescriptiveText + "</td>";
-            table2String += '<td width="100px" align="center">'
+            table3String += '<td width="100px" align="center">'
             + module.moduleMotivation + "</td>";
             if (module.tests != 'undefined') {
-                table2String += '<td width="100px" align="center">'
+                table3String += '<td width="100px" align="center">'
                 + module.tests.length + "</td>";
             } else {
-                // table2String += '</td>';
+                // table3String += '</td>';
             }
-            table2String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"><a href="' + "" + '">Create Test</a></td>';
-            table2String += '</tr>';
-            table2.append(table2String);
+            table3String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"></td>';
+            table3String += '</tr>';
+            table3.append(table3String);
         }
     }
 
 
 }
 
-function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotivationalText, moduleId) {
+function addTestToModule(level, moduleName, moduleDescriptiveText, moduleMotivationalText, moduleId) {
     var tempModule = new Module(level);
     tempModule.moduleDescriptiveText = moduleDescriptiveText;
     tempModule.moduleId = moduleId;
@@ -72,7 +72,7 @@ function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotiv
 
 function parseURL() {
     courseNumber = getQueryVariable("course");
-    return courseNumber;
+    moduleCounter = getQueryVariable("module")
 }
 
 function getQueryVariable(variable) {

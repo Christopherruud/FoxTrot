@@ -159,12 +159,6 @@ function populateCourseData(json) {
         tableString += '</tr>';
         $("#table1").append(tableString);
     }
-    if (typeof parseURL == 'function') {
-        var moduleCourseId = parseURL();
-    }
-    if (typeof populateModuleData == 'function') {
-        populateModuleData(courses, moduleCourseId);
-    }
 }
 
 var objectStorage = new Object();
