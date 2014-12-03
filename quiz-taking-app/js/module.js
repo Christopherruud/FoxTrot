@@ -24,9 +24,6 @@ function populateModule(isInModule){
 
 		console.log(Module.moduleId);
 		
-
-		addInfo(courses[idCourse].modules[Module].moduleId);
-		
 		if(isInModule){
 			console.log(isInModule + " i modul");
 
@@ -42,7 +39,7 @@ function populateModule(isInModule){
 			});
 			break;
 		}
-		
+		addInfo(courses[idCourse].modules[Module].moduleId);
 		var moduleElement = courses[idCourse].modules[Module].moduleName;
 		var btn = document.createElement("BUTTON");        // Create a <button> element
 
