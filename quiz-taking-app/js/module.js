@@ -18,20 +18,21 @@ function populateModule(isInModule){
 	console.log(isInModule, "Martin hjelper ikke");
 	for (var Module in modules) {
 		console.log(Module);
-		
-		
+
+
 		addInfo(courses[idCourse].modules[Module].moduleId);
 		if(isInModule){
 			console.log(isInModule, "Martin hjelper");
-			
+
 			var testElements = courses[idCourse].modules[Module].tests;
 
 			testElements.forEach(function(test){
 				var btn = document.createElement("BUTTON");  
 				btn.textContent=test.question; 
 				document.body.appendChild(btn);
+				btn.addEventListener("click", function(){setTest(tests[0])});
 			});
-
+			break;
 		}
 		var moduleElement = courses[idCourse].modules[Module].moduleName;
 		var btn = document.createElement("BUTTON");        // Create a <button> element
@@ -58,35 +59,40 @@ function addInfo(modul){
 }
 
 function getTest(){
-	/*	if(mId == id){
-		var news = document.getElementsByClassName("new-test")[0];
-		var tests = modules[0].tests;//hacks
-		for(var i = 0; i < modules[0].tests.length; i++) {
-			var h5 = document.createElement("h5");
-			h5.innerHTML = tests[i].question;
-			news.appendChild(h5);
-			var p = document.createElement("p");
-			p.innerHTML = tests[i].answer;
-			news.appendChild(p);
-			var h6 = document.createElement("h6");
-			h6.innerHTML = tests[i].alternatives[i];
-			news.appendChild(h6);
-		}
-	}
-	 */
-
-
 	//her må vi populere siden med innhold fra testen
 	window.location = url;
-
-	//$('#module').append(mId);
-	//VIKTIG om vi vil ha en "one page app"
-	/*$.ajax({
-			  url: "test.html",
-			  context: document.body
-			}).done(function(response) {
-			  $( this ).addClass( "done" );
-			  console.log(response);
-			});
-	 */	
 }
+
+function setTest(tests){
+	var setup = document.getElementsByClassName("new-tests")[0];
+	var tests = tests;
+	for(var i = 0; i<tests.length; i++){
+		var h5 = document.createElement("h5");
+		h5.innerHTML = tests[i].question;
+		setup.appendChild(h5);
+		var p = document.createElement("p");
+		p.innerHTML = tests[i].answer;
+		setup.appendChild(p);
+		var h6 = document.createElement("h6");
+		h6.innerHTML = tests[i].alternatives[i];
+		setup.appendChild(h6);
+	}
+}
+
+
+
+//$('#module').append(mId);
+//VIKTIG om vi vil ha en "one page app"
+/*$.ajax({
+		  url: "test.html",
+		  context: document.body
+		}).done(function(response) {
+		  $( this ).addClass( "done" );
+		  console.log(response);
+		});
+ */	
+
+
+/*	if(mId == id){
+
+ */
