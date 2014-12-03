@@ -8,6 +8,7 @@ var courseNumber = 0;
 
 // setter opp knapper etter ønske
 function populate(courses, isInModule) {
+	
 	console.log(courses);
 
 	for ( var Course in courses) {
