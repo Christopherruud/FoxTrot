@@ -8,32 +8,38 @@ var idCourse;
 function setModules(array, courseId, isInModule){
 	console.log(array);
 	modules = array;
+	
 	console.log(modules);
 	idCourse = courseId;
+	
 	populateModule(isInModule);
 }
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
 function populateModule(isInModule){
-	console.log(isInModule, "Martin hjelper ikke");
-	for (var Module in modules) {
+	console.log(isInModule, " utenfor modul");
+	
+	for (var Module in modules){
 		console.log(Module);
 
-
 		addInfo(courses[idCourse].modules[Module].moduleId);
+		
 		if(isInModule){
-			console.log(isInModule, "Martin hjelper");
+			console.log(isInModule + " i modul");
 
 			var testElements = courses[idCourse].modules[Module].tests;
-
+			var nr = 1;
 			testElements.forEach(function(test){
+				console.log(test);
 				var btn = document.createElement("BUTTON");  
-				btn.textContent=test.question; 
+				btn.textContent="question "+ nr; 
 				document.body.appendChild(btn);
-				btn.addEventListener("click", function(){setTest(tests[0])});
+				btn.addEventListener("click", function(){setTest(test)});
+				nr++;
 			});
 			break;
 		}
+		
 		var moduleElement = courses[idCourse].modules[Module].moduleName;
 		var btn = document.createElement("BUTTON");        // Create a <button> element
 
@@ -45,7 +51,6 @@ function populateModule(isInModule){
 
 		btn.addEventListener("click", function(){getTest()});
 		moduleNumber++;
-
 
 	}
 
@@ -64,7 +69,7 @@ function getTest(){
 }
 
 function setTest(tests){
-	var setup = document.getElementsByClassName("new-tests")[0];
+	var setup = document.getElementsByClassName("new-test")[0];
 	var tests = tests;
 	for(var i = 0; i<tests.length; i++){
 		var h5 = document.createElement("h5");
