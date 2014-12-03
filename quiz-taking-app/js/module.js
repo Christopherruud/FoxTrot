@@ -23,7 +23,7 @@ function populateModule(isInModule){
 
 		console.log(Module);
 
-		console.log(Module.moduleId);
+		console.log(courses[idCourse].modules[Module].moduleId);
 
 		
 		if(isInModule){
@@ -53,7 +53,7 @@ function populateModule(isInModule){
 
 			//id = moduleElement.moduleId;
 
-			btn.addEventListener("click", function(){getTest()});
+			btn.addEventListener("click", function(){windows.location = url;});
 			moduleNumber++;
 		}
 		
@@ -67,11 +67,6 @@ function addInfo(modul){
 	urlString+='?module='+modul;
 	console.log(urlString);
 	url = urlString;
-}
-
-function getTest(){
-	//her må vi populere siden med innhold fra testen
-	window.location = url;
 }
 
 function setTest(tests){

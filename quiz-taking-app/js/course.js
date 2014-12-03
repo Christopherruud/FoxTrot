@@ -2,7 +2,7 @@
 
 //var moduleHtml = 'partials/module.html';
 //var select = document.getElementById('RaceDropDown');
-var courseNumber = 0;
+
 // dette er hvor vi kan legge inn data i en array så vi kan manipulere den i for
 // løkka under
 
@@ -10,24 +10,24 @@ var courseNumber = 0;
 function populate(courses, isInModule) {
 	console.log(courses);
 
-	for ( var Course in courses) {
+	for (var Course in courses) {
 		var courseElement = courses[Course];
 		console.log(courseElement);
 		var btn; // Create a <button> element
 		if (isInModule == false) {
 			btn = document.createElement("BUTTON");
-			btn.textContent = courseElement.domain + " " + courseNumber;
+			btn.textContent = courseElement.domain + " " + courseElement.id;
 			document.body.appendChild(btn); // Append <button> to <body>
 
 			btn.addEventListener("click", function() {
 				console.log("CheckEvent");
 				console.log(courseElement.modules);
-
-				courseNumber++;
+				getModule(courseElement.modules, courseElement.id, isInModule);
+				
 			});
+		}  else {
+			getModule(courseElement.modules, courseElement.id, true);
 		}
-		// document.write(courseElement.descriptiveText);
-		getModule(courseElement.modules, courseElement.id, isInModule);
 
 	}
 
@@ -37,12 +37,12 @@ function populate(courses, isInModule) {
 function getModule(element, courseId, isInModule) {
 	console.log(element);
 	var moduleArray = [];
-	var id = courseId;
-	console.log(id);
+	var tempId = courseId;
+	console.log(tempId);
 	moduleArray = element;
 	console.log(moduleArray);
 
-	setModules(moduleArray, id, isInModule);
+	setModules(moduleArray, tempId, isInModule);
 
 }
 

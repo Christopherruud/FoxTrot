@@ -88,16 +88,12 @@ function getCourseData(isInModule) {
 var courses = [];
 
 function populateCourseData(json, isInModule) {
-	var courseTable = $('#courseTable');
-	courseTable.empty(); // empties the coursedata -table before
-	// initializing
 	console.log("console.log(json)");
 	console.log(json);
 
 	for (var s = 0; s < json.length; s++) {
 		var course = json[s];
 		course = explodeJSON(course);
-		var tableString = "<tr>";
 		// Name
 		var tempCourse = new Course(course.domain);
 		tempCourse.level = course.level;
@@ -108,10 +104,10 @@ function populateCourseData(json, isInModule) {
 
 		courses.push(tempCourse);
 
-		tableString += "<td>" + course.domain + "</td>";
+		
 
 		// Modules
-		tableString += "<td>";
+	
 		for (var c = 0; c < course.modules.length; c++) {
 			var module = course.modules[c];
 			module = explodeJSON(module);
@@ -134,23 +130,15 @@ function populateCourseData(json, isInModule) {
 				tempTest.alternatives = test.alternatives.slice();
 				courses[s].modules[c].tests.push(tempTest);
 			}
-
-			tableString += module.moduleName + ' ';
 		}
-		tableString += '</td>';
-		tableString += '</tr>';
-		courseTable.append(tableString);
+		
 	}
 	//finnes populate
 	if(typeof populate == 'function'){
 		populate(courses, isInModule);	
 	}
-	// jsonAlexander(courses);
 }
-//function for messing about with JSON
-function jsonAlexander(json) {
 
-}
 
 //TODO - add logic for reading and writing to and from usersettings and the
 //datastructure therein.
