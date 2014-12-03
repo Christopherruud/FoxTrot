@@ -6,8 +6,7 @@ $(document).ready(
         getCourseData();
         $("#add").click(
             function () {
-                $("#table2")
-                    .append(
+                $("#table2").append(
                     '<tr valign="top"><td width="100px" align="center">'
                     + (++moduleCounter)
                     + '</td><td width="100px" align="center">'

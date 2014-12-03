@@ -33,16 +33,14 @@
             <h3>Create Test</h3>
 
 
-            <table data-role="testList" class="ui-responsive" id="table3"
-                   name="table3">
+            <table data-role="testList" class="ui-responsive" id="table3" name="table3">
                 <thead>
                 <tr>
-                    <th width="100px">QuestionId</th>
-                    <th width="100px">Question</th>
-                    <th width="100px">Answer</th>
-                    <th width="100px">Alternative 1</th>
-                    <th width="100px">Alternative 2</th>
-                    <th width="100px">Alternative 3</th>
+                    <td width="100px" align="center">Question</th>
+                    <td width="100px" align="center">Answer</th>
+                    <td width="100px" align="center">Alternative 1</th>
+                    <td width="100px" align="center">Alternative 2</th>
+                    <td width="100px" align="center">Alternative 3</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -60,7 +58,7 @@
                 <div class="ui-field-contain">
 
                     <label for="question">Question:</label>
-                    <input type="hidden" id="id"/>
+                    <!--<input type="hidden" id="id"/>-->
                     <input type="text" name="question" id="question" data-clear-btn="true"/>
                     <label for="answer">Answer:</label>
                     <input type="text" name="answer" id="answer" data-clear-btn="true"/>
@@ -75,16 +73,15 @@
                     <button id="add" type="button">Add to tests</button>
                 </table>
             </fieldset>
-            </fieldset>
         </form>
 
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-        <script src="js/testedit.js"></script>
+
     </div>
 </div>
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<script src="js/testedit.js"></script>
 
 </body>
 </html>

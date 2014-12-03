@@ -1,50 +1,51 @@
 var courseNumber = 0;
 var moduleCounter = 0;
-var testCounter = 0;
 var moduleLevel = 0;
+var table3 = $("#table3");
 $(document).ready(function () {
-    var id = 1;
     getCourseData();
     $("#add").click(function () {
-        $("#table3").append
+        table3.append
         ('<tr valign="top"><td width="100px" align="center">'
-        + (id++) + '</td><td width="100px"> '
         + $("#question").val() + '</td><td width="100px" align="center">'
         + $("#answer").val() + '</td><td width="100px" align="center">'
         + $("#alt1").val() + '</td><td width="100px" align="center">'
         + $("#alt2").val() + '</td><td width="100px" align="center">'
         + $("#alt3").val() + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
+    var temparray = [$("#alt1").val(), $("#alt2").val(), $("#alt3").val()];
+    addTestToModule(moduleCounter,$("#question").val(), $("#answer").val(),temparray );
     });
 
-
-    $("#table3").on('click', '.remCF', function () {
+    table3.on('click', '.remCF', function () {
         $(this).parent().parent().remove();
     });
 });
 
 function populateTestData() {
     var module = courses[courseNumber].modules[moduleCounter];
-    var table3 = $("#table3");
-    if (courses[courseNumber].modules != 'undefined') {
+    moduleLevel = module.level;
+    if (module.tests != 'undefined') {
         for (var y = 0; y < module.tests.length; y++) {
             var table3String = '<tr valign="top">';
-            var module = course.modules[y];
+            var test = module.tests[y];
             table3String += '<td width="100px" align="center">'
-            + module.moduleId + "</td>";
-            moduleCounter = module.moduleId;
+            + test.question + "</td>";
             table3String += '<td width="100px" align="center">'
-            + module.level + "</td>";
-            table3String += '<td width="100px" align="center">'
-            + module.moduleName + "</td>";
-            table3String += '<td width="100px" align="center">'
-            + module.moduleDescriptiveText + "</td>";
-            table3String += '<td width="100px" align="center">'
-            + module.moduleMotivation + "</td>";
-            if (module.tests != 'undefined') {
+            + test.answer + "</td>";
+            var counter;
+            for (var g = 0; g < test.alternatives.length; g++) {
+                var alternative = test.alternatives[g];
+                counter = g;
                 table3String += '<td width="100px" align="center">'
-                + module.tests.length + "</td>";
-            } else {
-                // table3String += '</td>';
+                + alternative + "</td>";
+
+            }
+            if (counter < 2) {
+                if (counter < 1) {
+                    table3String += '<td width="100px" align="center">""</td>'
+                }
+
+                table3String += '<td width="100px" align="center">""</td>'
             }
             table3String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"></td>';
             table3String += '</tr>';
@@ -55,14 +56,12 @@ function populateTestData() {
 
 }
 
-function addTestToModule(level, moduleName, moduleDescriptiveText, moduleMotivationalText, moduleId) {
-    var tempModule = new Module(level);
-    tempModule.moduleDescriptiveText = moduleDescriptiveText;
-    tempModule.moduleId = moduleId;
-    tempModule.moduleMotivation = moduleMotivationalText;
-    tempModule.moduleName = moduleName;
-    console.log(courses);
-    courses[courseNumber].modules.push(tempModule);
+function addTestToModule(parent, question, answer, alternatives) {
+    var tempTest = new Test(parent);
+    tempTest.question = question;
+    tempTest.answer = answer;
+    tempTest.alternatives = alternatives.slice();
+    courses[courseNumber].modules[moduleCounter].tests.push(tempTest);
     postTestData(courses);
 
 
