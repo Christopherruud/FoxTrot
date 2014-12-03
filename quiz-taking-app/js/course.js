@@ -22,12 +22,13 @@ function populate(courses, isInModule) {
 			btn.addEventListener("click", function() {
 				console.log("CheckEvent");
 				console.log(courseElement.modules);
-
+				//dette kommer ikke til å skje
+				getModule(courseElement.modules, courseElement.id, isInModule);
 				courseNumber++;
 			});
 		}
 		// document.write(courseElement.descriptiveText);
-		getModule(courseElement.modules, courseElement.id, isInModule);
+		//her må det skje noe
 
 	}
 

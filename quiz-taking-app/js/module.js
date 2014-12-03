@@ -40,7 +40,7 @@ function populateModule(isInModule){
 				nr++;
 			});
 			break;
-
+			//dette vil skje uansett når man er inne på kurs
 		} else {
 			addInfo(courses[idCourse].modules[Module].moduleId);
 			var moduleElement = courses[idCourse].modules[Module].moduleName;
