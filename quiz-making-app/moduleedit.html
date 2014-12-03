@@ -6,10 +6,10 @@
     <link rel="stylesheet"
           href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
     <link rel="stylesheet" href="css/leaflet.css"/>
-    <link rel="shortcut icon" href="../../favicon.ico"/>  
+    <link rel="shortcut icon" href="../../favicon.ico"/>
 </head>
 <body>
-          <div class="navbar navbar-default navbar-static-top">
+<div class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -29,61 +29,56 @@
 </div>
 <div data-role="page">
     <div data-role="main" class="ui-content">
-    <div style="margin-top: 50px;">
-        <h3>Existing modules</h3>
+        <div style="margin-top: 50px;">
+            <h3>Existing modules</h3>
 
-        <table data-role="moduleList" class="ui-responsive" id="table2"
-               name="table2">
-            <thead>
-            <tr>
-                <th width="100px">Module id</th>
-                <th width="100px">Module level</th>
-                <th width="100px">Module name</th>
-                <th width="100px">Descriptive text</th>
-                <th width="100px">Motivational text</th>
-                <th width="100px">Number of Tests</th>
-            </tr>
-            </thead>
-            <tbody class="list">
+            <table data-role="moduleList" class="ui-responsive" id="table2"
+                   name="table2">
+                <thead>
+                <tr>
+                    <th width="100px">Module id</th>
+                    <th width="100px">Module level</th>
+                    <th width="100px">Module name</th>
+                    <th width="100px">Descriptive text</th>
+                    <th width="100px">Motivational text</th>
+                    <th width="100px">Number of Tests</th>
+                </tr>
+                </thead>
+                <tbody class="list">
 
-            </tbody>
-        </table>
-    </div>
-
-    <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
-If the width is less then 480px the label will be placed on above the form element-->
-
-    <form method="post" id="myFrom" action="">
-        <fieldset data-role="collapsible" data-theme="b"
-                  data-content-theme="a">
-            <legend>Add new module</legend>
-            <div class="ui-field-contain">
-                <label for="name">Module name:</label>
-                <input type="hidden" id="id"/>
-                <input type="text" name="name" id="name" data-clear-btn="true"/>
-                <label for="descriptiveText">Descriptive text:</label>
-                <input type="text" name="descriptiveText" id="descriptiveText" data-clear-btn="true"/>
-                <label for="descriptiveText">Motivational text:</label>
-                <input type="text" name="motivationalText" id="motivationalText" data-clear-btn="true"/>
-            </div>
-            <table>
-                <button id="add" type="button">Add to module to list</button>
+                </tbody>
             </table>
-        </fieldset>
-    </form>
+        </div>
+
+        <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
+    If the width is less then 480px the label will be placed on above the form element-->
+
+        <form method="post" id="myFrom" action="">
+            <fieldset data-role="collapsible" data-theme="b"
+                      data-content-theme="a">
+                <legend>Add new module</legend>
+                <div class="ui-field-contain">
+                    <label for="name">Module name:</label>
+                    <input type="hidden" id="id"/>
+                    <input type="text" name="name" id="name" data-clear-btn="true"/>
+                    <label for="descriptiveText">Descriptive text:</label>
+                    <input type="text" name="descriptiveText" id="descriptiveText" data-clear-btn="true"/>
+                    <label for="descriptiveText">Motivational text:</label>
+                    <input type="text" name="motivationalText" id="motivationalText" data-clear-btn="true"/>
+                </div>
+                <table>
+                    <button id="add" type="button">Add to module to list</button>
+                </table>
+            </fieldset>
+        </form>
 
 
-</div>
+    </div>
 </div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<!-- <script src="js/applogic.js"></script> -->
 <script src="js/moduleedit.js"></script>
-<!--<script type='text/javascript'>
-    $(document).ready(function () {
-        getCourseData();
-    });
-</script>-->
+
 </body>
 </html>

@@ -1,10 +1,9 @@
-getCourseData();
 var courseNumber = 0;
 var moduleCounter = 0;
 var moduleLevel = 0;
 $(document).ready(
     function () {
-
+        getCourseData();
         $("#add").click(
             function () {
                 $("#table2")

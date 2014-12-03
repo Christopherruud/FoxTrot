@@ -1,34 +1,32 @@
-getCourseData();
 var courseNumber = 0;
 var moduleCounter = 0;
 var testCounter = 0;
 var moduleLevel = 0;
-$(document).ready(function () {    
-	var id = 1;
+$(document).ready(function () {
+    var id = 1;
+    getCourseData();
+    $("#add").click(function () {
+        $("#table3").append
+        ('<tr valign="top"><td width="100px" align="center">'
+        + (id++) + '</td><td width="100px"> '
+        + $("#question").val() + '</td><td width="100px" align="center">'
+        + $("#answer").val() + '</td><td width="100px" align="center">'
+        + $("#alt1").val() + '</td><td width="100px" align="center">'
+        + $("#alt2").val() + '</td><td width="100px" align="center">'
+        + $("#alt3").val() + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
+    });
 
-	    $("#add").click(function () {
-	        $("#table3").append
-	        ('<tr valign="top"><td width="100px" align="center">'
-	        + (id++) + '</td><td width="100px"> '
-	        + $("#question").val() + '</td><td width="100px" align="center">'
-	        + $("#answer").val() + '</td><td width="100px" align="center">'
-	        + $("#alt1").val() + '</td><td width="100px" align="center">'
-	        + $("#alt2").val() + '</td><td width="100px" align="center">'
-	        + $("#alt3").val() + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
-	    });
-	    
 
-	    $("#table3").on('click', '.remCF', function () {
-	        $(this).parent().parent().remove();
-	    });
-	});
+    $("#table3").on('click', '.remCF', function () {
+        $(this).parent().parent().remove();
+    });
+});
 
-function populateTestData(moduleNumber) {
-    var course = courses[courseNumber];
+function populateTestData() {
+    var module = courses[courseNumber].modules[moduleCounter];
     var table3 = $("#table3");
-    moduleLevel = course.level;
-    if (course.modules != 'undefined') {
-        for (var y = 0; y < course.modules.length; y++) {
+    if (courses[courseNumber].modules != 'undefined') {
+        for (var y = 0; y < module.tests.length; y++) {
             var table3String = '<tr valign="top">';
             var module = course.modules[y];
             table3String += '<td width="100px" align="center">'
@@ -141,7 +139,6 @@ var courses = [];
 var currentId = 0;
 
 function populateCourseData(json) {
-   
 
     for (var s = 0; s < json.length; s++) {
         var course = json[s];
@@ -157,12 +154,8 @@ function populateCourseData(json) {
 
         courses.push(tempCourse);
 
-       
-
-        // Modules
-
         if (undefined != course.modules) {
-           
+
 
             for (var c = 0; c < course.modules.length; c++) {
                 var module = course.modules[c];
@@ -189,23 +182,14 @@ function populateCourseData(json) {
                     courses[s].modules[c].tests.push(tempTest);
                 }
 
-                // tableString += module.moduleName + ' ';
-            }
-        } else {
-            
-        }
 
-        var moduleEdit = "moduleedit.html";
-        moduleEdit += "?course=" + course.id;
-        tableString += '</td><td><a href="javascript:void(0);"class="remCF">Remove</a></td><td><a href="' + moduleEdit + '">Create modules</a></td>';
-        tableString += '</tr>';
-        $("#table1").append(tableString);
-    }
-    if (typeof parseURL == 'function') {
-        var moduleCourseId = parseURL();
-    }
-    if (typeof populateModuleData == 'function') {
-        populateModuleData(moduleCourseId);
+            }
+
+        }
+        parseURL();
+
+        populateTestData();
+
     }
 }
 

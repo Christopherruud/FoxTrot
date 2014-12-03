@@ -6,10 +6,10 @@
     <link rel="stylesheet"
           href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
     <link rel="stylesheet" href="css/leaflet.css"/>
-    <link rel="shortcut icon" href="../../favicon.ico"/>  
+    <link rel="shortcut icon" href="../../favicon.ico"/>
 </head>
 <body>
-          <div class="navbar navbar-default navbar-static-top">
+<div class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -29,69 +29,62 @@
 </div>
 <div data-role="page">
     <div data-role="main" class="ui-content">
-<div style="margin-top: 50px;">
-        <h3>Create quiz</h3>
-      <div data-role="page">
-    <div data-role="main" class="ui-content">
-<div style="margin-top: 50px;">
-        <h3>Create quiz</h3>
+        <div style="margin-top: 50px;">
+            <h3>Create Test</h3>
 
-        <table data-role="quizList" class="ui-responsive" id="table3"
-               name="table3">
-            <thead>
-            <tr>
-                <th width="100px">QuestionId</th>
-                <th width="100px">Question</th>
-                <th width="100px">Answer</th>
-                <th width="100px">Alternative 1</th>
-                <th width="100px">Alternative 2</th>
-                <th width="100px">Alternative 3</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody class="list">
-            </tbody>
-        </table>
-    </div>
 
-    <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
-If the width is less then 480px the label will be placed on above the form element-->
-    <form method="post" id="myFrom" action="">
-        <fieldset data-role="collapsible" data-theme="b"
-                  data-content-theme="a">
-            <legend>Add new question</legend>
-            <div class="ui-field-contain">
-
-                <label for="question">Question:</label>
-                <input type="hidden" id="id"/>
-                <input type="text" name="question" id="question" data-clear-btn="true"/>
-                <label for="answer">Answer:</label>
-                <input type="text" name="answer" id="answer" data-clear-btn="true"/>
-                <label for="alternatives">Alternative 1:</label>
-                <input type="text" name="alt1" id="alt1" data-clear-btn="true"/>
-                <label for="alternatives">Alternative 2:</label>
-                <input type="text" name="alt2" id="alt2" data-clear-btn="true"/>
-                <label for="alternatives">Alternative 3:</label>
-                <input type="text" name="alt3" id="alt3" data-clear-btn="true"/>
-            </div>
-            <table>
-                <button id="add" type="button">Add to quiz</button>
+            <table data-role="testList" class="ui-responsive" id="table3"
+                   name="table3">
+                <thead>
+                <tr>
+                    <th width="100px">QuestionId</th>
+                    <th width="100px">Question</th>
+                    <th width="100px">Answer</th>
+                    <th width="100px">Alternative 1</th>
+                    <th width="100px">Alternative 2</th>
+                    <th width="100px">Alternative 3</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody class="list">
+                </tbody>
             </table>
-        </fieldset>
-        </fieldset>
-    </form>
+        </div>
 
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-    <!--  <script src="js/applogic.js"></script> -->
-	<script src="js/applogic.js"></script>
-	<script src="js/testedit.js"></script>
-	<script>
-		$(document).ready(function() {
-			getCourseData();
-		});
-	</script>
+        <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
+    If the width is less then 480px the label will be placed on above the form element-->
+        <form method="post" id="myFrom" action="">
+            <fieldset data-role="collapsible" data-theme="b"
+                      data-content-theme="a">
+                <legend>Add new question</legend>
+                <div class="ui-field-contain">
+
+                    <label for="question">Question:</label>
+                    <input type="hidden" id="id"/>
+                    <input type="text" name="question" id="question" data-clear-btn="true"/>
+                    <label for="answer">Answer:</label>
+                    <input type="text" name="answer" id="answer" data-clear-btn="true"/>
+                    <label for="alt1">Alternative 1:</label>
+                    <input type="text" name="alt1" id="alt1" data-clear-btn="true"/>
+                    <label for="alt2">Alternative 2:</label>
+                    <input type="text" name="alt2" id="alt2" data-clear-btn="true"/>
+                    <label for="alt3">Alternative 3:</label>
+                    <input type="text" name="alt3" id="alt3" data-clear-btn="true"/>
+                </div>
+                <table>
+                    <button id="add" type="button">Add to tests</button>
+                </table>
+            </fieldset>
+            </fieldset>
+        </form>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+        <script src="js/testedit.js"></script>
+    </div>
+</div>
+
 
 </body>
 </html>

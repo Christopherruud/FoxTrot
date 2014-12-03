@@ -1,12 +1,9 @@
-$(document)
-    .ready(
+$(document).ready(
     function () {
-
-        $("#add")
-            .click(
+        getCourseData();
+        $("#add").click(
             function () {
-                $("#table1")
-                    .append(
+                $("#table1").append(
                     '<tr valign="top"><td width="100px" align="center">'
                     + (++currentId)
                     + '</td><td width="100px" align="center">'
