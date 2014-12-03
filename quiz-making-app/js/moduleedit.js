@@ -1,12 +1,13 @@
 var courseNumber = 0;
 var moduleCounter = 0;
 var moduleLevel = 0;
+var table2 = $("#table2");
 $(document).ready(
     function () {
         getCourseData();
         $("#add").click(
             function () {
-                $("#table2").append(
+                table2.append(
                     '<tr valign="top"><td width="100px" align="center">'
                     + (++moduleCounter)
                     + '</td><td width="100px" align="center">'
@@ -32,7 +33,6 @@ $(document).ready(
     });
 function populateModuleData() {
     var course = courses[courseNumber];
-    var table2 = $("#table2");
     moduleLevel = course.level;
     if (course.modules != 'undefined') {
         for (var y = 0; y < course.modules.length; y++) {

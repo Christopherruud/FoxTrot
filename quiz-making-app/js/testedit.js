@@ -12,8 +12,8 @@ $(document).ready(function () {
         + $("#alt1").val() + '</td><td width="100px" align="center">'
         + $("#alt2").val() + '</td><td width="100px" align="center">'
         + $("#alt3").val() + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
-    var temparray = [$("#alt1").val(), $("#alt2").val(), $("#alt3").val()];
-    addTestToModule(moduleCounter,$("#question").val(), $("#answer").val(),temparray );
+    var tempArray = [$("#alt1").val(), $("#alt2").val(), $("#alt3").val()];
+    addTestToModule(moduleCounter,$("#question").val(), $("#answer").val(),tempArray );
     });
 
     table3.on('click', '.remCF', function () {
