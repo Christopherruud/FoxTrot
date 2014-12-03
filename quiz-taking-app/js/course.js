@@ -9,6 +9,7 @@ var courseNumber = 1;
 //setter opp knapper etter ønske
 function populate(courses, isInModule){
 	console.log(courses);
+	
 	for (var Course in courses) {
 		var courseElement = courses[Course];
 		console.log(courseElement);
@@ -37,14 +38,16 @@ function getModule(element, courseId, isInModule){
 	console.log(moduleArray);
 	
 	setModules(moduleArray, id, isInModule);
-	//window.location = "module.html";
-	//VIKTIG om vi vil ha en "one page app"
-	/*$.ajax({
-		  url: "module.html",
-		  context: document.body
-		}).done(function(response) {
-		  $( this ).addClass( "done" );
-		  console.log(response);
-		});
-	 */	
+	
 }
+
+//window.location = "module.html";
+//VIKTIG om vi vil ha en "one page app"
+/*$.ajax({
+	  url: "module.html",
+	  context: document.body
+	}).done(function(response) {
+	  $( this ).addClass( "done" );
+	  console.log(response);
+	});
+ */	

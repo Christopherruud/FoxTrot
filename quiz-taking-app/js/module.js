@@ -8,31 +8,41 @@ var idCourse;
 function setModules(array, courseId, isInModule){
 	console.log(array);
 	modules = array;
+	
 	console.log(modules);
 	idCourse = courseId;
+	
 	populateModule(isInModule);
 }
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
 function populateModule(isInModule){
-	console.log(isInModule, "Martin hjelper ikke");
-	for (var Module in modules) {
+	console.log(isInModule, " utenfor modul");
+	
+	for (var Module in modules){
 		console.log(Module);
+
 		console.log(Module.moduleId);
 		
+
 		addInfo(courses[idCourse].modules[Module].moduleId);
+		
 		if(isInModule){
-			console.log(isInModule, "Martin hjelper");
-			
+			console.log(isInModule + " i modul");
+
 			var testElements = courses[idCourse].modules[Module].tests;
-
+			var nr = 1;
 			testElements.forEach(function(test){
+				console.log(test);
 				var btn = document.createElement("BUTTON");  
-				btn.textContent=test.question; 
+				btn.textContent="question "+ nr; 
 				document.body.appendChild(btn);
+				btn.addEventListener("click", function(){setTest(test)});
+				nr++;
 			});
-
+			break;
 		}
+		
 		var moduleElement = courses[idCourse].modules[Module].moduleName;
 		var btn = document.createElement("BUTTON");        // Create a <button> element
 
@@ -44,7 +54,6 @@ function populateModule(isInModule){
 
 		btn.addEventListener("click", function(){getTest()});
 		moduleNumber++;
-
 
 	}
 
@@ -58,35 +67,40 @@ function addInfo(modul){
 }
 
 function getTest(){
-	/*	if(mId == id){
-		var news = document.getElementsByClassName("new-test")[0];
-		var tests = modules[0].tests;//hacks
-		for(var i = 0; i < modules[0].tests.length; i++) {
-			var h5 = document.createElement("h5");
-			h5.innerHTML = tests[i].question;
-			news.appendChild(h5);
-			var p = document.createElement("p");
-			p.innerHTML = tests[i].answer;
-			news.appendChild(p);
-			var h6 = document.createElement("h6");
-			h6.innerHTML = tests[i].alternatives[i];
-			news.appendChild(h6);
-		}
-	}
-	 */
-
-
 	//her må vi populere siden med innhold fra testen
 	window.location = url;
-
-	//$('#module').append(mId);
-	//VIKTIG om vi vil ha en "one page app"
-	/*$.ajax({
-			  url: "test.html",
-			  context: document.body
-			}).done(function(response) {
-			  $( this ).addClass( "done" );
-			  console.log(response);
-			});
-	 */	
 }
+
+function setTest(tests){
+	var setup = document.getElementsByClassName("new-test")[0];
+	var tests = tests;
+	for(var i = 0; i<tests.length; i++){
+		var h5 = document.createElement("h5");
+		h5.innerHTML = tests[i].question;
+		setup.appendChild(h5);
+		var p = document.createElement("p");
+		p.innerHTML = tests[i].answer;
+		setup.appendChild(p);
+		var h6 = document.createElement("h6");
+		h6.innerHTML = tests[i].alternatives[i];
+		setup.appendChild(h6);
+	}
+}
+
+
+
+//$('#module').append(mId);
+//VIKTIG om vi vil ha en "one page app"
+/*$.ajax({
+		  url: "test.html",
+		  context: document.body
+		}).done(function(response) {
+		  $( this ).addClass( "done" );
+		  console.log(response);
+		});
+ */	
+
+
+/*	if(mId == id){
+
+ */
