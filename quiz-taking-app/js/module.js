@@ -1,6 +1,6 @@
 console.log("loading.module");
 
-var moduleNumber = 1;
+//var moduleNumber = 1;
 var id;
 var modules = [];
 var idCourse;
@@ -18,7 +18,7 @@ function populateModule(isInModule){
 	console.log(isInModule, "Martin hjelper ikke");
 	for (var Module in modules) {
 		console.log(Module);
-		
+		console.log(Module.moduleId);
 		
 		addInfo(courses[idCourse].modules[Module].moduleId);
 		if(isInModule){
