@@ -7,7 +7,7 @@ var courseNumber = 1;
 
 
 //setter opp knapper etter ønske
-function populate(courses){
+function populate(courses, isInModule){
 	console.log(courses);
 	for (var Course in courses) {
 		var courseElement = courses[Course];
@@ -20,21 +20,23 @@ function populate(courses){
 		btn.addEventListener("click", function (){
 			console.log("CheckEvent");
 			console.log(courseElement.modules);
-			getModule(courseElement.modules, courseElement.id);});
+			
+			getModule(courseElement.modules, courseElement.id, isInModule);});
 		courseNumber++;
 	}
 
 }
 //henter ut modul html når man trykker på en knapp. Må sende
 //med ting her fra tilhørende modul til gitt kurs
-function getModule(element, courseId){
+function getModule(element, courseId, isInModule){
 	console.log(element);
 	var moduleArray = [];
 	var id = courseId;
 	console.log(id);
 	moduleArray = element;
 	console.log(moduleArray);
-	setModules(moduleArray, id);
+	
+	setModules(moduleArray, id, isInModule);
 	//window.location = "module.html";
 	//VIKTIG om vi vil ha en "one page app"
 	/*$.ajax({

@@ -61,7 +61,8 @@ function Test(moduleId) {
 	var alternatives = [];
 }
 
-function getCourseData() {
+function getCourseData(isInModule) {
+	console.log(isInModule + "martin er her i getCourse");
 	var location = window.location.host;
 	// console.log(location);
 	console.log("ELLÅ TRIGGER");
@@ -75,7 +76,7 @@ function getCourseData() {
 
 	} else {
 		var result = $.getJSON("/api/systemSettings/quizKey", function(data) {
-			populateCourseData(data);
+			populateCourseData(data, isInModule);
 
 		});
 	}
@@ -86,7 +87,7 @@ function getCourseData() {
 //This is the one you can use to iterate through the data
 var courses = [];
 
-function populateCourseData(json) {
+function populateCourseData(json, isInModule) {
 	var courseTable = $('#courseTable');
 	courseTable.empty(); // empties the coursedata -table before
 	// initializing
@@ -142,7 +143,7 @@ function populateCourseData(json) {
 	}
 	//finnes populate
 	if(typeof populate == 'function'){
-		populate(courses);	
+		populate(courses, isInModule);	
 	}
 	// jsonAlexander(courses);
 }
