@@ -25,7 +25,7 @@ function populateModule(isInModule){
 
 		console.log(courses[idCourse].modules[Module].moduleId);
 
-		
+		//start her
 		if(isInModule){
 			console.log(isInModule + " i modul");
 
@@ -34,26 +34,22 @@ function populateModule(isInModule){
 			testElements.forEach(function(test){
 				console.log(test);
 				var btn = document.createElement("BUTTON");  
-				btn.textContent="question "+ nr; 
+				btn.textContent="Test "+ nr; 
 				document.body.appendChild(btn);
 				btn.addEventListener("click", function(){setTest(test)});
+				//test er nok ikke noe
 				nr++;
 			});
 			break;
-			//dette vil skje uansett når man er inne på kurs
+			
 		} else {
 			//addInfo(courses[idCourse].modules[Module].moduleId);
 			var moduleElement = courses[idCourse].modules[Module].moduleName;
 			var btn = document.createElement("BUTTON");        // Create a <button> element
 
-			//url tilhørighet
-			//Den samme siden blir lukket opp når den
-			
-			//var url;
 			var urlString = "module.html";
 			urlString+='?module='+courses[idCourse].modules[Module].moduleId;
 			console.log(urlString);
-			//url = urlString;
 
 			btn.textContent=moduleElement + " " + moduleNumber;            
 
