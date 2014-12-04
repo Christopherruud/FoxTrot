@@ -1,71 +1,67 @@
-
-
-getCourseData();
 var courseNumber = 0;
 var moduleCounter = 0;
 var moduleLevel = 0;
-$(document).ready(function () {    
-	var id = 1;
+var table3 = $("#table3");
+$(document).ready(function () {
+    getCourseData();
+    $("#add").click(function () {
+        table3.append
+        ('<tr valign="top"><td width="100px" align="center">'
+        + $("#question").val() + '</td><td width="100px" align="center">'
+        + $("#answer").val() + '</td><td width="100px" align="center">'
+        + $("#alt1").val() + '</td><td width="100px" align="center">'
+        + $("#alt2").val() + '</td><td width="100px" align="center">'
+        + $("#alt3").val() + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
+    var tempArray = [$("#alt1").val(), $("#alt2").val(), $("#alt3").val()];
+    addTestToModule(moduleCounter,$("#question").val(), $("#answer").val(),tempArray );
+    });
 
-	    $("#add").click(function () {
-	        $("#table3").append
-	        ('<tr valign="top"><td width="100px" align="center">'
-	        + (id++) + '</td><td width="100px"> '
-	        + $("#question").val() + '</td><td width="100px" align="center">'
-	        + $("#answer").val() + '</td><td width="100px" align="center">'
-	        + $("#alt1").val() + '</td><td width="100px" align="center">'
-	        + $("#alt2").val() + '</td><td width="100px" align="center">'
-	        + $("#alt3").val() + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
-	    });
-	    
+    table3.on('click', '.remCF', function () {
+        $(this).parent().parent().remove();
+    });
+});
 
-	    $("#table3").on('click', '.remCF', function () {
-	        $(this).parent().parent().remove();
-	    });
-	});
+function populateTestData() {
+    var module = courses[courseNumber].modules[moduleCounter];
+    moduleLevel = module.level;
+    if (module.tests != 'undefined') {
+        for (var y = 0; y < module.tests.length; y++) {
+            var table3String = '<tr valign="top">';
+            var test = module.tests[y];
+            table3String += '<td width="100px" align="center">'
+            + test.question + "</td>";
+            table3String += '<td width="100px" align="center">'
+            + test.answer + "</td>";
+            var counter;
+            for (var g = 0; g < test.alternatives.length; g++) {
+                var alternative = test.alternatives[g];
+                counter = g;
+                table3String += '<td width="100px" align="center">'
+                + alternative + "</td>";
 
-function populateTestData(courseNumber) {
-    var course = courses[courseNumber];
-    var table3 = $("#table3");
-    moduleLevel = course.level;
-    if (course.modules != 'undefined') {
-        for (var y = 0; y < course.modules.length; y++) {
-            var table2String = '<tr valign="top">';
-            var module = course.modules[y];
-            table2String += '<td width="100px" align="center">'
-            + module.moduleId + "</td>";
-            moduleCounter = module.moduleId;
-            table2String += '<td width="100px" align="center">'
-            + module.level + "</td>";
-            table2String += '<td width="100px" align="center">'
-            + module.moduleName + "</td>";
-            table2String += '<td width="100px" align="center">'
-            + module.moduleDescriptiveText + "</td>";
-            table2String += '<td width="100px" align="center">'
-            + module.moduleMotivation + "</td>";
-            if (module.tests != 'undefined') {
-                table2String += '<td width="100px" align="center">'
-                + module.tests.length + "</td>";
-            } else {
-                // table2String += '</td>';
             }
-            table2String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"><a href="' + "" + '">Create Test</a></td>';
-            table2String += '</tr>';
-            table2.append(table2String);
+            if (counter < 2) {
+                if (counter < 1) {
+                    table3String += '<td width="100px" align="center">""</td>'
+                }
+
+                table3String += '<td width="100px" align="center">""</td>'
+            }
+            table3String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"></td>';
+            table3String += '</tr>';
+            table3.append(table3String);
         }
     }
 
 
 }
 
-function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotivationalText, moduleId) {
-    var tempModule = new Module(level);
-    tempModule.moduleDescriptiveText = moduleDescriptiveText;
-    tempModule.moduleId = moduleId;
-    tempModule.moduleMotivation = moduleMotivationalText;
-    tempModule.moduleName = moduleName;
-    console.log(courses);
-    courses[courseNumber].modules.push(tempModule);
+function addTestToModule(parent, question, answer, alternatives) {
+    var tempTest = new Test(parent);
+    tempTest.question = question;
+    tempTest.answer = answer;
+    tempTest.alternatives = alternatives.slice();
+    courses[courseNumber].modules[moduleCounter].tests.push(tempTest);
     postTestData(courses);
 
 
@@ -73,7 +69,7 @@ function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotiv
 
 function parseURL() {
     courseNumber = getQueryVariable("course");
-    return courseNumber;
+    moduleCounter = getQueryVariable("module")
 }
 
 function getQueryVariable(variable) {
@@ -142,7 +138,6 @@ var courses = [];
 var currentId = 0;
 
 function populateCourseData(json) {
-    var courseTable = $('#courseTable');
 
     for (var s = 0; s < json.length; s++) {
         var course = json[s];
@@ -158,21 +153,8 @@ function populateCourseData(json) {
 
         courses.push(tempCourse);
 
-        tableString += '<td width="100px" align="center">' + course.id
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.domain
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.level
-        + "</td>";
-        tableString += '<td width="100px" align="center">'
-        + course.descriptiveText + "</td>";
-
-        // Modules
-
         if (undefined != course.modules) {
-            tableString += '<td width="100px" align="center">'
-            + course.modules.length + "</td>";
-            tableString += "<td>";
+
 
             for (var c = 0; c < course.modules.length; c++) {
                 var module = course.modules[c];
@@ -199,23 +181,14 @@ function populateCourseData(json) {
                     courses[s].modules[c].tests.push(tempTest);
                 }
 
-                // tableString += module.moduleName + ' ';
-            }
-        } else {
-            tableString += "<td>";
-        }
 
-        var moduleEdit = "moduleedit.html";
-        moduleEdit += "?course=" + course.id;
-        tableString += '</td><td><a href="javascript:void(0);"class="remCF">Remove</a></td><td><a href="' + moduleEdit + '">Create modules</a></td>';
-        tableString += '</tr>';
-        $("#table1").append(tableString);
-    }
-    if (typeof parseURL == 'function') {
-        var moduleCourseId = parseURL();
-    }
-    if (typeof populateModuleData == 'function') {
-        populateModuleData(moduleCourseId);
+            }
+
+        }
+        parseURL();
+
+        populateTestData();
+
     }
 }
 

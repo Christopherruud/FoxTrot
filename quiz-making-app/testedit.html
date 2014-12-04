@@ -30,42 +30,50 @@
 <div data-role="page">
     <div data-role="main" class="ui-content">
         <div style="margin-top: 50px;">
-            <h3>Existing modules</h3>
-            <table data-role="moduleList" class="ui-responsive" id="table2" name="table2">
+            <h3>Create Test</h3>
+            <table data-role="testList" class="ui-responsive" id="table3" name="table3">
                 <thead>
                 <tr>
-                    <th width="100px">Module id</th>
-                    <th width="100px">Module level</th>
-                    <th width="100px">Module name</th>
-                    <th width="100px">Descriptive text</th>
-                    <th width="100px">Motivational text</th>
-                    <th width="100px">Number of Tests</th>
+                    <td width="100px" align="center">Question
+                    </th>
+                    <td width="100px" align="center">Answer
+                    </th>
+                    <td width="100px" align="center">Alternative 1
+                    </th>
+                    <td width="100px" align="center">Alternative 2
+                    </th>
+                    <td width="100px" align="center">Alternative 3
+                    </th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody class="list">
-
                 </tbody>
             </table>
         </div>
 
         <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
     If the width is less then 480px the label will be placed on above the form element-->
-
         <form method="post" id="myFrom" action="">
             <fieldset data-role="collapsible" data-theme="b"
                       data-content-theme="a">
-                <legend>Add new module</legend>
+                <legend>Add new question</legend>
                 <div class="ui-field-contain">
-                    <label for="name">Module name:</label>
-                    <input type="hidden" id="id"/>
-                    <input type="text" name="name" id="name" data-clear-btn="true"/>
-                    <label for="descriptiveText">Descriptive text:</label>
-                    <input type="text" name="descriptiveText" id="descriptiveText" data-clear-btn="true"/>
-                    <label for="descriptiveText">Motivational text:</label>
-                    <input type="text" name="motivationalText" id="motivationalText" data-clear-btn="true"/>
+
+                    <label for="question">Question:</label>
+                    <!--<input type="hidden" id="id"/>-->
+                    <input type="text" name="question" id="question" data-clear-btn="true"/>
+                    <label for="answer">Answer:</label>
+                    <input type="text" name="answer" id="answer" data-clear-btn="true"/>
+                    <label for="alt1">Alternative 1:</label>
+                    <input type="text" name="alt1" id="alt1" data-clear-btn="true"/>
+                    <label for="alt2">Alternative 2:</label>
+                    <input type="text" name="alt2" id="alt2" data-clear-btn="true"/>
+                    <label for="alt3">Alternative 3:</label>
+                    <input type="text" name="alt3" id="alt3" data-clear-btn="true"/>
                 </div>
                 <table>
-                    <button id="add" type="button">Add to module to list</button>
+                    <button id="add" type="button">Add to tests</button>
                 </table>
             </fieldset>
         </form>
@@ -76,7 +84,7 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<script src="js/moduleedit.js"></script>
+<script src="js/testedit.js"></script>
 
 </body>
 </html>

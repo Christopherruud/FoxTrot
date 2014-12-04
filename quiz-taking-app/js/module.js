@@ -62,7 +62,11 @@ function populateModule(isInModule){
 			//id = moduleElement.moduleId;
 
 
-			btn.addEventListener("click", function(){window.location = urlString});
+
+			(function(urlString) {
+				btn.addEventListener("click", function(){window.location = urlString});
+			})(urlString);
+
 
 			moduleNumber++;
 		}

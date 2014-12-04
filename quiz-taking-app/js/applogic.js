@@ -138,11 +138,6 @@ function populateCourseData(json, isInModule) {
 		populate(courses, isInModule);	
 	}
 }
-
-
-//TODO - add logic for reading and writing to and from usersettings and the
-//datastructure therein.
-
 //lifted from the demo - used to turn json notation into js object...
 var objectStorage = new Object();
 

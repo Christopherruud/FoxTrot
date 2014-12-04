@@ -1,12 +1,9 @@
-$(document)
-    .ready(
+$(document).ready(
     function () {
-
-        $("#add")
-            .click(
+        getCourseData();
+        $("#add").click(
             function () {
-                $("#table1")
-                    .append(
+                $("#table1").append(
                     '<tr valign="top"><td width="100px" align="center">'
                     + (++currentId)
                     + '</td><td width="100px" align="center">'
@@ -158,12 +155,6 @@ function populateCourseData(json) {
         tableString += '</td><td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"><a href="' + moduleEdit + '">Create modules</a></td>';
         tableString += '</tr>';
         $("#table1").append(tableString);
-    }
-    if (typeof parseURL == 'function') {
-        var moduleCourseId = parseURL();
-    }
-    if (typeof populateModuleData == 'function') {
-        populateModuleData(courses, moduleCourseId);
     }
 }
 
