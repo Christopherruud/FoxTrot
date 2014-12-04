@@ -47,11 +47,13 @@ function populateModule(isInModule){
 			var btn = document.createElement("BUTTON");        // Create a <button> element
 
 			//url tilhørighet
-			var url;
+			//Den samme siden blir lukket opp når den
+			
+			//var url;
 			var urlString = "module.html";
 			urlString+='?module='+courses[idCourse].modules[Module].moduleId;
 			console.log(urlString);
-			url = urlString;
+			//url = urlString;
 
 			btn.textContent=moduleElement + " " + moduleNumber;            
 
@@ -60,7 +62,7 @@ function populateModule(isInModule){
 			//id = moduleElement.moduleId;
 
 
-			btn.addEventListener("click", function(){window.location = url});
+			btn.addEventListener("click", function(){window.location = urlString});
 
 			moduleNumber++;
 		}
