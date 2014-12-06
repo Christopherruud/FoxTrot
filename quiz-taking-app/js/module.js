@@ -30,6 +30,7 @@ function populateModule(isInModule){
 			console.log(isInModule + " i modul");
 
 			var testElements = courses[idCourse].modules[Module].tests;
+			debugger;
 			var nr = 1;
 
 
@@ -76,78 +77,72 @@ function populateModule(isInModule){
 
 //setter opp spørsmålene i HTML
 function setTest(sporsmol){
-	console.log(sporsmol);
+	//console.log(sporsmol);
 	var spm = sporsmol;
-	console.log(spm);
-	var setup = document.getElementsByClassName("new-test")[0];
+	//console.log(spm);
+	var setup = document.getElementById("newtest");
 
 	//for å ta vare på alle alternativer og teste på svar
-	var qu;
-	var answers = [];
-	var alternative = [];
-	//går igjennom spørsmålene
-	for(var i = 0; i< spm.length; i++){
-		if(spm.length>1){
-			qu = document.getElementById("question");
-			answers[i] = spm.answer;
-			console.log(answers[i]);
-			console.log(qu);
-			//kan droppe denne if?
-			if(qu){
-				qu.innerHTML = spm.question;
-				//fester ting på div
-				setup.appendChild(qu);
-				for(var j = 0; j<spm.alternatives.length; j++){
-					alternative[j] = smp.alternatives[j];
-					console.log(alternative[j]);
-					var element;
-					element = document.getElementById("alternatives");
-					if(element){
-						element.innerHTML = spm.alternatives[j];
-						//fester alternativer på div
-						setup.appendChild(element);
-					}
-				}
-			}
-		}
-	}
+	var qu = document.getElementById("questions");
 
+	for(var i = 0; i< spm.length; i++){
+		
+		//lager hvert enkelt spm i wrapper hvert spm får en id man søke på. 
+		var question = document.createElement("div");
+		question.setAttribute("id", "question" +i);
+		question.setAttribute("class", "question");
+
+		//lager en ny div for å putte alternativer i.
+		var alternatives = document.createElement("div");
+		alternatives.setAttribute("class", "alternatives");
+
+		//spm tekst
+		var questionElement = document.createElement("P");
+		questionElement.innerHTML = spm[i].question;
+		questionElement.setAttribute("class", "question-text");
+		question.appendChild(questionElement);
+
+		//genererer alternativer til spm / radio btn.
+		
+		//MANGLER MÅTE Å GODKJENNE PÅ! 
+		//mangler å sjekke riktig svar! 
+		//mangler lagre funksjon
+		
+		for(var j = 0; j<spm[i].alternatives.length; j++){
+			//kan wrappe alternatives med radio buttons
+			var alternativeElement = document.createElement("input");
+			//lager tekst for hver input dvs tekst på alternativene
+			var alternativeElementLabel = document.createElement("label");
+			//fester radio buttons
+			alternativeElement.setAttribute("type", "radio");
+			alternativeElement.setAttribute("name", "group"+i);
+			
+			//her får hver radio btn en id
+			alternativeElement.setAttribute("id", "radio_"+i+"_"+j);//skal være unik
+			
+			//setter verdi for å vise tekst?
+			alternativeElement.setAttribute("value", spm[i].alternatives[j]);
+			
+			alternativeElementLabel.innerHTML = spm[i].alternatives[j];
+			alternativeElementLabel.setAttribute("for", "radio_"+i+"_"+j);
+			
+			alternatives.appendChild(alternativeElement);
+			alternatives.appendChild(alternativeElementLabel);
+			
+			
+		}
+
+		question.appendChild(alternatives);
+		qu.appendChild(question);
+
+	}
 }
 
-/*
-for(var i = 0; i<spm.length; i++){
-	var h5 = document.createElement("h5");
-	h5.innerHTML = tests[i].question;
-	setup.appendChild(h5);
-
-	//var element;
-	//element = document.getElementById("logo");
-	//if (element) {
-	//    element.innerHTML = "-new content-";
-	//}
+//sjekker riktig svar
+function validateAnswer(radioBtn){
+	//sjekke med denne radio btn siden den har en id
+	//id tilsvarer spm nr og alternative nr.
+	//linje 120
+}
 
 
-	//var p = document.createElement("p");
-	//p.innerHTML = tests[i].answer;
-	//setup.appendChild(p);
-
-	var h6 = document.createElement("h6");
-	h6.innerHTML = tests[i].alternatives[i];
-	setup.appendChild(h6);
-}*/
-
-//$('#module').append(mId);
-//VIKTIG om vi vil ha en "one page app"
-/*$.ajax({
-		  url: "test.html",
-		  context: document.body
-		}).done(function(response) {
-		  $( this ).addClass( "done" );
-		  console.log(response);
-		});
- */	
-
-
-/*	if(mId == id){
-
- */
