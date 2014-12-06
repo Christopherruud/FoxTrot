@@ -34,7 +34,7 @@ function populateModule(isInModule){
 
 
 			//testElements.forEach(function(test){
-			console.log(test);
+			console.log(testElements);
 			var btn = document.createElement("BUTTON");  
 			btn.textContent="Test "+ nr; 
 			document.body.appendChild(btn);
@@ -60,7 +60,7 @@ function populateModule(isInModule){
 			//id = moduleElement.moduleId;
 
 
-
+			//setter riktig URL til Modul man skal inn i
 			(function(urlString) {
 				btn.addEventListener("click", function(){window.location = urlString});
 			})(urlString);
@@ -74,30 +74,28 @@ function populateModule(isInModule){
 
 }
 
-function addInfo(modul){
-
-}
-
-function setTest(spm){
+//setter opp spørsmålene i HTML
+function setTest(sporsmol){
+	var spm = sporsmol;
 	var setup = document.getElementsByClassName("new-test")[0];
 
 	//for å ta vare på alle alternativer og teste på svar
-	var question;
+	var qu;
 	var answer = [];
 	var alternative = [];
 	//går igjennom spørsmålene
 	for(var i = 0; i< spm.length; i++){
 		if(smp.length>1){
-			question = document.getElementById("question");
+			qu = document.getElementById("question");
 			answer[i] = spm.answer;
-			if(question){
-				question.innerHTML = ""+= spm.question;
+			if(qu){
+				qu.innerHTML = spm.question;
 				for(var j = 0; j<spm.alternatives.length; j++){
 					alternative[j] = smp.alternatives[j];
 					var element;
 					element = document.getElementById("alternatives");
 					if(element){
-						element.innerHTML = ""+= spm.alternatives[j];
+						element.innerHTML = spm.alternatives[j];
 					}
 				}
 			}
