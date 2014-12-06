@@ -8,40 +8,42 @@ var idCourse;
 function setModules(array, courseId, isInModule){
 	console.log(array);
 	modules = array;
-	
+
 	console.log(modules);
 	idCourse = courseId;
-	
+
 	populateModule(isInModule);
 }
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
 function populateModule(isInModule){
 	console.log(isInModule, " utenfor modul");
-	
+
 	for (var Module in modules){
 
 		console.log(Module);
 
 		console.log(courses[idCourse].modules[Module].moduleId);
 
-		//start her
+		//Hvis vi er inne i riktig modul
 		if(isInModule){
 			console.log(isInModule + " i modul");
 
 			var testElements = courses[idCourse].modules[Module].tests;
 			var nr = 1;
-			testElements.forEach(function(test){
-				console.log(test);
-				var btn = document.createElement("BUTTON");  
-				btn.textContent="Test "+ nr; 
-				document.body.appendChild(btn);
-				btn.addEventListener("click", function(){setTest(test)});
-				//test er nok ikke noe
-				nr++;
-			});
+
+
+			//testElements.forEach(function(test){
+			console.log(test);
+			var btn = document.createElement("BUTTON");  
+			btn.textContent="Test "+ nr; 
+			document.body.appendChild(btn);
+			//her sender vi med testen fra modulet
+			btn.addEventListener("click", function(){setTest(testElements)});
+			//test er nok ikke noe
+			nr++;
 			break;
-			
+
 		} else {
 			//addInfo(courses[idCourse].modules[Module].moduleId);
 			var moduleElement = courses[idCourse].modules[Module].moduleName;
@@ -66,7 +68,7 @@ function populateModule(isInModule){
 
 			moduleNumber++;
 		}
-		
+
 
 	}
 
@@ -76,23 +78,55 @@ function addInfo(modul){
 
 }
 
-function setTest(tests){
+function setTest(spm){
 	var setup = document.getElementsByClassName("new-test")[0];
-	var tests = tests;
-	for(var i = 0; i<tests.length; i++){
-		var h5 = document.createElement("h5");
-		h5.innerHTML = tests[i].question;
-		setup.appendChild(h5);
-		var p = document.createElement("p");
-		p.innerHTML = tests[i].answer;
-		setup.appendChild(p);
-		var h6 = document.createElement("h6");
-		h6.innerHTML = tests[i].alternatives[i];
-		setup.appendChild(h6);
+
+	//for å ta vare på alle alternativer og teste på svar
+	var question;
+	var answer = [];
+	var alternative = [];
+	//går igjennom spørsmålene
+	for(var i = 0; i< spm.length; i++){
+		if(smp.length>1){
+			question = document.getElementById("question");
+			answer[i] = spm.answer;
+			if(question){
+				question.innerHTML = ""+= spm.question;
+				for(var j = 0; j<spm.alternatives.length; j++){
+					alternative[j] = smp.alternatives[j];
+					var element;
+					element = document.getElementById("alternatives");
+					if(element){
+						element.innerHTML = ""+= spm.alternatives[j];
+					}
+				}
+			}
+		}
 	}
+
 }
 
+/*
+for(var i = 0; i<spm.length; i++){
+	var h5 = document.createElement("h5");
+	h5.innerHTML = tests[i].question;
+	setup.appendChild(h5);
 
+	//var element;
+	//element = document.getElementById("logo");
+	//if (element) {
+	//    element.innerHTML = "-new content-";
+	//}
+
+
+	//var p = document.createElement("p");
+	//p.innerHTML = tests[i].answer;
+	//setup.appendChild(p);
+
+	var h6 = document.createElement("h6");
+	h6.innerHTML = tests[i].alternatives[i];
+	setup.appendChild(h6);
+}*/
 
 //$('#module').append(mId);
 //VIKTIG om vi vil ha en "one page app"
