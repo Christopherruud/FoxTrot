@@ -76,26 +76,36 @@ function populateModule(isInModule){
 
 //setter opp spørsmålene i HTML
 function setTest(sporsmol){
+	console.log(sporsmol);
 	var spm = sporsmol;
+	console.log(spm);
 	var setup = document.getElementsByClassName("new-test")[0];
 
 	//for å ta vare på alle alternativer og teste på svar
 	var qu;
-	var answer = [];
+	var answers = [];
 	var alternative = [];
 	//går igjennom spørsmålene
 	for(var i = 0; i< spm.length; i++){
 		if(spm.length>1){
 			qu = document.getElementById("question");
-			answer[i] = spm.answer;
+			answers[i] = spm.answer;
+			console.log(answers[i]);
+			console.log(qu);
+			//kan droppe denne if?
 			if(qu){
 				qu.innerHTML = spm.question;
+				//fester ting på div
+				setup.appendChild(qu);
 				for(var j = 0; j<spm.alternatives.length; j++){
 					alternative[j] = smp.alternatives[j];
+					console.log(alternative[j]);
 					var element;
 					element = document.getElementById("alternatives");
 					if(element){
 						element.innerHTML = spm.alternatives[j];
+						//fester alternativer på div
+						setup.appendChild(element);
 					}
 				}
 			}
