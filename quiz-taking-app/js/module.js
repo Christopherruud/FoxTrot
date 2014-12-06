@@ -85,7 +85,7 @@ function setTest(sporsmol){
 	var alternative = [];
 	//går igjennom spørsmålene
 	for(var i = 0; i< spm.length; i++){
-		if(smp.length>1){
+		if(spm.length>1){
 			qu = document.getElementById("question");
 			answer[i] = spm.answer;
 			if(qu){
