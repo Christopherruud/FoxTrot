@@ -53,7 +53,7 @@ function populateModule(isInModule) {
             });
             //test er nok ikke noe
             nr++;
-            break;
+            //break;
 
         } else {
             //addInfo(courses[idCourse].modules[Module].moduleId);
