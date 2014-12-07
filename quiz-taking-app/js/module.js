@@ -127,11 +127,15 @@ function setTest(sporsmol) {
         //lenger ned er det to funksjoner i progress som kan brukes?
         //svar
         var answerElement = document.createElement("input");
+        var answer = document.createElement("label");
         answerElement.setAttribute("type", "radio");
         answerElement.setAttribute("name", "group" +i);
-        answerElement.setAttribute("id", "radio_"+i+"_"+j);
+        answerElement.setAttribute("id", "radio_"+i+"_");
         answerElement.setAttribute("value", spm[i].answer);
+        answer.innerHTML = spm[i].answer;
+        answer.setAttribute("for", "radio_"+ i + "_");
         alternatives.appendChild(answerElement);
+        alternatives.appendChild(answer);
         
         answerElement.innerHTML = spm[i].answer;
         //genererer alternativer til spm / radio btn.
