@@ -4,7 +4,8 @@ var moduleNumber = 0;
 //var id;
 var modules = [];
 var idCourse;
-
+var currentCourse;
+var currentModule;
 
 function Result() {
     var courseID;
@@ -35,11 +36,11 @@ function populateModule(isInModule) {
 
         //Hvis vi er inne i riktig modul
         if (isInModule) {
-        	
+
+            parseURL();
             console.log(isInModule + " i modul");
 
-            var testElements = courses[idCourse].modules[Module].tests;
-            debugger;
+            var testElements = courses[currentCourse].modules[currentModule].tests;
             var nr = 1;
 
 
@@ -62,7 +63,8 @@ function populateModule(isInModule) {
             var btn = document.createElement("BUTTON");        // Create a <button> element
 
             var urlString = "module.html";
-            urlString += '?module=' + courses[idCourse].modules[Module].moduleId;
+            urlString += '?course=' + idCourse;
+            urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
             console.log(urlString);
 
             btn.textContent = moduleElement + " " + moduleNumber;
@@ -235,17 +237,14 @@ function populateResultData(json) {
     //TODO ALT UNDER ER BARE SØPPEL!
     for (var s = 0; s < json.length; s++) {
         var result = json[s];
-        course = explodeJSON(course);
-        var tableString = "<tr>";
-        // Name
-        var tempCourse = new Course(course.domain);
-        tempCourse.level = course.level;
-        tempCourse.id = course.id;
-        currentId = course.id;
-        tempCourse.descriptiveText = course.descriptiveText;
-        tempCourse.modules = [];
+        result = explodeJSON(result);
 
-        courses.push(tempCourse);
+        var tempResult = new Result();
+        tempResult.courseId = result.courseId;
+        tempResult.moduleId = result.moduleId;
+        tempResult.testResults = result.testResults.slice();
+
+
 
         tableString += '<td width="100px" align="center">' + course.id
         + "</td>";
@@ -308,4 +307,21 @@ function explodeJSON(object) {
     }
     //console.log(object);
     return object;
+}
+
+function parseURL() {
+    currentCourse = getQueryVariable("course");
+    currentModule =getQueryVariable("module");
+}
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return (false);
 }
