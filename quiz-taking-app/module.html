@@ -2,12 +2,18 @@
 
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 <script src="js/jquery-1.10.1.min.js"></script>
 <script src="js/applogic.js"></script>
 <script src="js/course.js"></script>
 <script src="js/module.js"></script>
+
+<div data-role="main" class="ui-content">
 
 <h2 id="module">Module </h2>
 
@@ -18,7 +24,7 @@
         getCourseData(true);
 
     </script>
-    <!-- Her gj¿res mye styling inne i htmlen med radio btn og tekst -->
+    <!-- Her gjï¿½res mye styling inne i htmlen med radio btn og tekst -->
 <style>
 .question{background-color:#CCC; margin-top:20px; padding:10px;}
 input[type="radio"]{display:inline-block; width:20%;}
@@ -31,6 +37,7 @@ label{display:inline-block; width:75%;}
 		
 	</div>
  
+</div>
 </div>
 
 <input type="button" onclick="history.back();" value="Back">
