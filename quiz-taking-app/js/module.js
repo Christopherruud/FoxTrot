@@ -20,24 +20,24 @@ function Result() {
 
 
 function setModules(array, courseId, isInModule) {
-	console.log(array);
-	modules = array;
+    console.log(array);
+    modules = array;
 
-	console.log(modules);
-	idCourse = courseId;
+    console.log(modules);
+    idCourse = courseId;
 
-	populateModule(isInModule);
+    populateModule(isInModule);
 }
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
 function populateModule(isInModule) {
-	console.log(isInModule, " utenfor modul");
+    console.log(isInModule, " utenfor modul");
 
-	for (var Module in modules) {
+    for (var Module in modules) {
 
-		console.log(Module);
+        console.log(Module);
 
-		console.log(courses[idCourse].modules[Module].moduleId);
+        console.log(courses[idCourse].modules[Module].moduleId);
 
         //Hvis vi er inne i riktig modul
         if (isInModule) {
@@ -45,53 +45,53 @@ function populateModule(isInModule) {
             parseURL();
             console.log(isInModule + " i modul");
 
-			var testElements = courses[currentCourse].modules[currentModule].tests;
-			var nr = 1;
+            var testElements = courses[currentCourse].modules[currentModule].tests;
+            var nr = 1;
 
 
-			//testElements.forEach(function(test){
-			console.log(testElements);
-			var btn = document.createElement("BUTTON");
-			btn.textContent = "Test " + nr;
-			document.body.appendChild(btn);
-			//her sender vi med testen fra modulet
-			btn.addEventListener("click", function () {
-				setTest(testElements)
-			});
-			//test er nok ikke noe
-			nr++;
-			break;
+            //testElements.forEach(function(test){
+            console.log(testElements);
+            var btn = document.createElement("BUTTON");
+            btn.textContent = "Test " + nr;
+            document.body.appendChild(btn);
+            //her sender vi med testen fra modulet
+            btn.addEventListener("click", function () {
+                setTest(testElements)
+            });
+            //test er nok ikke noe
+            nr++;
+            break;
 
-		} else {
-			//addInfo(courses[idCourse].modules[Module].moduleId);
-			var moduleElement = courses[idCourse].modules[Module].moduleName;
-			var btn = document.createElement("BUTTON");        // Create a <button> element
+        } else {
+            //addInfo(courses[idCourse].modules[Module].moduleId);
+            var moduleElement = courses[idCourse].modules[Module].moduleName;
+            var btn = document.createElement("BUTTON");        // Create a <button> element
 
-			var urlString = "module.html";
-			urlString += '?course=' + idCourse;
-			urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
-			console.log(urlString);
+            var urlString = "module.html";
+            urlString += '?course=' + idCourse;
+            urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
+            console.log(urlString);
 
-			btn.textContent = moduleElement + " " + moduleNumber;
+            btn.textContent = moduleElement + " " + moduleNumber;
 
-			document.body.appendChild(btn);                    // Append <button> to <body>
+            document.body.appendChild(btn);                    // Append <button> to <body>
 
-			//id = moduleElement.moduleId;
-
-
-			//setter riktig URL til Modul man skal inn i
-			(function (urlString) {
-				btn.addEventListener("click", function () {
-					window.location = urlString
-				});
-			})(urlString);
+            //id = moduleElement.moduleId;
 
 
-			moduleNumber++;
-		}
+            //setter riktig URL til Modul man skal inn i
+            (function (urlString) {
+                btn.addEventListener("click", function () {
+                    window.location = urlString
+                });
+            })(urlString);
 
 
-	}
+            moduleNumber++;
+        }
+
+
+    }
 
 }
 
@@ -186,81 +186,91 @@ function setTest(sporsmol) {
 }
 //litt usikker på hvor vi vil sjekke om radio btns er checked...
 function checkRadio() {
-	var tmpTest = new Result();
-	tmpTest.courseId = currentCourse;
-	tmpTest.moduleId = currentModule;
-	tmpTest.testResults = [];
-	var poeng = 0;
-	var divs = document.getElementsByClassName("alternatives");
-	for(var i = 0; i<divs.length; i++){
-		if (document.getElementById("radio_correct_"+i).checked == true){
-			poeng++;
-			tmpTest.testResults.push(1);
-			
-		}else{
-			tmpTest.testResults.push(0);
-		}
-	}
-	document.getElementById("anSwer").innerHTML = "Totalt antall riktige: "+ poeng;
-	
-	results.push(tmpTest);
-	postResults(results);
+    var tmpTest = new Result();
+    tmpTest.courseId = currentCourse;
+    tmpTest.moduleId = currentModule;
+    tmpTest.testResults = [];
+    var poeng = 0;
+    var divs = document.getElementsByClassName("alternatives");
+    for (var i = 0; i < divs.length; i++) {
+        if (document.getElementById("radio_correct_" + i).checked == true) {
+            poeng++;
+            tmpTest.testResults.push(1);
 
+        } else {
+            tmpTest.testResults.push(0);
+        }
+    }
+    document.getElementById("anSwer").innerHTML = "Totalt antall riktige: " + poeng;
+    var found = false;
+    for (var xxl = 0; xxl < results.length; xxl++) {
+
+        if (results[xxl].courseId == currentCourse && results[xxl].moduleId == currentModule) {
+            found = true;
+            console.log(found);
+            break;
+        }
+
+    }
+    if (!found) {
+        console.log(found);
+        results.push(tmpTest);
+    }
+    postResults(results);
 }
 
 //usikker på hvor vi skal lage denne btn fra. 
 //kan være lurt å lage den i html, men er usikker på listener der.
 function makeCheckBtn(radioBtn) {
-	var btn = document.createElement("BUTTON");
-	btn.textContent = "Check it!";
-	document.body.appendChild(btn);
-	//her sender vi med testen fra modulet
-	btn.addEventListener("click", function () {
-		validateAnswer()
-	});
+    var btn = document.createElement("BUTTON");
+    btn.textContent = "Check it!";
+    document.body.appendChild(btn);
+    //her sender vi med testen fra modulet
+    btn.addEventListener("click", function () {
+        validateAnswer()
+    });
 }
 
 //sjekker riktig svar
 function validateAnswer(radioBtn) {
-	//sjekke med denne radio btn siden den har en id
-	//id tilsvarer spm nr og alternative nr.
-	//linje 120
+    //sjekke med denne radio btn siden den har en id
+    //id tilsvarer spm nr og alternative nr.
+    //linje 120
 
 }
 
 
 //skriver arrayet med resultater til JSON
 function postResults(json) {
-	var jsonString = JSON.stringify(json);
-	console.log("postResults invoked with data:");
-	console.log(json);
-	$.ajax({
-		type: "POST",
-		contentType: "text/plain",
-		url: "api/userSettings/quizResults",
-		data: jsonString,
-		success: function (data) {
-			// lolno
-		},
-		dataType: "text"
-	});
+    var jsonString = JSON.stringify(json);
+    console.log("postResults invoked with data:");
+    console.log(json);
+    $.ajax({
+        type: "POST",
+        contentType: "text/plain",
+        url: "/api/userSettings/quizDebugResults",
+        data: jsonString,
+        success: function (data) {
+            // lolno
+        },
+        dataType: "text"
+    });
 
 }
 
 //metode som henter data for brukerens kursprogress
 
-function getResults() {
+(function getResults() {
 
-	$.getJSON("api/userSettings/quizResults", function (data) {
+    $.getJSON("/api/userSettings/quizResults", function (data) {
 
 
+    }).done(function (data) {
 
-	}).done(function (data) {
+        populateResultData(data);
+    });
 
-		populateResultData(data);
-	});
-
-}
+})();
 
 //hente resultater fra JSON og lagre de i nettsiden.
 
@@ -277,22 +287,22 @@ function populateResultData(json) {
         tempResult.testResults = result.testResults.slice();
         results.push(tempResult);
     }
-
+    console.log(results);
 }
 
 var objectStorage = new Object();
 
 function explodeJSON(object) {
-	if (object instanceof Object == true) {
-		objectStorage[object['@id']] = object;
+    if (object instanceof Object == true) {
+        objectStorage[object['@id']] = object;
 
-	} else {
-		//console.log('Object is not object');
-		object = objectStorage[object];
-		//console.log(object);
-	}
-	//console.log(object);
-	return object;
+    } else {
+        //console.log('Object is not object');
+        object = objectStorage[object];
+        //console.log(object);
+    }
+    //console.log(object);
+    return object;
 }
 
 function parseURL() {
@@ -302,13 +312,13 @@ function parseURL() {
 }
 
 function getQueryVariable(variable) {
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
-	for (var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split("=");
-		if (pair[0] == variable) {
-			return pair[1];
-		}
-	}
-	return (false);
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return (false);
 }
