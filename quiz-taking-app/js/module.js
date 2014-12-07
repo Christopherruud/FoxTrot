@@ -120,6 +120,7 @@ function setTest(sporsmol){
 			var alternativeElement = document.createElement("input");
 			//lager tekst for hver input dvs tekst på alternativene
 			var alternativeElementLabel = document.createElement("label");
+			
 			//fester radio buttons
 			alternativeElement.setAttribute("type", "radio");
 			alternativeElement.setAttribute("name", "group"+i);
@@ -144,6 +145,11 @@ function setTest(sporsmol){
 		qu.appendChild(question);
 
 	}
+	
+}
+//litt usikker på hvor vi vil sjekke om radio btns er checked...
+function checkRadio(){
+	
 	
 }
 
