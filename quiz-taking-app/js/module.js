@@ -32,14 +32,17 @@ function populateModule(isInModule) {
 
     for (var Module in modules) {
 
-        //onsole.log(Module);
+
+        //console.log(Module);
 
         //console.log(courses[idCourse].modules[Module].moduleId);
         //Hvis vi er inne i riktig modul
         if (isInModule) {
             //kan putte dette i en egen FUNCTION
             parseURL();
+
             // console.log(isInModule + " i modul");
+
             $("#modulename").html(courses[currentCourse].modules[currentModule].moduleName);
             $("#moduletext").html(courses[currentCourse].modules[currentModule].moduleDescriptiveText);
             $("#moduleMtext").html(courses[currentCourse].modules[currentModule].moduleMotivation);
