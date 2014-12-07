@@ -35,6 +35,7 @@ function populateModule(isInModule) {
 
         //Hvis vi er inne i riktig modul
         if (isInModule) {
+        	
             console.log(isInModule + " i modul");
 
             var testElements = courses[idCourse].modules[Module].tests;
@@ -53,7 +54,7 @@ function populateModule(isInModule) {
             });
             //test er nok ikke noe
             nr++;
-            //break;
+            break;
 
         } else {
             //addInfo(courses[idCourse].modules[Module].moduleId);
