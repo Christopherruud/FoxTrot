@@ -95,14 +95,15 @@ function setTest(sporsmol) {
     var setup = document.getElementById("newtest");
 
     //riktig svar må taes vare på
-    var answers = [];
+    //var answers = [];
 
     //for å ta vare på alle alternativer og teste på svar
     var qu = document.getElementById("questions");
 
     for (var i = 0; i < spm.length; i++) {
+    	
         //legger inn svar. kun et svar pr spm
-        answers[i] = spm[i].answer;
+        //answers[i] = spm[i].answer;
 
         //lager hvert enkelt spm i wrapper hvert spm får en id man søke på.
         var question = document.createElement("div");
@@ -124,8 +125,15 @@ function setTest(sporsmol) {
         //mangler å sjekke riktig svar!
         //mangler lagre funksjon
         //lenger ned er det to funksjoner i progress som kan brukes?
-
-
+        //svar
+        var answerElement = document.createElement("input");
+        answerElement.setAttribute("type", "radio");
+        answerElement.setAttribute("name", "group" +i);
+        answerElement.setAttribute("id", "radio_"+i+"_"+j);
+        answerElement.setAttribute("value", spm[i].answer);
+        alternatives.appendChild(answerElement);
+        
+        answerElement.innerHTML = spm[i].answer;
         //genererer alternativer til spm / radio btn.
         for (var j = 0; j < spm[i].alternatives.length; j++) {
             //kan wrappe alternatives med radio buttons
