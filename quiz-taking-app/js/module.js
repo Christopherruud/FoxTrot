@@ -202,6 +202,9 @@ function checkRadio() {
 	var svar = "Totalt antall riktige: "+ poeng;
 	element.appendChild(svar);
 
+	results.push(tmpTest);
+	postResults(results);
+
 }
 
 //usikker på hvor vi skal lage denne btn fra. 
