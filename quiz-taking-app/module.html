@@ -18,7 +18,7 @@
 
 <script>
 $(document).ready(function () {
-    getCourseData(true);
+    getCourseData(true); 
 });
 </script>
 
@@ -30,12 +30,21 @@ $(document).ready(function () {
 
 <h3>Information about the module</h3>
 
-<div id="moduletext">
+<div id="modulename">
 </div>
+<div id="moduletext">
+</div> 
+<div id="moduleMtext">
+</div>
+<!-- Skriver inn text i div'ene -->
 <script>
-$("#moduletext").html(currentCourse,currentModule);
-
+ function insertText() {
+    $("#modulename").html(courses[currentCourse].modules[currentModule].moduleName);
+    $("#moduletext").html(courses[currentCourse].modules[currentModule].moduleDescriptiveText);
+    $("#moduleMtext").html(courses[currentCourse].modules[currentModule].moduleMotivation);
+    }; 
 </script>
+
 
 <!-- Her gj�res mye styling inne i htmlen med radio btn og tekst -->
 <style>
@@ -74,7 +83,6 @@ $("#moduletext").html(currentCourse,currentModule);
 <input type="button" onclick="history.back();" value="Back">
 <input type="button" onclick="checkRadio();" value="Submit">
 <!--<a href="/viewView"><button>Start quiz!</button></a>-->
-
 
 </body>
 </html>

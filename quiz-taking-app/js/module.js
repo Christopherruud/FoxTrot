@@ -16,6 +16,9 @@ function Result() {
 }
 
 
+
+
+
 function setModules(array, courseId, isInModule) {
 	console.log(array);
 	modules = array;
