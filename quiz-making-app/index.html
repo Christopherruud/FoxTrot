@@ -1,11 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+  <!--   <meta charset="utf-8">
     <title>Quiz Maker</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/leaflet.css"/>
-    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <link rel="shortcut icon" href="../../favicon.ico"/> -->
+      <meta charset="utf-8">
+       <title>Quiz Maker</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <link rel="shortcut icon" href="../../favicon.ico"/>  
 </head>
 <script>
     /* this gets the web api url from the manifest file and makes it available as a Javascript variable */
@@ -37,7 +44,15 @@
     </div>
 </div>
 
-<div class="container">Here we can write static text</div>
+<div data-role="page">
+<div data-role="main" class="ui-content">
+<div style="margin-top: 50px;">
+<div class="container">
+Welcome to the foxtrot quiz making app. 
+Use the menu to navigate to courses. 
+There you can create different courses with varies levels of difficulty (modules). 
+In the modules you can create tests that new beginners to the DHIS2 
+can test their knowledge. Happy creating.</div>
 
 
 <script src="js/leaflet.js"></script>
@@ -48,7 +63,9 @@
 <script src="js/bootstrap.min.js"></script>
 
 <script src="js/Google.js"></script>
-
+</div>
+</div>
+</div>
 
 </body>
 </html>

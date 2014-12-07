@@ -36,6 +36,7 @@ function populateModule(isInModule) {
 
         //Hvis vi er inne i riktig modul
         if (isInModule) {
+        	//kan putte dette i en egen FUNCTION
             parseURL();
             console.log(isInModule + " i modul");
 
@@ -54,7 +55,7 @@ function populateModule(isInModule) {
             });
             //test er nok ikke noe
             nr++;
-            //break;
+            break;
 
         } else {
             //addInfo(courses[idCourse].modules[Module].moduleId);
@@ -127,12 +128,17 @@ function setTest(sporsmol) {
         //mangler å sjekke riktig svar!
         //mangler lagre funksjon
         //lenger ned er det to funksjoner i progress som kan brukes?
+       
         //svar
         var answerElement = document.createElement("input");
         var answer = document.createElement("label");
         answerElement.setAttribute("type", "radio");
         answerElement.setAttribute("name", "group" +i);
-        answerElement.setAttribute("id", "radio_"+i+"_");
+        
+        //burde være en lik id for alle riktige svar
+        //flere submittknapper pr alternativ liste
+        answerElement.setAttribute("id", "radio_correct_"+i);
+        
         answerElement.setAttribute("value", spm[i].answer);
         answer.innerHTML = spm[i].answer;
         answer.setAttribute("for", "radio_"+ i + "_");
@@ -175,7 +181,11 @@ function setTest(sporsmol) {
 }
 //litt usikker på hvor vi vil sjekke om radio btns er checked...
 function checkRadio() {
-
+	if (document.getElementById("radio_correct").checked == true){
+		document.write("RIKTIG");
+	}else{
+		document.write("fuck off looser");
+	}
 
 }
 
