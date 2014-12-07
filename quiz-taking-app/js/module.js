@@ -6,10 +6,11 @@ var modules = [];
 var idCourse;
 var currentCourse;
 var currentModule;
+var results = [];
 
 function Result() {
-    var courseID;
-    var moduleID;
+    var courseId;
+    var moduleId;
     var testResults = [];
 }
 
@@ -36,7 +37,7 @@ function populateModule(isInModule) {
 
         //Hvis vi er inne i riktig modul
         if (isInModule) {
-        	//kan putte dette i en egen FUNCTION
+            //kan putte dette i en egen FUNCTION
             parseURL();
             console.log(isInModule + " i modul");
 
@@ -104,7 +105,7 @@ function setTest(sporsmol) {
     var qu = document.getElementById("questions");
 
     for (var i = 0; i < spm.length; i++) {
-    	
+
         //legger inn svar. kun et svar pr spm
         //answers[i] = spm[i].answer;
 
@@ -128,23 +129,23 @@ function setTest(sporsmol) {
         //mangler å sjekke riktig svar!
         //mangler lagre funksjon
         //lenger ned er det to funksjoner i progress som kan brukes?
-       
+
         //svar
         var answerElement = document.createElement("input");
         var answer = document.createElement("label");
         answerElement.setAttribute("type", "radio");
-        answerElement.setAttribute("name", "group" +i);
-        
+        answerElement.setAttribute("name", "group" + i);
+
         //burde være en lik id for alle riktige svar
         //flere submittknapper pr alternativ liste
-        answerElement.setAttribute("id", "radio_correct_"+i);
-        
+        answerElement.setAttribute("id", "radio_correct_" + i);
+
         answerElement.setAttribute("value", spm[i].answer);
         answer.innerHTML = spm[i].answer;
-        answer.setAttribute("for", "radio_"+ i + "_");
+        answer.setAttribute("for", "radio_" + i + "_");
         alternatives.appendChild(answerElement);
         alternatives.appendChild(answer);
-        
+
         answerElement.innerHTML = spm[i].answer;
         //genererer alternativer til spm / radio btn.
         for (var j = 0; j < spm[i].alternatives.length; j++) {
@@ -181,11 +182,11 @@ function setTest(sporsmol) {
 }
 //litt usikker på hvor vi vil sjekke om radio btns er checked...
 function checkRadio() {
-	if (document.getElementById("radio_correct").checked == true){
-		document.write("RIKTIG");
-	}else{
-		document.write("fuck off looser");
-	}
+    if (document.getElementById("radio_correct").checked == true) {
+        document.write("RIKTIG");
+    } else {
+        document.write("fuck off looser");
+    }
 
 }
 
@@ -229,7 +230,7 @@ function postResults(json) {
 //metode som henter data for brukerens kursprogress
 
 function getResults() {
-    $.getJSON("/api/userSettings/quixResults", function (data) {
+    $.getJSON("/api/userSettings/quizResults", function (data) {
 
 
     }).done(function (data) {
@@ -243,7 +244,6 @@ function getResults() {
 
 function populateResultData(json) {
 
-    //TODO ALT UNDER ER BARE SØPPEL!
     for (var s = 0; s < json.length; s++) {
         var result = json[s];
         result = explodeJSON(result);
@@ -252,8 +252,7 @@ function populateResultData(json) {
         tempResult.courseId = result.courseId;
         tempResult.moduleId = result.moduleId;
         tempResult.testResults = result.testResults.slice();
-
-
+        results.push(tempResult);
     }
 }
 
@@ -274,7 +273,7 @@ function explodeJSON(object) {
 
 function parseURL() {
     currentCourse = getQueryVariable("course");
-    currentModule =getQueryVariable("module");
+    currentModule = getQueryVariable("module");
 }
 
 function getQueryVariable(variable) {
