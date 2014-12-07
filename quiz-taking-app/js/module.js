@@ -230,10 +230,12 @@ function validateAnswer(radioBtn) {
 //skriver arrayet med resultater til JSON
 function postResults(json) {
 	var jsonString = JSON.stringify(json);
+	console.log("postResults invoked with data:");
+	console.log(json);
 	$.ajax({
 		type: "POST",
 		contentType: "text/plain",
-		url: "/api/userSettings/quizResults",
+		url: "api/userSettings/quizResults",
 		data: jsonString,
 		success: function (data) {
 			// lolno
@@ -247,7 +249,7 @@ function postResults(json) {
 
 function getResults() {
 
-    $.getJSON("/api/userSettings/quizResults", function (data) {
+	$.getJSON("api/userSettings/quizResults", function (data) {
 
 
 
