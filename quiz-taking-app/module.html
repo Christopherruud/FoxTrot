@@ -2,29 +2,35 @@
 
 <html>
 <head>
- <meta charset="utf-8">
+   <!--  <meta charset="utf-8">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet"
           href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
     <link rel="stylesheet" href="css/leaflet.css"/>
-    <link rel="shortcut icon" href="../../favicon.ico"/>  
+    <link rel="shortcut icon" href="../../favicon.ico"/>  -->
 </head>
 <body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/applogic.js"></script>
+<script src="js/module.js"></script>
+<script src="js/course.js"></script>
 
-<div data-role="page">
-<div data-role="main" class="ui-content">
-<div style="margin-top: 50px;">
+<script>
+        getCourseData(true);
+        
+    </script>
 
 
 <h2 id="module">Module </h2>
 
 <p>This is a introduction for the modules in this course</p>
 
+ <h3>Information about the module</h3>
 
-    <script>
-        getCourseData(true);
+<div id="moduletext">
+</div>
 
-    </script>
+    
     <!-- Her gj�res mye styling inne i htmlen med radio btn og tekst -->
 <style>
 .question{background-color:#CCC; margin-top:20px; padding:10px;}
@@ -42,12 +48,9 @@ label{display:inline-block; width:75%;}
 </div>
 
 <input type="button" onclick="history.back();" value="Back">
+
 <!--<a href="/viewView"><button>Start quiz!</button></a>-->
-<script src="js/jquery-1.10.1.min.js"></script>
-<script src="js/applogic.js"></script>
-<script src="js/course.js"></script>
-<script src="js/module.js"></script>
-</div>
-</div>
+
+
 </body>
 </html>
