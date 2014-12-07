@@ -15,6 +15,7 @@ function openWin() {
 		mainWindow.resizeTo(screen.width - 400, screen.height);
 		quizWindow.moveTo(screen.width - 400, 100);
 		mainWindow.moveTo(0, 100);
+		mainWindow.focus();
 		quizWindow.focus();
 	}
 
