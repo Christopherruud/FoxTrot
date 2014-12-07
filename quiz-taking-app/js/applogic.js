@@ -31,35 +31,36 @@ function openWin() {
 
 function Course(domain) {
 	this.domain = domain;
-	var level, id, nextCourse, descriptiveText;
+	var level, id, descriptiveText;
 	var modules = [];
 }
 
 /**
- * 
+ *
  * @param level
  *            the level of the course this module belongs to
  */
 
 function Module(level) {
-	var moduleName, moduleId;
+	var moduleName, moduleId, moduleDescriptiveText, moduleMotivation; //motivation: why is this valuable
 	this.level = level;
 	var tests = [];
 
 }
 
 /**
- * 
+ *
  * @param moduleId
  *            the ID of the module this course belongs to
  */
 function Test(moduleId) {
-	var parent;
-	this.parent = moduleId;
+	var parentModule;
+	this.parentModule = moduleId;
 	var question;
 	var answer;
 	var alternatives = [];
 }
+
 
 function getCourseData(isInModule) {
 	console.log(isInModule + "martin er her i getCourse");

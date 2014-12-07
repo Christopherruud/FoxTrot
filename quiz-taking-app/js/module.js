@@ -5,170 +5,216 @@ var moduleNumber = 0;
 var modules = [];
 var idCourse;
 
-function setModules(array, courseId, isInModule){
-	console.log(array);
-	modules = array;
 
-	console.log(modules);
-	idCourse = courseId;
+function result() {
+    var courseID;
+    var moduleID;
+    var testResults = [];
+}
 
-	populateModule(isInModule);
+
+function setModules(array, courseId, isInModule) {
+    console.log(array);
+    modules = array;
+
+    console.log(modules);
+    idCourse = courseId;
+
+    populateModule(isInModule);
 }
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
-function populateModule(isInModule){
-	console.log(isInModule, " utenfor modul");
+function populateModule(isInModule) {
+    console.log(isInModule, " utenfor modul");
 
-	for (var Module in modules){
+    for (var Module in modules) {
 
-		console.log(Module);
+        console.log(Module);
 
-		console.log(courses[idCourse].modules[Module].moduleId);
+        console.log(courses[idCourse].modules[Module].moduleId);
 
-		//Hvis vi er inne i riktig modul
-		if(isInModule){
-			console.log(isInModule + " i modul");
+        //Hvis vi er inne i riktig modul
+        if (isInModule) {
+            console.log(isInModule + " i modul");
 
-			var testElements = courses[idCourse].modules[Module].tests;
-			debugger;
-			var nr = 1;
-
-
-			//testElements.forEach(function(test){
-			console.log(testElements);
-			var btn = document.createElement("BUTTON");  
-			btn.textContent="Test "+ nr; 
-			document.body.appendChild(btn);
-			//her sender vi med testen fra modulet
-			btn.addEventListener("click", function(){setTest(testElements)});
-			//test er nok ikke noe
-			nr++;
-			break;
-
-		} else {
-			//addInfo(courses[idCourse].modules[Module].moduleId);
-			var moduleElement = courses[idCourse].modules[Module].moduleName;
-			var btn = document.createElement("BUTTON");        // Create a <button> element
-
-			var urlString = "module.html";
-			urlString+='?module='+courses[idCourse].modules[Module].moduleId;
-			console.log(urlString);
-
-			btn.textContent=moduleElement + " " + moduleNumber;            
-
-			document.body.appendChild(btn);                    // Append <button> to <body>
-
-			//id = moduleElement.moduleId;
+            var testElements = courses[idCourse].modules[Module].tests;
+            debugger;
+            var nr = 1;
 
 
-			//setter riktig URL til Modul man skal inn i
-			(function(urlString) {
-				btn.addEventListener("click", function(){window.location = urlString});
-			})(urlString);
+            //testElements.forEach(function(test){
+            console.log(testElements);
+            var btn = document.createElement("BUTTON");
+            btn.textContent = "Test " + nr;
+            document.body.appendChild(btn);
+            //her sender vi med testen fra modulet
+            btn.addEventListener("click", function () {
+                setTest(testElements)
+            });
+            //test er nok ikke noe
+            nr++;
+            break;
+
+        } else {
+            //addInfo(courses[idCourse].modules[Module].moduleId);
+            var moduleElement = courses[idCourse].modules[Module].moduleName;
+            var btn = document.createElement("BUTTON");        // Create a <button> element
+
+            var urlString = "module.html";
+            urlString += '?module=' + courses[idCourse].modules[Module].moduleId;
+            console.log(urlString);
+
+            btn.textContent = moduleElement + " " + moduleNumber;
+
+            document.body.appendChild(btn);                    // Append <button> to <body>
+
+            //id = moduleElement.moduleId;
 
 
-			moduleNumber++;
-		}
+            //setter riktig URL til Modul man skal inn i
+            (function (urlString) {
+                btn.addEventListener("click", function () {
+                    window.location = urlString
+                });
+            })(urlString);
 
 
-	}
+            moduleNumber++;
+        }
+
+
+    }
 
 }
 
 //setter opp spørsmålene i HTML
-function setTest(sporsmol){
-	//console.log(sporsmol);
-	var spm = sporsmol;
-	//console.log(spm);
-	var setup = document.getElementById("newtest");
-	
-	//riktig svar må taes vare på
-	var answers = [];
+function setTest(sporsmol) {
+    //console.log(sporsmol);
+    var spm = sporsmol;
+    //console.log(spm);
+    var setup = document.getElementById("newtest");
 
-	//for å ta vare på alle alternativer og teste på svar
-	var qu = document.getElementById("questions");
+    //riktig svar må taes vare på
+    var answers = [];
 
-	for(var i = 0; i< spm.length; i++){
-		//legger inn svar. kun et svar pr spm
-		answers[i] = spm[i].answer;
+    //for å ta vare på alle alternativer og teste på svar
+    var qu = document.getElementById("questions");
 
-		//lager hvert enkelt spm i wrapper hvert spm får en id man søke på. 
-		var question = document.createElement("div");
-		question.setAttribute("id", "question" +i);
-		question.setAttribute("class", "question");
+    for (var i = 0; i < spm.length; i++) {
+        //legger inn svar. kun et svar pr spm
+        answers[i] = spm[i].answer;
 
-		//lager en ny div for å putte alternativer i.
-		var alternatives = document.createElement("div");
-		alternatives.setAttribute("class", "alternatives");
+        //lager hvert enkelt spm i wrapper hvert spm får en id man søke på.
+        var question = document.createElement("div");
+        question.setAttribute("id", "question" + i);
+        question.setAttribute("class", "question");
 
-		//spm tekst
-		var questionElement = document.createElement("P");
-		questionElement.innerHTML = spm[i].question;
-		questionElement.setAttribute("class", "question-text");
-		question.appendChild(questionElement);
+        //lager en ny div for å putte alternativer i.
+        var alternatives = document.createElement("div");
+        alternatives.setAttribute("class", "alternatives");
 
-		
-		//MANGLER MÅTE Å GODKJENNE PÅ! 
-		//mangler å sjekke riktig svar! 
-		//mangler lagre funksjon
-		//lenger ned er det to funksjoner i progress som kan brukes?
-		
-		
-		//genererer alternativer til spm / radio btn.
-		for(var j = 0; j<spm[i].alternatives.length; j++){
-			//kan wrappe alternatives med radio buttons
-			var alternativeElement = document.createElement("input");
-			//lager tekst for hver input dvs tekst på alternativene
-			var alternativeElementLabel = document.createElement("label");
-			
-			//fester radio buttons
-			alternativeElement.setAttribute("type", "radio");
-			alternativeElement.setAttribute("name", "group"+i);
-			
-			//her får hver radio btn en id
-			alternativeElement.setAttribute("id", "radio_"+i+"_"+j);//skal være unik
-			
-			//setter verdi for å vise tekst?
-			alternativeElement.setAttribute("value", spm[i].alternatives[j]);
-			
-			alternativeElementLabel.innerHTML = spm[i].alternatives[j];
-			alternativeElementLabel.setAttribute("for", "radio_"+i+"_"+j);
-			
-			//fester elementene til html
-			alternatives.appendChild(alternativeElement);
-			alternatives.appendChild(alternativeElementLabel);
-			
-			
-		}
-		//fester alt til divene
-		question.appendChild(alternatives);
-		qu.appendChild(question);
+        //spm tekst
+        var questionElement = document.createElement("P");
+        questionElement.innerHTML = spm[i].question;
+        questionElement.setAttribute("class", "question-text");
+        question.appendChild(questionElement);
 
-	}
-	
+
+        //MANGLER MÅTE Å GODKJENNE PÅ!
+        //mangler å sjekke riktig svar!
+        //mangler lagre funksjon
+        //lenger ned er det to funksjoner i progress som kan brukes?
+
+
+        //genererer alternativer til spm / radio btn.
+        for (var j = 0; j < spm[i].alternatives.length; j++) {
+            //kan wrappe alternatives med radio buttons
+            var alternativeElement = document.createElement("input");
+            //lager tekst for hver input dvs tekst på alternativene
+            var alternativeElementLabel = document.createElement("label");
+
+            //fester radio buttons
+            alternativeElement.setAttribute("type", "radio");
+            alternativeElement.setAttribute("name", "group" + i);
+
+            //her får hver radio btn en id
+            alternativeElement.setAttribute("id", "radio_" + i + "_" + j);//skal være unik
+
+            //setter verdi for å vise tekst?
+            alternativeElement.setAttribute("value", spm[i].alternatives[j]);
+
+            alternativeElementLabel.innerHTML = spm[i].alternatives[j];
+            alternativeElementLabel.setAttribute("for", "radio_" + i + "_" + j);
+
+            //fester elementene til html
+            alternatives.appendChild(alternativeElement);
+            alternatives.appendChild(alternativeElementLabel);
+
+
+        }
+        //fester alt til divene
+        question.appendChild(alternatives);
+        qu.appendChild(question);
+
+    }
+
 }
 //litt usikker på hvor vi vil sjekke om radio btns er checked...
-function checkRadio(){
-	
-	
+function checkRadio() {
+
+
 }
 
 //usikker på hvor vi skal lage denne btn fra. 
 // kan være lurt å lage den i html, men er usikker på listener der.
-function makeCheckBtn(radioBtn){
-	var btn = document.createElement("BUTTON");  
-	btn.textContent="Check it!"; 
-	document.body.appendChild(btn);
-	//her sender vi med testen fra modulet
-	btn.addEventListener("click", function(){validateAnswer()});
+function makeCheckBtn(radioBtn) {
+    var btn = document.createElement("BUTTON");
+    btn.textContent = "Check it!";
+    document.body.appendChild(btn);
+    //her sender vi med testen fra modulet
+    btn.addEventListener("click", function () {
+        validateAnswer()
+    });
 }
 
 //sjekker riktig svar
-function validateAnswer(radioBtn){
-	//sjekke med denne radio btn siden den har en id
-	//id tilsvarer spm nr og alternative nr.
-	//linje 120
-	
+function validateAnswer(radioBtn) {
+    //sjekke med denne radio btn siden den har en id
+    //id tilsvarer spm nr og alternative nr.
+    //linje 120
+
 }
 
 
+//skriver arrayet med resultater til JSON
+function postResults(json) {
+    var jsonString = JSON.stringify(json);
+    $.ajax({
+        type: "POST",
+        contentType: "text/plain",
+        url: "/api/userSettings/quizResults",
+        data: jsonString,
+        success: function (data) {
+            // lolno
+        },
+        dataType: "text"
+    });
+
+}
+
+//metode som henter data for brukerens kursprogress
+
+function getResults() {
+    $.getJSON("/api/userSettings/quixResults", function (data) {
+
+
+    }).done(function (data) {
+
+        populateResultData(data);
+    });
+
+}
+
+function populateResultData(json) {
+//TODO
+}
