@@ -215,6 +215,8 @@ function getResults() {
 
 }
 
+//hente resultater fra JSON og lagre de i nettsiden.
+
 function populateResultData(json) {
 
     //TODO ALT UNDER ER BARE SØPPEL!
