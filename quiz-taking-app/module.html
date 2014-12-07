@@ -2,12 +2,12 @@
 
 <html>
 <head>
-    <!--  <meta charset="utf-8">
+    <meta charset="utf-8">
      <link href="css/bootstrap.css" rel="stylesheet">
      <link rel="stylesheet"
            href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
      <link rel="stylesheet" href="css/leaflet.css"/>
-     <link rel="shortcut icon" href="../../favicon.ico"/>  -->
+     <link rel="shortcut icon" href="../../favicon.ico"/> 
 </head>
 <body>
 <script src="js/jquery-1.10.1.min.js"></script>
@@ -17,9 +17,11 @@
 
 
 <script>
+$(document).ready(function () {
     getCourseData(true);
-
+});
 </script>
+
 
 
 <h2 id="module">Module </h2>
@@ -30,7 +32,10 @@
 
 <div id="moduletext">
 </div>
+<script>
+$("#moduletext").html(currentCourse,currentModule);
 
+</script>
 
 <!-- Her gj�res mye styling inne i htmlen med radio btn og tekst -->
 <style>
@@ -67,7 +72,7 @@
 
 
 <input type="button" onclick="history.back();" value="Back">
-<input type="button" onclick="checkRadio();" value="Submitt">
+<input type="button" onclick="checkRadio();" value="Submit">
 <!--<a href="/viewView"><button>Start quiz!</button></a>-->
 
 
