@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="inf5750-7.uio.no">
+  <component name="PublishConfigData" serverName="inf5750">
     <serverData>
-      <paths name="inf5750-7.uio.no">
+      <paths name="inf5750">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/apps" />
+            <mapping deploy="/var/lib/tomcat/webapps/ROOT/apps" local="$PROJECT_DIR$" web="/apps" />
           </mappings>
         </serverdata>
       </paths>

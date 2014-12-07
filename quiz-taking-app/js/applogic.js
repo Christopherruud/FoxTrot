@@ -100,7 +100,7 @@ function populateCourseData(json, isInModule) {
 		var tempCourse = new Course(course.domain);
 		tempCourse.level = course.level;
 		tempCourse.id = course.id;
-		tempCourse.nextCourse = course.nextCourse;
+		currentId = course.id;
 		tempCourse.descriptiveText = course.descriptiveText;
 		tempCourse.modules = [];
 
@@ -117,6 +117,8 @@ function populateCourseData(json, isInModule) {
 			var tempModule = new Module(course.level);
 			tempModule.moduleName = module.moduleName;
 			tempModule.moduleId = module.moduleId;
+			tempModule.moduleDescriptiveText = module.moduleDescriptiveText;
+			tempModule.moduleMotivation = module.moduleMotivation;
 			tempModule.tests = [];
 
 			courses[s].modules.push(tempModule);

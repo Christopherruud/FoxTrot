@@ -3,51 +3,52 @@
 <html>
 
 <head>
-   <meta charset="utf-8">
+    <meta charset="utf-8">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet"
           href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
     <link rel="stylesheet" href="css/leaflet.css"/>
-    <link rel="shortcut icon" href="../../favicon.ico"/>  
+    <link rel="shortcut icon" href="../../favicon.ico"/>
     <title>Select Course</title>
 </head>
 <body>
 
 <div data-role="page">
-<div data-role="main" class="ui-content">
-<div style="margin-top: 50px;">
+    <div data-role="main" class="ui-content">
+        <div style="margin-top: 50px;">
 
 
-<p style="font-size: 40px" , style="font-family: Arial">Select
-    Course</p>
+            <p style="font-size: 40px" , style="font-family: Arial">Select
+                Course</p>
 
-<p style="font-family: Arial">This is the page for courses. You can
-    choose modules (level of difficulty) to each course from here. Info on
-    this specific course will be available here.</p>
+            <p style="font-family: Arial">This is the page for courses. You can
+                choose modules (level of difficulty) to each course from here. Info on
+                this specific course will be available here.</p>
+
+            <div id="progressDiv"></div>
+
+            <p>Here is a list of the courses</p>
+
+            <div id="courseList">
+
+            </div>
 
 
-<p>Here is a list of the courses</p>
-
-<div id="courseList">
-
-</div>
-
-
-<p>
-    <input type="button" onclick="history.back();" value="Back">
-</p>
-</div>
-<script src="js/jquery-1.10.1.min.js"></script>
-<script src="js/applogic.js"></script>
-<script src="js/module.js"></script>
-<script src="js/course.js"></script>
-<script>
-    <!-- Dette er lettere irrelevant og kan fjernes?-->
-    $(document).ready(function () {
-        getCourseData(false);
-    });
-</script>
-</div>
+            <p>
+                <input type="button" onclick="history.back();" value="Back">
+            </p>
+        </div>
+        <script src="js/jquery-1.10.1.min.js"></script>
+        <script src="js/applogic.js"></script>
+        <script src="js/module.js"></script>
+        <script src="js/course.js"></script>
+        <script>
+            <!-- Dette er lettere irrelevant og kan fjernes?-->
+            $(document).ready(function () {
+                getCourseData(false);
+            });
+        </script>
+    </div>
 </div>
 
 </body>
