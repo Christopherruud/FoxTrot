@@ -198,10 +198,8 @@ function checkRadio() {
 			tmpTest.testResults.push(0);
 		}
 	}
-	var element = document.getElementById("anSwer").innerHTML;
-	var svar = "Totalt antall riktige: "+ poeng;
-	element.appendChild(svar);
-
+	document.getElementById("anSwer").innerHTML = "Totalt antall riktige: "+ poeng;
+	
 	results.push(tmpTest);
 	postResults(results);
 
