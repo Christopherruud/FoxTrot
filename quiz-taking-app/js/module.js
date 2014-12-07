@@ -6,11 +6,18 @@ var modules = [];
 var idCourse;
 var currentCourse;
 var currentModule;
+var results = [];
 
 function Result() {
+<<<<<<< HEAD
 	var courseID;
 	var moduleID;
 	var testResults = [];
+=======
+    var courseId;
+    var moduleId;
+    var testResults = [];
+>>>>>>> 977840cbf8c323a62f7252a6d64cea5acac5e983
 }
 
 
@@ -34,11 +41,19 @@ function populateModule(isInModule) {
 
 		console.log(courses[idCourse].modules[Module].moduleId);
 
+<<<<<<< HEAD
 		//Hvis vi er inne i riktig modul
 		if (isInModule) {
 			//kan putte dette i en egen FUNCTION
 			parseURL();
 			console.log(isInModule + " i modul");
+=======
+        //Hvis vi er inne i riktig modul
+        if (isInModule) {
+            //kan putte dette i en egen FUNCTION
+            parseURL();
+            console.log(isInModule + " i modul");
+>>>>>>> 977840cbf8c323a62f7252a6d64cea5acac5e983
 
 			var testElements = courses[currentCourse].modules[currentModule].tests;
 			var nr = 1;
@@ -92,91 +107,91 @@ function populateModule(isInModule) {
 
 //setter opp spørsmålene i HTML
 function setTest(sporsmol) {
-	//console.log(sporsmol);
-	var spm = sporsmol;
-	//console.log(spm);
-	var setup = document.getElementById("newtest");
+    //console.log(sporsmol);
+    var spm = sporsmol;
+    //console.log(spm);
+    var setup = document.getElementById("newtest");
 
-	//riktig svar må taes vare på
-	//var answers = [];
+    //riktig svar må taes vare på
+    //var answers = [];
 
-	//for å ta vare på alle alternativer og teste på svar
-	var qu = document.getElementById("questions");
+    //for å ta vare på alle alternativer og teste på svar
+    var qu = document.getElementById("questions");
 
-	for (var i = 0; i < spm.length; i++) {
+    for (var i = 0; i < spm.length; i++) {
 
-		//legger inn svar. kun et svar pr spm
-		//answers[i] = spm[i].answer;
+        //legger inn svar. kun et svar pr spm
+        //answers[i] = spm[i].answer;
 
-		//lager hvert enkelt spm i wrapper hvert spm får en id man søke på.
-		var question = document.createElement("div");
-		question.setAttribute("id", "question" + i);
-		question.setAttribute("class", "question");
+        //lager hvert enkelt spm i wrapper hvert spm får en id man søke på.
+        var question = document.createElement("div");
+        question.setAttribute("id", "question" + i);
+        question.setAttribute("class", "question");
 
-		//lager en ny div for å putte alternativer i.
-		var alternatives = document.createElement("div");
-		alternatives.setAttribute("class", "alternatives");
+        //lager en ny div for å putte alternativer i.
+        var alternatives = document.createElement("div");
+        alternatives.setAttribute("class", "alternatives");
 
-		//spm tekst
-		var questionElement = document.createElement("P");
-		questionElement.innerHTML = spm[i].question;
-		questionElement.setAttribute("class", "question-text");
-		question.appendChild(questionElement);
-
-
-		//MANGLER MÅTE Å GODKJENNE PÅ!
-		//mangler å sjekke riktig svar!
-		//mangler lagre funksjon
-		//lenger ned er det to funksjoner i progress som kan brukes?
-
-		//svar
-		var answerElement = document.createElement("input");
-		var answer = document.createElement("label");
-		answerElement.setAttribute("type", "radio");
-		answerElement.setAttribute("name", "group" +i);
-
-		//burde være en lik id for alle riktige svar
-		//flere submittknapper pr alternativ liste
-		answerElement.setAttribute("id", "radio_correct_"+i);
-
-		answerElement.setAttribute("value", spm[i].answer);
-		answer.innerHTML = spm[i].answer;
-		answer.setAttribute("for", "radio_"+ i + "_");
-		alternatives.appendChild(answerElement);
-		alternatives.appendChild(answer);
-
-		answerElement.innerHTML = spm[i].answer;
-		//genererer alternativer til spm / radio btn.
-		for (var j = 0; j < spm[i].alternatives.length; j++) {
-			//kan wrappe alternatives med radio buttons
-			var alternativeElement = document.createElement("input");
-			//lager tekst for hver input dvs tekst på alternativene
-			var alternativeElementLabel = document.createElement("label");
-
-			//fester radio buttons
-			alternativeElement.setAttribute("type", "radio");
-			alternativeElement.setAttribute("name", "group" + i);
-
-			//her får hver radio btn en id
-			alternativeElement.setAttribute("id", "radio_" + i + "_" + j);//skal være unik
-
-			//setter verdi for å vise tekst?
-			alternativeElement.setAttribute("value", spm[i].alternatives[j]);
-
-			alternativeElementLabel.innerHTML = spm[i].alternatives[j];
-			alternativeElementLabel.setAttribute("for", "radio_" + i + "_" + j);
-
-			//fester elementene til html
-			alternatives.appendChild(alternativeElement);
-			alternatives.appendChild(alternativeElementLabel);
+        //spm tekst
+        var questionElement = document.createElement("P");
+        questionElement.innerHTML = spm[i].question;
+        questionElement.setAttribute("class", "question-text");
+        question.appendChild(questionElement);
 
 
-		}
-		//fester alt til divene
-		question.appendChild(alternatives);
-		qu.appendChild(question);
+        //MANGLER MÅTE Å GODKJENNE PÅ!
+        //mangler å sjekke riktig svar!
+        //mangler lagre funksjon
+        //lenger ned er det to funksjoner i progress som kan brukes?
 
-	}
+        //svar
+        var answerElement = document.createElement("input");
+        var answer = document.createElement("label");
+        answerElement.setAttribute("type", "radio");
+        answerElement.setAttribute("name", "group" + i);
+
+        //burde være en lik id for alle riktige svar
+        //flere submittknapper pr alternativ liste
+        answerElement.setAttribute("id", "radio_correct_" + i);
+
+        answerElement.setAttribute("value", spm[i].answer);
+        answer.innerHTML = spm[i].answer;
+        answer.setAttribute("for", "radio_" + i + "_");
+        alternatives.appendChild(answerElement);
+        alternatives.appendChild(answer);
+
+        answerElement.innerHTML = spm[i].answer;
+        //genererer alternativer til spm / radio btn.
+        for (var j = 0; j < spm[i].alternatives.length; j++) {
+            //kan wrappe alternatives med radio buttons
+            var alternativeElement = document.createElement("input");
+            //lager tekst for hver input dvs tekst på alternativene
+            var alternativeElementLabel = document.createElement("label");
+
+            //fester radio buttons
+            alternativeElement.setAttribute("type", "radio");
+            alternativeElement.setAttribute("name", "group" + i);
+
+            //her får hver radio btn en id
+            alternativeElement.setAttribute("id", "radio_" + i + "_" + j);//skal være unik
+
+            //setter verdi for å vise tekst?
+            alternativeElement.setAttribute("value", spm[i].alternatives[j]);
+
+            alternativeElementLabel.innerHTML = spm[i].alternatives[j];
+            alternativeElementLabel.setAttribute("for", "radio_" + i + "_" + j);
+
+            //fester elementene til html
+            alternatives.appendChild(alternativeElement);
+            alternatives.appendChild(alternativeElementLabel);
+
+
+        }
+        //fester alt til divene
+        question.appendChild(alternatives);
+        qu.appendChild(question);
+
+    }
 
 }
 //litt usikker på hvor vi vil sjekke om radio btns er checked...
@@ -198,6 +213,7 @@ function checkRadio() {
 	}
 	
 	document.write("Totalt antall riktige: "+ poeng);
+
 }
 
 //usikker på hvor vi skal lage denne btn fra. 
@@ -240,7 +256,9 @@ function postResults(json) {
 //metode som henter data for brukerens kursprogress
 
 function getResults() {
-	$.getJSON("/api/userSettings/quixResults", function (data) {
+
+    $.getJSON("/api/userSettings/quizResults", function (data) {
+
 
 
 	}).done(function (data) {
@@ -254,64 +272,18 @@ function getResults() {
 
 function populateResultData(json) {
 
-	//TODO ALT UNDER ER BARE SØPPEL!
-	for (var s = 0; s < json.length; s++) {
-		var result = json[s];
-		result = explodeJSON(result);
 
-		var tempResult = new Result();
-		tempResult.courseId = result.courseId;
-		tempResult.moduleId = result.moduleId;
-		tempResult.testResults = result.testResults.slice();
+    for (var s = 0; s < json.length; s++) {
+        var result = json[s];
+        result = explodeJSON(result);
 
+        var tempResult = new Result();
+        tempResult.courseId = result.courseId;
+        tempResult.moduleId = result.moduleId;
+        tempResult.testResults = result.testResults.slice();
+        results.push(tempResult);
+    }
 
-
-		tableString += '<td width="100px" align="center">' + course.id
-		+ "</td>";
-		tableString += '<td width="100px" align="center">' + course.domain
-		+ "</td>";
-		tableString += '<td width="100px" align="center">' + course.level
-		+ "</td>";
-		tableString += '<td width="100px" align="center">'
-			+ course.descriptiveText + "</td>";
-
-		// Modules
-
-		if (undefined != course.modules) {
-			tableString += '<td width="100px" align="center">'
-				+ course.modules.length;
-
-			for (var c = 0; c < course.modules.length; c++) {
-				var module = course.modules[c];
-				module = explodeJSON(module);
-
-				var tempModule = new Module(course.level);
-				tempModule.moduleName = module.moduleName;
-				tempModule.moduleId = module.moduleId;
-				tempModule.moduleDescriptiveText = module.moduleDescriptiveText;
-				tempModule.moduleMotivation = module.moduleMotivation;
-				tempModule.tests = [];
-
-				courses[s].modules.push(tempModule);
-
-				for (var f = 0; f < module.tests.length; f++) {
-					var test = module.tests[f];
-					test = explodeJSON(test);
-
-					var tempTest = new Test(module.moduleID);
-
-					tempTest.question = test.question;
-					tempTest.answer = test.answer;
-					tempTest.alternatives = test.alternatives.slice();
-					courses[s].modules[c].tests.push(tempTest);
-				}
-
-			}
-		} else {
-			tableString += '<td width="100px" align="center">';
-		}
-
-	}
 }
 
 var objectStorage = new Object();
@@ -330,8 +302,9 @@ function explodeJSON(object) {
 }
 
 function parseURL() {
-	currentCourse = getQueryVariable("course");
-	currentModule =getQueryVariable("module");
+
+    currentCourse = getQueryVariable("course");
+    currentModule = getQueryVariable("module");
 }
 
 function getQueryVariable(variable) {
