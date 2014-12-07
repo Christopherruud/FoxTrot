@@ -1,4 +1,4 @@
-console.log("loading.module");
+//console.log("loading.module");
 
 var moduleNumber = 0;
 //var id;
@@ -17,10 +17,10 @@ function Result() {
 var courses = [];
 
 function setModules(array, courseId, isInModule) {
-    console.log(array);
+    //console.log(array);
     modules = array;
 
-    console.log(modules);
+    //console.log(modules);
     idCourse = courseId;
 
     populateModule(isInModule);
@@ -28,18 +28,18 @@ function setModules(array, courseId, isInModule) {
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
 function populateModule(isInModule) {
-    console.log(isInModule, " utenfor modul");
+    // console.log(isInModule, " utenfor modul");
 
     for (var Module in modules) {
 
-        console.log(Module);
+        //onsole.log(Module);
 
-        console.log(courses[idCourse].modules[Module].moduleId);
+        //console.log(courses[idCourse].modules[Module].moduleId);
         //Hvis vi er inne i riktig modul
         if (isInModule) {
             //kan putte dette i en egen FUNCTION
             parseURL();
-            console.log(isInModule + " i modul");
+            // console.log(isInModule + " i modul");
             $("#modulename").html(courses[currentCourse].modules[currentModule].moduleName);
             $("#moduletext").html(courses[currentCourse].modules[currentModule].moduleDescriptiveText);
             $("#moduleMtext").html(courses[currentCourse].modules[currentModule].moduleMotivation);
@@ -48,7 +48,7 @@ function populateModule(isInModule) {
 
 
             //testElements.forEach(function(test){
-            console.log(testElements);
+            //  console.log(testElements);
             var btn = document.createElement("BUTTON");
             btn.textContent = "Test " + nr;
             document.body.appendChild(btn);
@@ -68,7 +68,7 @@ function populateModule(isInModule) {
             var urlString = "module.html";
             urlString += '?course=' + idCourse;
             urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
-            console.log(urlString);
+            //  console.log(urlString);
 
             btn.textContent = moduleElement + " " + moduleNumber;
 
@@ -284,7 +284,6 @@ function populateResultData(json) {
         tempResult.testResults = result.testResults.slice();
         results.push(tempResult);
     }
-    console.log(results);
 }
 
 var objectStorage = new Object();

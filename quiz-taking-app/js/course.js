@@ -9,11 +9,11 @@
 // setter opp knapper etter ønske
 function populate(courses, isInModule) {
 	
-	console.log(courses);
+	//console.log(courses);
 
 	for (var Course in courses) {
 		var courseElement = courses[Course];
-		console.log(courseElement);
+		//console.log(courseElement);
 		var btn; // Create a <button> element
 		if (isInModule == false) {
 			btn = document.createElement("BUTTON");
@@ -21,12 +21,10 @@ function populate(courses, isInModule) {
 			document.body.appendChild(btn); // Append <button> to <body>
 
 			btn.addEventListener("click", function() {
-				console.log("CheckEvent");
-				console.log(courseElement.modules);
+				//console.log("CheckEvent");
+				//console.log(courseElement.modules);
 
 				getModule(courseElement.modules, courseElement.id, isInModule);
-				
-
 			});
 		}  else {
 			getModule(courseElement.modules, courseElement.id, true);
@@ -38,21 +36,13 @@ function populate(courses, isInModule) {
 // henter ut modul html når man trykker på en knapp. Må sende
 // med ting her fra tilhørende modul til gitt kurs
 function getModule(element, courseId, isInModule) {
-	console.log(element);
+	//console.log(element);
 	var moduleArray = [];
 	var tempId = courseId;
-	console.log(tempId);
+	//console.log(tempId);
 	moduleArray = element;
-	console.log(moduleArray);
+	//console.log(moduleArray);
 
 	setModules(moduleArray, tempId, isInModule);
 
 }
-
-// window.location = "module.html";
-// VIKTIG om vi vil ha en "one page app"
-/*
- * $.ajax({ url: "module.html", context: document.body
- * }).done(function(response) { $( this ).addClass( "done" );
- * console.log(response); });
- */

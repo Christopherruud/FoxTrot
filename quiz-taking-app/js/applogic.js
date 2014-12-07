@@ -88,15 +88,19 @@ function getCourseData(isInModule) {
 //exists.
 //This is the one you can use to iterate through the data
 var courses = [];
+var testProgress = [];
 
+//populates Course Data - and should also draw a table for test progress -
+//TODO finish writing test progress table - lacks drawing table, then coloring in fields that are failed or passed
 function populateCourseData(json, isInModule) {
-	console.log("console.log(json)");
-	console.log(json);
+
+var table = $("#progressList");
 
 	for (var s = 0; s < json.length; s++) {
 		var course = json[s];
 		course = explodeJSON(course);
 		// Name
+		var tableList = '<tr>';
 		var tempCourse = new Course(course.domain);
 		tempCourse.level = course.level;
 		tempCourse.id = course.id;
@@ -135,8 +139,9 @@ function populateCourseData(json, isInModule) {
 				courses[s].modules[c].tests.push(tempTest);
 			}
 		}
-		
 	}
+
+
 	//finnes populate
 	if(typeof populate == 'function'){
 		populate(courses, isInModule);	
@@ -171,4 +176,35 @@ function postCourseData(json) {
 		dataType : "text"
 	});
 
+}
+
+
+
+(function getResults() {
+
+	$.getJSON("/api/userSettings/quizResults", function (data) {
+
+
+	}).done(function (data) {
+
+		populateTempResultData(data);
+	});
+
+})();
+
+//helper - Method for populating the test - data used for drawing a table for test progress
+
+function populateTempResultData(json) {
+
+
+	for (var s = 0; s < json.length; s++) {
+		var result = json[s];
+		result = explodeJSON(result);
+
+		var tempResult = new Result();
+		tempResult.courseId = result.courseId;
+		tempResult.moduleId = result.moduleId;
+		tempResult.testResults = result.testResults.slice();
+		testProgress.push(tempResult);
+	}
 }
