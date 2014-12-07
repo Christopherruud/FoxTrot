@@ -14,7 +14,7 @@ var modules = [];
 var idCourse;
 
 
-function result() {
+function Result() {
     var courseID;
     var moduleID;
     var testResults = [];
@@ -223,6 +223,84 @@ function getResults() {
 
 }
 
+//hente resultater fra JSON og lagre de i nettsiden.
+
 function populateResultData(json) {
-//TODO
+
+    //TODO ALT UNDER ER BARE SØPPEL!
+    for (var s = 0; s < json.length; s++) {
+        var result = json[s];
+        course = explodeJSON(course);
+        var tableString = "<tr>";
+        // Name
+        var tempCourse = new Course(course.domain);
+        tempCourse.level = course.level;
+        tempCourse.id = course.id;
+        currentId = course.id;
+        tempCourse.descriptiveText = course.descriptiveText;
+        tempCourse.modules = [];
+
+        courses.push(tempCourse);
+
+        tableString += '<td width="100px" align="center">' + course.id
+        + "</td>";
+        tableString += '<td width="100px" align="center">' + course.domain
+        + "</td>";
+        tableString += '<td width="100px" align="center">' + course.level
+        + "</td>";
+        tableString += '<td width="100px" align="center">'
+        + course.descriptiveText + "</td>";
+
+        // Modules
+
+        if (undefined != course.modules) {
+            tableString += '<td width="100px" align="center">'
+            + course.modules.length;
+
+            for (var c = 0; c < course.modules.length; c++) {
+                var module = course.modules[c];
+                module = explodeJSON(module);
+
+                var tempModule = new Module(course.level);
+                tempModule.moduleName = module.moduleName;
+                tempModule.moduleId = module.moduleId;
+                tempModule.moduleDescriptiveText = module.moduleDescriptiveText;
+                tempModule.moduleMotivation = module.moduleMotivation;
+                tempModule.tests = [];
+
+                courses[s].modules.push(tempModule);
+
+                for (var f = 0; f < module.tests.length; f++) {
+                    var test = module.tests[f];
+                    test = explodeJSON(test);
+
+                    var tempTest = new Test(module.moduleID);
+
+                    tempTest.question = test.question;
+                    tempTest.answer = test.answer;
+                    tempTest.alternatives = test.alternatives.slice();
+                    courses[s].modules[c].tests.push(tempTest);
+                }
+
+            }
+        } else {
+            tableString += '<td width="100px" align="center">';
+        }
+
+    }
+}
+
+var objectStorage = new Object();
+
+function explodeJSON(object) {
+    if (object instanceof Object == true) {
+        objectStorage[object['@id']] = object;
+
+    } else {
+        //console.log('Object is not object');
+        object = objectStorage[object];
+        //console.log(object);
+    }
+    //console.log(object);
+    return object;
 }
