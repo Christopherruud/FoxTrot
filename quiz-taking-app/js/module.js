@@ -81,12 +81,17 @@ function setTest(sporsmol){
 	var spm = sporsmol;
 	//console.log(spm);
 	var setup = document.getElementById("newtest");
+	
+	//riktig svar må taes vare på
+	var answers = [];
 
 	//for å ta vare på alle alternativer og teste på svar
 	var qu = document.getElementById("questions");
 
 	for(var i = 0; i< spm.length; i++){
-		
+		//legger inn svar. kun et svar pr spm
+		answers[i] = spm[i].answer;
+
 		//lager hvert enkelt spm i wrapper hvert spm får en id man søke på. 
 		var question = document.createElement("div");
 		question.setAttribute("id", "question" +i);
@@ -102,12 +107,14 @@ function setTest(sporsmol){
 		questionElement.setAttribute("class", "question-text");
 		question.appendChild(questionElement);
 
-		//genererer alternativer til spm / radio btn.
 		
 		//MANGLER MÅTE Å GODKJENNE PÅ! 
 		//mangler å sjekke riktig svar! 
 		//mangler lagre funksjon
+		//lenger ned er det to funksjoner i progress som kan brukes?
 		
+		
+		//genererer alternativer til spm / radio btn.
 		for(var j = 0; j<spm[i].alternatives.length; j++){
 			//kan wrappe alternatives med radio buttons
 			var alternativeElement = document.createElement("input");
@@ -126,16 +133,28 @@ function setTest(sporsmol){
 			alternativeElementLabel.innerHTML = spm[i].alternatives[j];
 			alternativeElementLabel.setAttribute("for", "radio_"+i+"_"+j);
 			
+			//fester elementene til html
 			alternatives.appendChild(alternativeElement);
 			alternatives.appendChild(alternativeElementLabel);
 			
 			
 		}
-
+		//fester alt til divene
 		question.appendChild(alternatives);
 		qu.appendChild(question);
 
 	}
+	
+}
+
+//usikker på hvor vi skal lage denne btn fra. 
+// kan være lurt å lage den i html, men er usikker på listener der.
+function makeCheckBtn(radioBtn){
+	var btn = document.createElement("BUTTON");  
+	btn.textContent="Check it!"; 
+	document.body.appendChild(btn);
+	//her sender vi med testen fra modulet
+	btn.addEventListener("click", function(){validateAnswer()});
 }
 
 //sjekker riktig svar
@@ -143,6 +162,7 @@ function validateAnswer(radioBtn){
 	//sjekke med denne radio btn siden den har en id
 	//id tilsvarer spm nr og alternative nr.
 	//linje 120
+	
 }
 
 
