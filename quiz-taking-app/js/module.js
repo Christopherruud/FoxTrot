@@ -6,87 +6,89 @@ var modules = [];
 var idCourse;
 var currentCourse;
 var currentModule;
+var results = [];
 
 function Result() {
-    var courseID;
-    var moduleID;
+
+    var courseId;
+    var moduleId;
     var testResults = [];
 }
 
 
 function setModules(array, courseId, isInModule) {
-    console.log(array);
-    modules = array;
+	console.log(array);
+	modules = array;
 
-    console.log(modules);
-    idCourse = courseId;
+	console.log(modules);
+	idCourse = courseId;
 
-    populateModule(isInModule);
+	populateModule(isInModule);
 }
 
 //vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
 function populateModule(isInModule) {
-    console.log(isInModule, " utenfor modul");
+	console.log(isInModule, " utenfor modul");
 
-    for (var Module in modules) {
+	for (var Module in modules) {
 
-        console.log(Module);
+		console.log(Module);
 
-        console.log(courses[idCourse].modules[Module].moduleId);
+		console.log(courses[idCourse].modules[Module].moduleId);
 
         //Hvis vi er inne i riktig modul
         if (isInModule) {
-        	//kan putte dette i en egen FUNCTION
+            //kan putte dette i en egen FUNCTION
             parseURL();
             console.log(isInModule + " i modul");
 
-            var testElements = courses[currentCourse].modules[currentModule].tests;
-            var nr = 1;
+			var testElements = courses[currentCourse].modules[currentModule].tests;
+			var nr = 1;
 
 
-            //testElements.forEach(function(test){
-            console.log(testElements);
-            var btn = document.createElement("BUTTON");
-            btn.textContent = "Test " + nr;
-            document.body.appendChild(btn);
-            //her sender vi med testen fra modulet
-            btn.addEventListener("click", function () {
-                setTest(testElements)
-            });
-            //test er nok ikke noe
-            nr++;
-            break;
+			//testElements.forEach(function(test){
+			console.log(testElements);
+			var btn = document.createElement("BUTTON");
+			btn.textContent = "Test " + nr;
+			document.body.appendChild(btn);
+			//her sender vi med testen fra modulet
+			btn.addEventListener("click", function () {
+				setTest(testElements)
+			});
+			//test er nok ikke noe
+			nr++;
+			break;
 
-        } else {
-            //addInfo(courses[idCourse].modules[Module].moduleId);
-            var moduleElement = courses[idCourse].modules[Module].moduleName;
-            var btn = document.createElement("BUTTON");        // Create a <button> element
+		} else {
+			//addInfo(courses[idCourse].modules[Module].moduleId);
+			var moduleElement = courses[idCourse].modules[Module].moduleName;
+			var btn = document.createElement("BUTTON");        // Create a <button> element
 
-            var urlString = "module.html";
-            urlString += '?course=' + idCourse;
-            urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
-            console.log(urlString);
+			var urlString = "module.html";
+			urlString += '?course=' + idCourse;
+			urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
+			console.log(urlString);
 
-            btn.textContent = moduleElement + " " + moduleNumber;
+			btn.textContent = moduleElement + " " + moduleNumber;
 
-            document.body.appendChild(btn);                    // Append <button> to <body>
+			document.body.appendChild(btn);                    // Append <button> to <body>
 
-            //id = moduleElement.moduleId;
-
-
-            //setter riktig URL til Modul man skal inn i
-            (function (urlString) {
-                btn.addEventListener("click", function () {
-                    window.location = urlString
-                });
-            })(urlString);
+			//id = moduleElement.moduleId;
 
 
-            moduleNumber++;
-        }
+			//setter riktig URL til Modul man skal inn i
+			(function (urlString) {
+				btn.addEventListener("click", function () {
+					window.location = urlString
+				});
+			})(urlString);
 
 
-    }
+			moduleNumber++;
+		}
+
+
+	}
 
 }
 
@@ -104,7 +106,7 @@ function setTest(sporsmol) {
     var qu = document.getElementById("questions");
 
     for (var i = 0; i < spm.length; i++) {
-    	
+
         //legger inn svar. kun et svar pr spm
         //answers[i] = spm[i].answer;
 
@@ -128,23 +130,23 @@ function setTest(sporsmol) {
         //mangler å sjekke riktig svar!
         //mangler lagre funksjon
         //lenger ned er det to funksjoner i progress som kan brukes?
-       
+
         //svar
         var answerElement = document.createElement("input");
         var answer = document.createElement("label");
         answerElement.setAttribute("type", "radio");
-        answerElement.setAttribute("name", "group" +i);
-        
+        answerElement.setAttribute("name", "group" + i);
+
         //burde være en lik id for alle riktige svar
         //flere submittknapper pr alternativ liste
-        answerElement.setAttribute("id", "radio_correct_"+i);
-        
+        answerElement.setAttribute("id", "radio_correct_" + i);
+
         answerElement.setAttribute("value", spm[i].answer);
         answer.innerHTML = spm[i].answer;
-        answer.setAttribute("for", "radio_"+ i + "_");
+        answer.setAttribute("for", "radio_" + i + "_");
         alternatives.appendChild(answerElement);
         alternatives.appendChild(answer);
-        
+
         answerElement.innerHTML = spm[i].answer;
         //genererer alternativer til spm / radio btn.
         for (var j = 0; j < spm[i].alternatives.length; j++) {
@@ -181,61 +183,79 @@ function setTest(sporsmol) {
 }
 //litt usikker på hvor vi vil sjekke om radio btns er checked...
 function checkRadio() {
-	if (document.getElementById("radio_correct").checked == true){
-		document.write("RIKTIG");
-	}else{
-		document.write("fuck off looser");
+	var tmpTest = new Result();
+	tmpTest.courseId = currentCourse;
+	tmpTest.moduleId = currentModule;
+	tmpTest.testResults = [];
+	var poeng = 0;
+	var divs = document.getElementsByClassName("alternatives");
+	for(var i = 0; i<divs.length; i++){
+		if (document.getElementById("radio_correct_"+i).checked == true){
+			poeng++;
+			tmpTest.testResults.push(1);
+			
+		}else{
+			tmpTest.testResults.push(0);
+		}
 	}
+	document.getElementById("anSwer").innerHTML = "Totalt antall riktige: "+ poeng;
+	
+	results.push(tmpTest);
+	postResults(results);
 
 }
 
 //usikker på hvor vi skal lage denne btn fra. 
-// kan være lurt å lage den i html, men er usikker på listener der.
+//kan være lurt å lage den i html, men er usikker på listener der.
 function makeCheckBtn(radioBtn) {
-    var btn = document.createElement("BUTTON");
-    btn.textContent = "Check it!";
-    document.body.appendChild(btn);
-    //her sender vi med testen fra modulet
-    btn.addEventListener("click", function () {
-        validateAnswer()
-    });
+	var btn = document.createElement("BUTTON");
+	btn.textContent = "Check it!";
+	document.body.appendChild(btn);
+	//her sender vi med testen fra modulet
+	btn.addEventListener("click", function () {
+		validateAnswer()
+	});
 }
 
 //sjekker riktig svar
 function validateAnswer(radioBtn) {
-    //sjekke med denne radio btn siden den har en id
-    //id tilsvarer spm nr og alternative nr.
-    //linje 120
+	//sjekke med denne radio btn siden den har en id
+	//id tilsvarer spm nr og alternative nr.
+	//linje 120
 
 }
 
 
 //skriver arrayet med resultater til JSON
 function postResults(json) {
-    var jsonString = JSON.stringify(json);
-    $.ajax({
-        type: "POST",
-        contentType: "text/plain",
-        url: "/api/userSettings/quizResults",
-        data: jsonString,
-        success: function (data) {
-            // lolno
-        },
-        dataType: "text"
-    });
+	var jsonString = JSON.stringify(json);
+	console.log("postResults invoked with data:");
+	console.log(json);
+	$.ajax({
+		type: "POST",
+		contentType: "text/plain",
+		url: "api/userSettings/quizResults",
+		data: jsonString,
+		success: function (data) {
+			// lolno
+		},
+		dataType: "text"
+	});
 
 }
 
 //metode som henter data for brukerens kursprogress
 
 function getResults() {
-    $.getJSON("/api/userSettings/quixResults", function (data) {
+
+	$.getJSON("api/userSettings/quizResults", function (data) {
 
 
-    }).done(function (data) {
 
-        populateResultData(data);
-    });
+	}).done(function (data) {
+
+		populateResultData(data);
+	});
 
 }
 
@@ -243,7 +263,7 @@ function getResults() {
 
 function populateResultData(json) {
 
-    //TODO ALT UNDER ER BARE SØPPEL!
+
     for (var s = 0; s < json.length; s++) {
         var result = json[s];
         result = explodeJSON(result);
@@ -252,85 +272,40 @@ function populateResultData(json) {
         tempResult.courseId = result.courseId;
         tempResult.moduleId = result.moduleId;
         tempResult.testResults = result.testResults.slice();
-
-
-
-        tableString += '<td width="100px" align="center">' + course.id
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.domain
-        + "</td>";
-        tableString += '<td width="100px" align="center">' + course.level
-        + "</td>";
-        tableString += '<td width="100px" align="center">'
-        + course.descriptiveText + "</td>";
-
-        // Modules
-
-        if (undefined != course.modules) {
-            tableString += '<td width="100px" align="center">'
-            + course.modules.length;
-
-            for (var c = 0; c < course.modules.length; c++) {
-                var module = course.modules[c];
-                module = explodeJSON(module);
-
-                var tempModule = new Module(course.level);
-                tempModule.moduleName = module.moduleName;
-                tempModule.moduleId = module.moduleId;
-                tempModule.moduleDescriptiveText = module.moduleDescriptiveText;
-                tempModule.moduleMotivation = module.moduleMotivation;
-                tempModule.tests = [];
-
-                courses[s].modules.push(tempModule);
-
-                for (var f = 0; f < module.tests.length; f++) {
-                    var test = module.tests[f];
-                    test = explodeJSON(test);
-
-                    var tempTest = new Test(module.moduleID);
-
-                    tempTest.question = test.question;
-                    tempTest.answer = test.answer;
-                    tempTest.alternatives = test.alternatives.slice();
-                    courses[s].modules[c].tests.push(tempTest);
-                }
-
-            }
-        } else {
-            tableString += '<td width="100px" align="center">';
-        }
-
+        results.push(tempResult);
     }
+
 }
 
 var objectStorage = new Object();
 
 function explodeJSON(object) {
-    if (object instanceof Object == true) {
-        objectStorage[object['@id']] = object;
+	if (object instanceof Object == true) {
+		objectStorage[object['@id']] = object;
 
-    } else {
-        //console.log('Object is not object');
-        object = objectStorage[object];
-        //console.log(object);
-    }
-    //console.log(object);
-    return object;
+	} else {
+		//console.log('Object is not object');
+		object = objectStorage[object];
+		//console.log(object);
+	}
+	//console.log(object);
+	return object;
 }
 
 function parseURL() {
+
     currentCourse = getQueryVariable("course");
-    currentModule =getQueryVariable("module");
+    currentModule = getQueryVariable("module");
 }
 
 function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
-        if (pair[0] == variable) {
-            return pair[1];
-        }
-    }
-    return (false);
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split("=");
+		if (pair[0] == variable) {
+			return pair[1];
+		}
+	}
+	return (false);
 }
