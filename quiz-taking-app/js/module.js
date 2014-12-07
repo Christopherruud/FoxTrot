@@ -1,13 +1,5 @@
 console.log("loading.module");
 
-
-$(document).ready(
-		function () {
-			    $('moduletext').appendTo('#moduletext');
-			  });
-			
-    });
-
 var moduleNumber = 0;
 //var id;
 var modules = [];
