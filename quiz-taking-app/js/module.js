@@ -9,15 +9,10 @@ var currentModule;
 var results = [];
 
 function Result() {
-<<<<<<< HEAD
-	var courseID;
-	var moduleID;
-	var testResults = [];
-=======
+
     var courseId;
     var moduleId;
     var testResults = [];
->>>>>>> 977840cbf8c323a62f7252a6d64cea5acac5e983
 }
 
 
@@ -41,19 +36,11 @@ function populateModule(isInModule) {
 
 		console.log(courses[idCourse].modules[Module].moduleId);
 
-<<<<<<< HEAD
-		//Hvis vi er inne i riktig modul
-		if (isInModule) {
-			//kan putte dette i en egen FUNCTION
-			parseURL();
-			console.log(isInModule + " i modul");
-=======
         //Hvis vi er inne i riktig modul
         if (isInModule) {
             //kan putte dette i en egen FUNCTION
             parseURL();
             console.log(isInModule + " i modul");
->>>>>>> 977840cbf8c323a62f7252a6d64cea5acac5e983
 
 			var testElements = courses[currentCourse].modules[currentModule].tests;
 			var nr = 1;
