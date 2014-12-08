@@ -2,6 +2,8 @@ var courseNumber = 0;
 var moduleCounter = 0;
 var moduleLevel = 0;
 var table3 = $("#table3");
+
+
 $(document).ready(function () {
     getCourseData();
     $("#add").click(function () {
@@ -20,7 +22,7 @@ $(document).ready(function () {
         $(this).parent().parent().remove();
     });
 });
-
+//adds the TEST - data to the HTML
 function populateTestData() {
     var module = courses[courseNumber].modules[moduleCounter];
     moduleLevel = module.level;
@@ -56,17 +58,19 @@ function populateTestData() {
 
 }
 
+//adds the test to the datastructure, then POST it to API
 function addTestToModule(parent, question, answer, alternatives) {
     var tempTest = new Test(parent);
     tempTest.question = question;
     tempTest.answer = answer;
     tempTest.alternatives = alternatives.slice();
     courses[courseNumber].modules[moduleCounter].tests.push(tempTest);
-    postTestData(courses);
+    postCourseData(courses);
 
 
 }
 
+//read the current URL, parses it for URL varables.
 function parseURL() {
     courseNumber = getQueryVariable("course");
     moduleCounter = getQueryVariable("module")
@@ -123,6 +127,7 @@ function Test(moduleId) {
     var alternatives = [];
 }
 
+//GET json data from the API
 function getCourseData() {
     $.getJSON("/api/systemSettings/quizKey", function (data) {
 
@@ -133,6 +138,8 @@ function getCourseData() {
     });
 
 }
+
+//populates the Course - data so that it can be read and written via javascript calls.
 
 var courses = [];
 var currentId = 0;
@@ -192,6 +199,7 @@ function populateCourseData(json) {
     }
 }
 
+//checks if the JSON data consists of OBJECTS or something else
 var objectStorage = new Object();
 
 function explodeJSON(object) {
@@ -199,14 +207,15 @@ function explodeJSON(object) {
         objectStorage[object['@id']] = object;
 
     } else {
-        //console.log('Object is not object');
+
         object = objectStorage[object];
-        //console.log(object);
+
     }
-    //console.log(object);
+
     return object;
 }
 
+//POST the datastructure to the API
 function postCourseData(json) {
     var jsonString = JSON.stringify(json);
     $.ajax({
@@ -222,6 +231,7 @@ function postCourseData(json) {
 
 }
 
+//Function for posting to a TEST-key to prevent disruption of production data
 function postTestData(json) {
     var jsonString = JSON.stringify(json);
     $.ajax({
