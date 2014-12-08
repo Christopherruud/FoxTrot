@@ -8,37 +8,47 @@
 
 //setter opp knapper etter ønske
 function populate(courses, isInModule) {
-	if(courses != null){
-		for (var Course in courses) {
-			var courseElement = courses[Course];
+    if (isInModule == false) {
+    for (var Course in courses) {
+        var courseElement = courses[Course];
 
-			var btn; // Create a <button> element
-			if (isInModule == false) {
-				btn = document.createElement("BUTTON");
-				btn.textContent = "Level " + courseElement.level + ": " + courseElement.domain;
-				document.body.appendChild(btn); // Append <button> to <body>
+        var btn; // Create a <button> element
 
-				btn.addEventListener("click", function() {
+            btn = document.createElement("BUTTON");
+            btn.textContent = "Level " + courseElement.level + ": " + courseElement.domain;
+            document.body.appendChild(btn); // Append <button> to <body>
 
-					getModule(courseElement.modules, courseElement.id, isInModule);
-				});
-			}  else {
-				getModule(courseElement.modules, courseElement.id, true);
-			}
+            var passModules = courseElement.modules;
+            var passId = courseElement.id;
+            (function (passModules, passId, isInModule) {
+                btn.addEventListener("click", function () {
 
-		}
-	}else{
-		document.write("No courses admitted");
-	}
+                    getModule(passModules, passId, isInModule);
+                });
+            })(passModules, passId, isInModule);
+
+        }
+
+    }
+   else if (isInModule) {
+        parseURL();
+        var courseElement = courses[currentCourse];
+
+        (function (modules, id) {
+            getModule(modules, id, true);
+        })(courseElement.modules, courseElement.id);
+    }
+
 }
+
 //henter ut modul html når man trykker på en knapp. Må sende
 //med ting her fra tilhørende modul til gitt kurs
 function getModule(element, courseId, isInModule) {
-	var moduleArray = [];
-	var tempId = courseId;
+    var moduleArray = [];
+    var tempId = courseId;
 
-	moduleArray = element;
+    moduleArray = element;
 
-	setModules(moduleArray, tempId, isInModule);
+    setModules(moduleArray, tempId, isInModule);
 
 }
