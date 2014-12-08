@@ -2,6 +2,8 @@ var courseNumber = 0;
 var moduleCounter = 0;
 var moduleLevel = 0;
 var table2 = $("#table2");
+var courses = [];
+var currentId = 0;
 $(document).ready(
     function () {
         getCourseData();
@@ -146,9 +148,6 @@ function getCourseData() {
     });
 
 }
-
-var courses = [];
-var currentId = 0;
 
 function populateCourseData(json) {
 
