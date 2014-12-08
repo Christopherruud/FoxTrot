@@ -114,12 +114,6 @@ function setTest(sporsmol) {
         questionElement.setAttribute("class", "question-text");
         question.appendChild(questionElement);
 
-
-        //MANGLER MÅTE Å GODKJENNE PÅ!
-        //mangler å sjekke riktig svar!
-        //mangler lagre funksjon
-        //lenger ned er det to funksjoner i progress som kan brukes?
-
         //svar
         var answerElement = document.createElement("input");
         var answer = document.createElement("label");
@@ -127,7 +121,7 @@ function setTest(sporsmol) {
         answerElement.setAttribute("name", "group" + i);
 
         //burde være en lik id for alle riktige svar
-        //flere submittknapper pr alternativ liste
+        //flere submitknapper pr alternativ liste
         answerElement.setAttribute("id", "radio_correct_" + i);
 
         answerElement.setAttribute("value", spm[i].answer);
