@@ -6,7 +6,7 @@ $(document).ready(
                 $("#table1").append(
                     '<tr valign="top"><td width="100px" align="center">'
                     + (++currentId)
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="100px">'
                     + $("#domain").val()
                     + '</td><td width="150px">'
                     + $("#level").val()

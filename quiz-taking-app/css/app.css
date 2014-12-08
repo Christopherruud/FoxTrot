@@ -49,15 +49,78 @@ label {
     width: 75%;
 }
 
-.container {
 
+.container2 {
     float: left;
-    background-color: #999;
-    border-style: solid;
+    background-color: #ebebeb;
+    margin: 0;
+
 }
 
 .radio {
     float: left;
     color: #ffff00;
+}
+
+
+input[type="button"]{
+    display: inline-block;
+    margin:1% 1% 0 5%;
+    color:white;
+    float:left;
+    background: dimgray;
+    list-style-type: none;
+    padding: 5px 10px 6px;
+    /*
+        brukes ikke
+        */
+    text-decoration: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-box-shadow:0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor:pointer;
+}
+button{
+    display: inline-block;
+    color:white;
+    margin:1% 1% 0 40px;
+    background: dimgray;
+    list-style-type: none;
+    padding: 5px 10px 6px;
+    /*
+        brukes ikke
+        */
+    text-decoration: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-box-shadow:0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor:pointer;
+}
+
+#modulename{
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: medium;
+}
+
+#moduletext{
+    font-weight: 400;
+    font-size:small;
+    margin-bottom: 10px;
+}
+
+#moduleMtext{
+    font-weight: 400;
+    font-style: italic;
+    font-size:small;
+    margin-bottom: 10px;
 }
 
