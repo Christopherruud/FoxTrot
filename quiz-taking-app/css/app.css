@@ -82,7 +82,7 @@ input[type="button"]{
 
 button{
    display: inline-block;
-    margin:1% 1% 0 5%;
+    margin:1% 1% 0 40px;
     color:white;
     float:left;
     background: #A9A9A9;
@@ -96,9 +96,9 @@ button{
 }
 
 #modulename{
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     font-weight: Bold;
-    font-size: large;
+    font-size: larger;
 }
 
 #moduletext{
