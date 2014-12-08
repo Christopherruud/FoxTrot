@@ -15,7 +15,7 @@ function populate(courses, isInModule) {
 		var btn; // Create a <button> element
 		if (isInModule == false) {
 			btn = document.createElement("BUTTON");
-			btn.textContent = courseElement.domain + " " + courseElement.id;
+			btn.textContent = "Level " + courseElement.level + ": " + courseElement.domain;
 			document.body.appendChild(btn); // Append <button> to <body>
 
 			btn.addEventListener("click", function() {

@@ -61,7 +61,7 @@ function populateModule(isInModule) {
             urlString += '?course=' + idCourse;
             urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
 
-            btn.textContent = moduleElement + " " + moduleNumber;
+            btn.textContent = "Module " + (courses[idCourse].modules[Module].moduleId +1) + ": " + moduleElement;
 
             document.body.appendChild(btn);                    // Append <button> to <body>
 
@@ -74,8 +74,6 @@ function populateModule(isInModule) {
                 });
             })(urlString);
 
-
-            moduleNumber++;
         }
 
 
