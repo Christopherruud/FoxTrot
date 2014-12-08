@@ -11,7 +11,7 @@ $(document).ready(
             function () {
                 table2.append(
                     '<tr valign="top"><td width="100px">'
-                    + (++moduleCounter)
+                    + (moduleCounter)
                     + '</td><td width="100px" align="center">'
                     + (moduleLevel)
                     + '</td><td width="100px">'
@@ -26,7 +26,7 @@ $(document).ready(
                     + '<td width="100px" align="center"><a href="testedit.html?course='
                     + courseNumber + '&module=' + moduleCounter
                     + '">Create test</a></td></tr>');
-                addModuleToCourse(moduleLevel, $("#name").val(), $("#descriptiveText").val(), $("#motivationalText").val(), moduleCounter);
+                addModuleToCourse(moduleLevel, $("#name").val(), $("#descriptiveText").val(), $("#motivationalText").val(), moduleCounter++);
             });
 
         $("#table2").on('click', '.remCF', function () {
@@ -64,6 +64,7 @@ function populateModuleData() {
             table2String += '</tr>';
             table2.append(table2String);
         }
+        moduleCounter++;
     }
 
 
