@@ -38,10 +38,10 @@ function populateModuleData() {
         for (var y = 0; y < course.modules.length; y++) {
             var table2String = '<tr valign="top">';
             var module = course.modules[y];
-            table2String += '<td width="100px">'
+            table2String += '<td width="100px" align="center">'
             + module.moduleId + "</td>";
             moduleCounter = module.moduleId;
-            table2String += '<td width="100px">'
+            table2String += '<td width="100px" align="center">'
             + module.level + "</td>";
             table2String += '<td width="100px">'
             + module.moduleName + "</td>";
@@ -50,7 +50,7 @@ function populateModuleData() {
             table2String += '<td width="200px">'
             + module.moduleMotivation + "</td>";
             if (module.tests != 'undefined') {
-                table2String += '<td width="100px">'
+                table2String += '<td width="100px" align="center">'
                 + module.tests.length + "</td>";
             } else {
                 // table2String += '</td>';
