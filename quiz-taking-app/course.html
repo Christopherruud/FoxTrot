@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
 
@@ -13,46 +13,64 @@
 </head>
 <body>
 
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="quiz.html">FoxTrot DHIS2 Quiz App</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="course.html">Available Courses</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
 <div data-role="page">
     <div data-role="main" class="ui-content">
-        <div style="margin-top: 50px;">
+        <div style="...">
+            <div class="container">
 
 
-            <p class="quizheading" style="...">Select
+                <p class="quizheading" style="...">Select
 
-                Course</p>
+                    Course</p>
 
-            <p style="font-family: Arial">This is the page for courses. You can
-                choose modules (level of difficulty) to each course from here. Info on
-                this specific course will be available here.</p>
-
-
-            <!-- needed for the table to draw progress - not started
-            <p class="quizheading">Your progress so far:</p>
-
-             <div id="progressList"></div>-->
-
-            <p class="quizheading">Here is a list of the courses</p>
-
-            <div id="courseList">
+                <p style="font-family: Arial">This is the page for courses. You can
+                    choose modules (level of difficulty) to each course from here. Info on
+                    this specific course will be available here.</p>
 
 
+                <!-- needed for the table to draw progress - not started
+                <p class="quizheading">Your progress so far:</p>
+
+                 <div id="progressList"></div>-->
+
+                <p class="quizheading">Here is a list of the courses</p>
+
+                <div id="courseList"></div>
+
+                <p>
+                    <input type="button" onclick="history.back();" value="Back">
+                </p>
             </div>
-
-            <p>
-                <input type="button" onclick="history.back();" value="Back">
-            </p>
+            <script src="js/jquery-1.10.1.min.js"></script>
+            <script src="js/applogic.js"></script>
+            <script src="js/module.js"></script>
+            <script src="js/course.js"></script>
+            <script>
+                $(document).ready(function () {
+                    getCourseData(false);
+                });
+            </script>
         </div>
-        <script src="js/jquery-1.10.1.min.js"></script>
-        <script src="js/applogic.js"></script>
-        <script src="js/module.js"></script>
-        <script src="js/course.js"></script>
-        <script>
-            <!-- Dette er lettere irrelevant og kan fjernes?-->
-            $(document).ready(function () {
-                getCourseData(false);
-            });
-        </script>
     </div>
 </div>
 
