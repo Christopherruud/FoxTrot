@@ -75,6 +75,7 @@ function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotiv
     tempModule.moduleId = moduleId;
     tempModule.moduleMotivation = moduleMotivationalText;
     tempModule.moduleName = moduleName;
+    tempModule.tests = [];
     console.log(courses);
     courses[courseNumber].modules.push(tempModule);
     postCourseData(courses);
