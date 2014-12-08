@@ -23,6 +23,7 @@ function setModules(array, courseId, isInModule) {
 }
 //Reads the Module - data and writes it into HTML, depending on if it's called from within module.html or not
 function populateModule(isInModule) {
+
     // console.log(isInModule, " utenfor modul");
 console.log("dette er et kall av populateModule()");
     //Hvis vi er inne i riktig modul
