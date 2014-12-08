@@ -194,7 +194,7 @@ function populateCourseData(json) {
                     var test = module.tests[f];
                     test = explodeJSON(test);
 
-                    var tempTest = new Test(module.moduleID);
+                    var tempTest = new Test(module.moduleId);
 
                     tempTest.question = test.question;
                     tempTest.answer = test.answer;
