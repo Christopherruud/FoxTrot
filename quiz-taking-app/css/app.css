@@ -71,6 +71,18 @@ input[type="button"]{
     background: dimgray;
     list-style-type: none;
     padding: 5px 10px 6px;
+    
+    display: block; 
+    font-size: 12px; 
+    text-decoration: none!important; 
+    font-family: Helvetica, Arial, sans serif;
+    padding: 8px 12px; 
+    border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    box-shadow: inset 0px 0px 2px #fff;
+    -o-box-shadow: inset 0px 0px 2px #fff;
+    -webkit-box-shadow: inset 0px 0px 2px #fff;
+    -moz-box-shadow: inset 0px 0px 2px #fff;
 
 }
 
