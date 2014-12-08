@@ -31,6 +31,7 @@ function addToCourseList(domain, level, id, descriptiveText) {
     tempcourse.level = level;
     tempcourse.id = id;
     tempcourse.descriptiveText = descriptiveText;
+    tempcourse.modules = [];
     courses.push(tempcourse);
     postCourseData(courses);
 }
