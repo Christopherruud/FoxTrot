@@ -62,7 +62,7 @@ function addTestToModule(parent, question, answer, alternatives) {
     tempTest.answer = answer;
     tempTest.alternatives = alternatives.slice();
     courses[courseNumber].modules[moduleCounter].tests.push(tempTest);
-    postTestData(courses);
+    postCourseData(courses);
 
 
 }

@@ -32,7 +32,7 @@ function addToCourseList(domain, level, id, descriptiveText) {
     tempcourse.id = id;
     tempcourse.descriptiveText = descriptiveText;
     courses.push(tempcourse);
-    postTestData(courses);
+    postCourseData(courses);
 }
 
 /**
