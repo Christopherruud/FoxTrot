@@ -50,12 +50,12 @@ label {
 }
 
 
-.container2 {
+/* .container2 {
     float: left;
     background-color: #ebebeb;
     margin: 0;
 
-}
+} */
 
 .radio {
     float: left;
@@ -68,42 +68,49 @@ input[type="button"]{
     margin:1% 1% 0 5%;
     color:white;
     float:left;
-    background: dimgray;
+    background: #A9A9A9;
     list-style-type: none;
     padding: 5px 10px 6px;
-    
+    border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	border: 2px solid #ffffff;
+	    
    
 
 }
 
 button{
-    display: inline-block;
+   display: inline-block;
+    margin:1% 1% 0 5%;
     color:white;
-    margin:1% 1% 0 40px;
-    background: dimgray;
+    float:left;
+    background: #A9A9A9;
     list-style-type: none;
     padding: 5px 10px 6px;
-
-    
+    border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	border: 2px solid #ffffff;
         
 }
 
 #modulename{
     margin-bottom: 10px;
-    font-weight: 500;
-    font-size: medium;
+    font-weight: Bold;
+    font-size: large;
 }
 
 #moduletext{
     font-weight: 400;
-    font-size:small;
+    font-size: medium;
     margin-bottom: 10px;
 }
 
 #moduleMtext{
     font-weight: 400;
     font-style: italic;
-    font-size:small;
+    font-size: medium;
     margin-bottom: 10px;
 }
 
