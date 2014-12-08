@@ -5,6 +5,7 @@ var table3 = $("#table3");
 
 
 $(document).ready(function () {
+    parseURL();
     getCourseData();
     $("#add").click(function () {
         table3.append
@@ -26,7 +27,7 @@ $(document).ready(function () {
 function populateTestData() {
     var module = courses[courseNumber].modules[moduleCounter];
     moduleLevel = module.level;
-    if (module.tests != 'undefined') {
+    if (typeof(module.tests[0]) != 'undefined') {
         for (var y = 0; y < module.tests.length; y++) {
             var table3String = '<tr valign="top">';
             var test = module.tests[y];
@@ -145,7 +146,7 @@ var courses = [];
 var currentId = 0;
 
 function populateCourseData(json) {
-
+    courses = [];
     for (var s = 0; s < json.length; s++) {
         var course = json[s];
         course = explodeJSON(course);
@@ -192,11 +193,11 @@ function populateCourseData(json) {
             }
 
         }
-        parseURL();
 
-        populateTestData();
+
 
     }
+    populateTestData();
 }
 
 //checks if the JSON data consists of OBJECTS or something else

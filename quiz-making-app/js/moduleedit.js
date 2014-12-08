@@ -26,7 +26,7 @@ $(document).ready(
                     + '<td width="100px" align="center"><a href="testedit.html?course='
                     + courseNumber + '&module=' + moduleCounter
                     + '">Create test</a></td></tr>');
-                addModuleToCourse(moduleLevel, $("#name").val(), $("#descriptiveText").val(), $("#motivationalText").val(), moduleCounter++);
+                addModuleToCourse(moduleLevel, $("#name").val(), $("#descriptiveText").val(), $("#motivationalText").val(), moduleCounter);
             });
 
         $("#table2").on('click', '.remCF', function () {
@@ -36,7 +36,8 @@ $(document).ready(
 function populateModuleData() {
     var course = courses[courseNumber];
     moduleLevel = course.level;
-    if (course.modules != 'undefined') {
+    if (typeof(course.modules[0]) != 'undefined') {
+
         for (var y = 0; y < course.modules.length; y++) {
             var table2String = '<tr valign="top">';
             var module = course.modules[y];
@@ -51,7 +52,7 @@ function populateModuleData() {
             + module.moduleDescriptiveText + "</td>";
             table2String += '<td width="200px">'
             + module.moduleMotivation + "</td>";
-            if (module.tests != 'undefined') {
+            if (typeof(module.tests[0]) != 'undefined') {
                 table2String += '<td width="100px" align="center">'
                 + module.tests.length + "</td>";
             } else {
@@ -64,7 +65,7 @@ function populateModuleData() {
             table2String += '</tr>';
             table2.append(table2String);
         }
-        moduleCounter++;
+
     }
 
 
@@ -80,6 +81,7 @@ function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotiv
     console.log(courses);
     courses[courseNumber].modules.push(tempModule);
     postCourseData(courses);
+    moduleCounter++;
 
 
 }
@@ -152,7 +154,7 @@ function getCourseData() {
 }
 
 function populateCourseData(json) {
-
+    courses = [];
     for (var s = 0; s < json.length; s++) {
         var course = json[s];
         course = explodeJSON(course);

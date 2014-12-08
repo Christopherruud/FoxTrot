@@ -90,9 +90,10 @@ var courses = [];
 var currentId = 0;
 
 function populateCourseData(json) {
+    courses = [];
     var courseTable = $('#courseTable');
 
-    if (json != 'undefined') {
+    if (typeof(json) != 'undefined') {
         for (var s = 0; s < json.length; s++) {
             var course = json[s];
             course = explodeJSON(course);
