@@ -9,11 +9,11 @@ $(document).ready(function () {
     $("#add").click(function () {
         table3.append
         ('<tr valign="top"><td width="100px" align="center">'
-        + $("#question").val() + '</td><td width="100px" align="center">'
-        + $("#answer").val() + '</td><td width="100px" align="center">'
-        + $("#alt1").val() + '</td><td width="100px" align="center">'
-        + $("#alt2").val() + '</td><td width="100px" align="center">'
-        + $("#alt3").val() + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
+        + $("#question").val() + '</td><td width="200px">'
+        + $("#answer").val() + '</td><td width="150px">'
+        + $("#alt1").val() + '</td><td width="150px" align="center">'
+        + $("#alt2").val() + '</td><td width="150px" align="center">'
+        + $("#alt3").val() + '</td><td width="150px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td> <td><td width="100px" align="center"></td></tr>');
     var tempArray = [$("#alt1").val(), $("#alt2").val(), $("#alt3").val()];
     addTestToModule(moduleCounter,$("#question").val(), $("#answer").val(),tempArray );
     });
@@ -30,26 +30,26 @@ function populateTestData() {
         for (var y = 0; y < module.tests.length; y++) {
             var table3String = '<tr valign="top">';
             var test = module.tests[y];
-            table3String += '<td width="100px" align="center">'
+            table3String += '<td width="200px">'
             + test.question + "</td>";
-            table3String += '<td width="100px" align="center">'
+            table3String += '<td width="150px">'
             + test.answer + "</td>";
             var counter;
             for (var g = 0; g < test.alternatives.length; g++) {
                 var alternative = test.alternatives[g];
                 counter = g;
-                table3String += '<td width="100px" align="center">'
+                table3String += '<td width="150px" align="center">'
                 + alternative + "</td>";
 
             }
             if (counter < 2) {
                 if (counter < 1) {
-                    table3String += '<td width="100px" align="center">""</td>'
+                    table3String += '<td width="150px" align="center">""</td>'
                 }
 
-                table3String += '<td width="100px" align="center">""</td>'
+                table3String += '<td width="150px" align="center">""</td>'
             }
-            table3String += '<td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"></td>';
+            table3String += '<td width="150px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"></td>';
             table3String += '</tr>';
             table3.append(table3String);
         }
