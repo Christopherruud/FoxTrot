@@ -1,53 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
 
 <head>
-   <meta charset="utf-8">
+    <meta charset="utf-8">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet"
           href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
     <link rel="stylesheet" href="css/leaflet.css"/>
-    <link rel="shortcut icon" href="../../favicon.ico"/>  
+    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <link href="css/app.css" rel="stylesheet">
     <title>Select Course</title>
 </head>
 <body>
 
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="quiz.html">FoxTrot DHIS2 Quiz App</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="course.html">Available Courses</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
 <div data-role="page">
-<div data-role="main" class="ui-content">
-<div style="margin-top: 50px;">
+    <div data-role="main" class="ui-content">
+        <div style="...">
+            <div class="container">
 
 
-<p style="font-size: 40px" , style="font-family: Arial">Select
-    Course</p>
+                <p class="quizheading" style="...">Select
 
-<p style="font-family: Arial">This is the page for courses. You can
-    choose modules (level of difficulty) to each course from here. Info on
-    this specific course will be available here.</p>
+                    Course</p>
 
-
-<p>Here is a list of the courses</p>
-
-<div id="courseList">
-
-</div>
+                <p style="font-family: Arial">This is the page for courses. You can
+                    choose modules (level of difficulty) to each course from here. Info on
+                    this specific course will be available here.</p>
 
 
-<p>
-    <input type="button" onclick="history.back();" value="Back">
-</p>
-</div>
-<script src="js/jquery-1.10.1.min.js"></script>
-<script src="js/applogic.js"></script>
-<script src="js/module.js"></script>
-<script src="js/course.js"></script>
-<script>
-    <!-- Dette er lettere irrelevant og kan fjernes?-->
-    $(document).ready(function () {
-        getCourseData(false);
-    });
-</script>
-</div>
+                <!-- needed for the table to draw progress - not started
+                <p class="quizheading">Your progress so far:</p>
+
+                 <div id="progressList"></div>-->
+
+                <p class="quizheading">Here is a list of the courses</p>
+
+                <div id="courseList"></div>
+
+                <p>
+                    <input type="button" onclick="history.back();" value="Back">
+                </p>
+            </div>
+            <script src="js/jquery-1.10.1.min.js"></script>
+            <script src="js/applogic.js"></script>
+            <script src="js/module.js"></script>
+            <script src="js/course.js"></script>
+            <script>
+                $(document).ready(function () {
+                    getCourseData(false);
+                });
+            </script>
+        </div>
+    </div>
 </div>
 
 </body>

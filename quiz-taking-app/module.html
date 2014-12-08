@@ -3,78 +3,97 @@
 <html>
 <head>
     <meta charset="utf-8">
-     <link href="css/bootstrap.css" rel="stylesheet">
-     <link rel="stylesheet"
-           href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
-     <link rel="stylesheet" href="css/leaflet.css"/>
-     <link rel="shortcut icon" href="../../favicon.ico"/> 
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <link href="css/app.css" rel="stylesheet">
 </head>
 <body>
-<script src="js/jquery-1.10.1.min.js"></script>
-<script src="js/applogic.js"></script>
-<script src="js/course.js"></script>
-<script src="js/module.js"></script>
 
-
-<script>
-$(document).ready(function () {
-    getCourseData(true);
-});
-</script>
-
-
-
-<h2 id="module">Module </h2>
-
-<p>This is a introduction for the modules in this course</p>
-
-<h3>Information about the module</h3>
-
-<div id="moduletext">
-</div>
-<script>
-$("#moduletext").html(currentCourse,currentModule);
-
-</script>
-
-<!-- Her gj�res mye styling inne i htmlen med radio btn og tekst -->
-<style>
-    .question {
-        background-color: #CCC;
-        margin-top: 20px;
-        padding: 10px;
-    }
-
-    input[type="radio"] {
-        display: inline-block;
-        width: 20%;
-    }
-
-    input[type="radio"]:checked {
-        font-weight: bold;
-    }
-
-    label {
-        display: inline-block;
-        width: 75%;
-    }
-</style>
-
-<div id="newtest">
-    <div id="questions">
-
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="quiz.html">FoxTrot DHIS2 Quiz App</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="course.html">Available Courses</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
     </div>
-
 </div>
 
-<div id="anSwer">
+<div data-role="page">
+    <div data-role="main" class="ui-content">
+        <div style="margin-top: 50px;">
+            <div class="container">Welcome to the foxtrot quiz taking app.
+                Use the menu to navigate to courses.
+                There you can select different courses with varies levels of difficulty,
+                and test your knowledge. Good luck
+            </div>
+        </div>
+
+
+        <script src="js/jquery-1.10.1.min.js"></script>
+        <script src="js/applogic.js"></script>
+        <script src="js/course.js"></script>
+        <script src="js/module.js"></script>
+
+
+        <script>
+            $(document).ready(function () {
+                getCourseData(true);
+            });
+        </script>
+
+
+        <h2 id="module">Module </h2>
+
+        <p>This is a introduction for the modules in this course</p>
+
+        <h3>Information about the module</h3>
+
+        <div id="modulename">
+        </div>
+        <div id="moduletext">
+        </div>
+        <div id="moduleMtext">
+        </div>
+        <!-- Skriver inn text i div'ene, not working -->
+        <!--<script>
+            (function insertText() {
+            $("#modulename").html(courses[currentCourse].modules[currentModule].moduleName);
+            $("#moduletext").html(courses[currentCourse].modules[currentModule].moduleDescriptiveText);
+            $("#moduleMtext").html(courses[currentCourse].modules[currentModule].moduleMotivation);
+            })();
+        </script>-->
+
+        <div id="newtest">
+            <div id="questions">
+
+            </div>
+
+        </div>
+
+        <div id="anSwer">
+        </div>
+
+
+        <input type="button" onclick="history.back();" value="Back">
+        <input type="button" onclick="checkRadio();" value="Submit">
+        <!--<a href="/viewView"><button>Start quiz!</button></a>-->
+    </div>
 </div>
-
-
-<input type="button" onclick="history.back();" value="Back">
-<input type="button" onclick="checkRadio();" value="Submit">
-<!--<a href="/viewView"><button>Start quiz!</button></a>-->
-
+</div>
 
 </body>
 </html>

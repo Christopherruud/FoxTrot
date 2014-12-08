@@ -6,13 +6,13 @@ $(document).ready(
                 $("#table1").append(
                     '<tr valign="top"><td width="100px" align="center">'
                     + (++currentId)
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="100px">'
                     + $("#domain").val()
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="150px">'
                     + $("#level").val()
                     + '</td><td width="100px" align="center">'
                     + $("#descriptiveText").val()
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="200px">'
                     + ("none")
                     + '</td><td width="100px" align="center"> <a href="javascript:void(0);" class="remCF">Remove</a></td><td width="100px" align="center"><a href="moduleedit.html">Create modules</a></td></tr>');
                 addToCourseList($("#domain").val(), $(
@@ -108,17 +108,17 @@ function populateCourseData(json) {
 
         tableString += '<td width="100px" align="center">' + course.id
         + "</td>";
-        tableString += '<td width="100px" align="center">' + course.domain
+        tableString += '<td width="150px">' + course.domain
         + "</td>";
         tableString += '<td width="100px" align="center">' + course.level
         + "</td>";
-        tableString += '<td width="100px" align="center">'
+        tableString += '<td width="200px">'
         + course.descriptiveText + "</td>";
 
         // Modules
 
         if (undefined != course.modules) {
-            tableString += '<td width="100px" align="center">'
+            tableString += '<td width="100px">'
             + course.modules.length;
 
             for (var c = 0; c < course.modules.length; c++) {
@@ -148,12 +148,12 @@ function populateCourseData(json) {
 
             }
         } else {
-            tableString += '<td width="100px" align="center">';
+            tableString += '<td width="100px">';
         }
 
         var moduleEdit = "moduleedit.html";
         moduleEdit += "?course=" + course.id;
-        tableString += '</td><td width="100px" align="center"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"><a href="' + moduleEdit + '">Create modules</a></td>';
+        tableString += '</td><td width="100px"><a href="javascript:void(0);"class="remCF">Remove</a></td><td width="100px" align="center"><a href="' + moduleEdit + '">Create modules</a></td>';
         tableString += '</tr>';
         $("#table1").append(tableString);
     }

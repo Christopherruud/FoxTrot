@@ -24,7 +24,7 @@
                 <li><a href="courseedit.html">Course Editor</a></li>
             </ul>
         </div>
-        <!--/.nav-collapse -->
+        <!--  /.nav-collapse -->
     </div>
 </div>
 <div data-role="page">
@@ -34,26 +34,25 @@
             <table data-role="testList" class="ui-responsive" id="table3" name="table3">
                 <thead>
                 <tr>
-                    <td width="100px" align="center">Question
+                    <th width="250px" align="center">Question
                     </th>
-                    <td width="100px" align="center">Answer
+                    <th width="150px" align="center">Answer
                     </th>
-                    <td width="100px" align="center">Alternative 1
+                    <th width="150px" align="center">Alternative 1
                     </th>
-                    <td width="100px" align="center">Alternative 2
+                    <th width="150px" align="center">Alternative 2
                     </th>
-                    <td width="100px" align="center">Alternative 3
+                    <th width="150px" align="center">Alternative 3
                     </th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody class="list">
                 </tbody>
             </table>
         </div>
-
-        <!--  The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
-    If the width is less then 480px the label will be placed on above the form element-->
+        
+     <!--     The "ui-field-contain" class style labels and form controls properly based upon the width of the page.
+    If the width is less then 480px the label will be placed on above the form element -->
         <form method="post" id="myFrom" action="">
             <fieldset data-role="collapsible" data-theme="b"
                       data-content-theme="a">
@@ -61,7 +60,7 @@
                 <div class="ui-field-contain">
 
                     <label for="question">Question:</label>
-                    <!--<input type="hidden" id="id"/>-->
+                    <input type="hidden" id="id"/>
                     <input type="text" name="question" id="question" data-clear-btn="true"/>
                     <label for="answer">Answer:</label>
                     <input type="text" name="answer" id="answer" data-clear-btn="true"/>
@@ -71,7 +70,7 @@
                     <input type="text" name="alt2" id="alt2" data-clear-btn="true"/>
                     <label for="alt3">Alternative 3:</label>
                     <input type="text" name="alt3" id="alt3" data-clear-btn="true"/>
-                </div>
+              </div>
                 <table>
                     <button id="add" type="button">Add to tests</button>
                 </table>
@@ -79,12 +78,12 @@
         </form>
 
 
-    </div>
-</div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <script src="js/testedit.js"></script>
+</div>
+</div>
 
 </body>
 </html>

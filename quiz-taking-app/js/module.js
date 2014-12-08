@@ -1,7 +1,6 @@
-console.log("loading.module");
 
+//Placeholder variables for global access
 var moduleNumber = 0;
-//var id;
 var modules = [];
 var idCourse;
 var currentCourse;
@@ -14,40 +13,35 @@ function Result() {
     var moduleId;
     var testResults = [];
 }
-
+var courses = [];
 
 function setModules(array, courseId, isInModule) {
-    console.log(array);
     modules = array;
 
-    console.log(modules);
     idCourse = courseId;
 
     populateModule(isInModule);
 }
 
-//vi må diskutere om dette er måten vi vil velge for å populere siden med valg (knapper)
+//Reads the Module - data and writes it into HTML, depending on if it's called from within module.html or not
 function populateModule(isInModule) {
-    console.log(isInModule, " utenfor modul");
+    // console.log(isInModule, " utenfor modul");
 
     for (var Module in modules) {
-
-        console.log(Module);
-
-        console.log(courses[idCourse].modules[Module].moduleId);
-
         //Hvis vi er inne i riktig modul
         if (isInModule) {
             //kan putte dette i en egen FUNCTION
             parseURL();
-            console.log(isInModule + " i modul");
 
+            $("#modulename").html(courses[currentCourse].modules[currentModule].moduleName);
+            $("#moduletext").html(courses[currentCourse].modules[currentModule].moduleDescriptiveText);
+            $("#moduleMtext").html(courses[currentCourse].modules[currentModule].moduleMotivation);
             var testElements = courses[currentCourse].modules[currentModule].tests;
             var nr = 1;
 
 
             //testElements.forEach(function(test){
-            console.log(testElements);
+            //  console.log(testElements);
             var btn = document.createElement("BUTTON");
             btn.textContent = "Test " + nr;
             document.body.appendChild(btn);
@@ -60,21 +54,18 @@ function populateModule(isInModule) {
             break;
 
         } else {
-            //addInfo(courses[idCourse].modules[Module].moduleId);
             var moduleElement = courses[idCourse].modules[Module].moduleName;
             var btn = document.createElement("BUTTON");        // Create a <button> element
 
             var urlString = "module.html";
             urlString += '?course=' + idCourse;
             urlString += '&module=' + courses[idCourse].modules[Module].moduleId;
-            console.log(urlString);
 
-            btn.textContent = moduleElement + " " + moduleNumber;
+            btn.textContent = "Module " + (courses[idCourse].modules[Module].moduleId +1) + ": " + moduleElement;
 
             document.body.appendChild(btn);                    // Append <button> to <body>
 
             //id = moduleElement.moduleId;
-
 
             //setter riktig URL til Modul man skal inn i
             (function (urlString) {
@@ -83,8 +74,6 @@ function populateModule(isInModule) {
                 });
             })(urlString);
 
-
-            moduleNumber++;
         }
 
 
@@ -94,9 +83,7 @@ function populateModule(isInModule) {
 
 //setter opp spørsmålene i HTML
 function setTest(sporsmol) {
-    //console.log(sporsmol);
     var spm = sporsmol;
-    //console.log(spm);
     var setup = document.getElementById("newtest");
 
     //riktig svar må taes vare på
@@ -125,12 +112,6 @@ function setTest(sporsmol) {
         questionElement.setAttribute("class", "question-text");
         question.appendChild(questionElement);
 
-
-        //MANGLER MÅTE Å GODKJENNE PÅ!
-        //mangler å sjekke riktig svar!
-        //mangler lagre funksjon
-        //lenger ned er det to funksjoner i progress som kan brukes?
-
         //svar
         var answerElement = document.createElement("input");
         var answer = document.createElement("label");
@@ -138,7 +119,7 @@ function setTest(sporsmol) {
         answerElement.setAttribute("name", "group" + i);
 
         //burde være en lik id for alle riktige svar
-        //flere submittknapper pr alternativ liste
+        //flere submitknapper pr alternativ liste
         answerElement.setAttribute("id", "radio_correct_" + i);
 
         answerElement.setAttribute("value", spm[i].answer);
@@ -181,7 +162,9 @@ function setTest(sporsmol) {
     }
 
 }
-//litt usikker på hvor vi vil sjekke om radio btns er checked...
+
+//Method dedicated to iterate over all radio buttons and see if the answer-ones are correctly checked.
+//Will then display number of correct answers, and persist.
 function checkRadio() {
     var tmpTest = new Result();
     tmpTest.courseId = currentCourse;
@@ -218,30 +201,28 @@ function checkRadio() {
 
 //usikker på hvor vi skal lage denne btn fra. 
 //kan være lurt å lage den i html, men er usikker på listener der.
-function makeCheckBtn(radioBtn) {
-    var btn = document.createElement("BUTTON");
-    btn.textContent = "Check it!";
-    document.body.appendChild(btn);
-    //her sender vi med testen fra modulet
-    btn.addEventListener("click", function () {
-        validateAnswer()
-    });
-}
+/*function makeCheckBtn(radioBtn) {
+ var btn = document.createElement("BUTTON");
+ btn.textContent = "Check it!";
+ document.body.appendChild(btn);
+ //her sender vi med testen fra modulet
+ btn.addEventListener("click", function () {
+ validateAnswer()
+ });
+ }*/
 
 //sjekker riktig svar
-function validateAnswer(radioBtn) {
-    //sjekke med denne radio btn siden den har en id
-    //id tilsvarer spm nr og alternative nr.
-    //linje 120
+/*function validateAnswer(radioBtn) {
+ //sjekke med denne radio btn siden den har en id
+ //id tilsvarer spm nr og alternative nr.
+ //linje 120
 
-}
-
+ }
+ */
 
 //skriver arrayet med resultater til JSON
 function postResults(json) {
     var jsonString = JSON.stringify(json);
-    console.log("postResults invoked with data:");
-    console.log(json);
     $.ajax({
         type: "POST",
         contentType: "text/plain",
@@ -284,7 +265,6 @@ function populateResultData(json) {
         tempResult.testResults = result.testResults.slice();
         results.push(tempResult);
     }
-    console.log(results);
 }
 
 var objectStorage = new Object();
@@ -294,11 +274,8 @@ function explodeJSON(object) {
         objectStorage[object['@id']] = object;
 
     } else {
-        //console.log('Object is not object');
         object = objectStorage[object];
-        //console.log(object);
     }
-    //console.log(object);
     return object;
 }
 

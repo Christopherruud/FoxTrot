@@ -10,17 +10,17 @@ $(document).ready(
         $("#add").click(
             function () {
                 table2.append(
-                    '<tr valign="top"><td width="100px" align="center">'
+                    '<tr valign="top"><td width="100px">'
                     + (++moduleCounter)
                     + '</td><td width="100px" align="center">'
                     + (moduleLevel)
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="100px">'
                     + $("#name").val()
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="100px">'
                     + $("#descriptiveText").val()
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="200px">'
                     + $("#motivationalText").val()
-                    + '</td><td width="100px" align="center">'
+                    + '</td><td width="200px">'
                     + ("none")
                     + '</td><td width="100px" align="center"><a href="javascript:void(0);" class="remCF">Remove</a></td>'
                     + '<td width="100px" align="center"><a href="testedit.html?course='
@@ -45,11 +45,11 @@ function populateModuleData() {
             moduleCounter = module.moduleId;
             table2String += '<td width="100px" align="center">'
             + module.level + "</td>";
-            table2String += '<td width="100px" align="center">'
+            table2String += '<td width="100px">'
             + module.moduleName + "</td>";
-            table2String += '<td width="100px" align="center">'
+            table2String += '<td width="200px">'
             + module.moduleDescriptiveText + "</td>";
-            table2String += '<td width="100px" align="center">'
+            table2String += '<td width="200px">'
             + module.moduleMotivation + "</td>";
             if (module.tests != 'undefined') {
                 table2String += '<td width="100px" align="center">'
@@ -77,7 +77,7 @@ function addModuleToCourse(level, moduleName, moduleDescriptiveText, moduleMotiv
     tempModule.moduleName = moduleName;
     console.log(courses);
     courses[courseNumber].modules.push(tempModule);
-    postTestData(courses);
+    postCourseData(courses);
 
 
 }
