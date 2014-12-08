@@ -48,3 +48,8 @@ label {
   display: inline-block;
   width: 75%;
 }
+
+.container {
+  float: left;
+
+}
