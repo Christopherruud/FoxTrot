@@ -27,6 +27,7 @@ function setModules(array, courseId, isInModule) {
 function populateModule(isInModule) {
 	// console.log(isInModule, " utenfor modul");
 	if(modules != null){
+		
 		for (var Module in modules) {
 			//Hvis vi er inne i riktig modul
 			if (isInModule) {
